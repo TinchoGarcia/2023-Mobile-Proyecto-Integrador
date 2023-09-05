@@ -2,7 +2,7 @@
 
 ***Proyecto para el módulo “Aplicaciones Móviles” (2023) - cohorte 2022***
 
-El proyecto tiene como objetivo desarrollar una aplicación móvil para celulares-Tablet con sistema operativo Android, que permitirá a los huéspedes interactuar con el hotel de manera más eficiente y cómoda.
+El proyecto tiene como objetivo desarrollar una aplicación móvil para celulares-Tablet con sistema operativo Android, que permitirá a los huéspedes interactuar con el hotel de manera más eficiente y cómoda. La aplicación está concebida para usuarios previamente registrados en el sistema web.
 Componentes claves de la aplicación:
 
 * ***Login:*** Página de inicio que les permitirá iniciar sesión en sus cuentas existentes, para proporcionar un acceso seguro y personalizado a las funcionalidades de la aplicación
@@ -36,6 +36,10 @@ Componentes claves de la aplicación:
 
 * ***Pruebas:*** se realizarán pruebas para garantizar la funcionalidad y experiencia de usuario.
 
+
+Referencias a los repositoris previos:
+https://github.com/FedeGonzalez2016/2022-Fullstack-Proyecto-Integrador
+https://github.com/fertadeo/2023-Fullstack-Proyecto-Integrador
 
 
 
