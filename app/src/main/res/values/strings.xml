@@ -24,4 +24,13 @@
     <string name="pagado">Pagado</string>
     <string name="repetir">Repetir +</string>
     <string name="cancelar">Cancelar</string>
+    <string name="mi_perfil">Mi perfil</string>
+    <string name="boton_atras">Ir hacia atrás</string>
+    <string name="general">General</string>
+    <string name="editar_perfil">Editar perfil</string>
+    <string name="eliminar_cuenta">Eliminar cuenta</string>
+    <string name="cont_ctanos">Contáctanos</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="recibir_notificaciones">Recibir notificaciones</string>
+    <string name="notificaciones">Notificaciones</string>
 </resources>
