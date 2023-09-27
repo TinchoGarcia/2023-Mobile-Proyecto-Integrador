@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="265dp"
+        android:gravity="center"
+        android:text="@string/bienvenido"
+        android:textSize="30sp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="339dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/azul"
+        app:cardCornerRadius="18dp">
+
+        <TextView
+            android:id="@+id/Login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/login"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            tools:ignore="TextSizeCheck" />
+
+        <EditText
+            android:id="@+id/emailLogin"
+            android:layout_width="301dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/gris"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/contraseñaLogin"
+            android:layout_width="302dp"
+            android:layout_height="55dp"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="35dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="@string/contraseña"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gris"
+            tools:ignore="TextContrastCheck" />
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/inicio"
+        android:layout_width="191dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/naranja"
+        android:gravity="center"
+        android:onClick="@string/home"
+        android:text="@string/ingresar"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="271dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="@string/regitro"
+        android:textSize="15sp" />
+</LinearLayout>
