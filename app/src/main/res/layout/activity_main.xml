@@ -85,6 +85,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
         android:gravity="center"
+        android:onClick="iraregistro"
         android:text="@string/regitro"
         android:textSize="15sp" />
 </LinearLayout>

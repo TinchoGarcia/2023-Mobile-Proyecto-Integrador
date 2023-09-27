@@ -16,5 +16,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
+    public void iraregistro (View view){
+        Intent intent = new Intent(this, Registro.class);
+        startActivity(intent);
+    }
 }
