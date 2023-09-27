@@ -33,4 +33,12 @@
     <string name="cerrar_sesion">Cerrar sesión</string>
     <string name="recibir_notificaciones">Recibir notificaciones</string>
     <string name="notificaciones">Notificaciones</string>
+    <string name="edicio_perfil">Editar mi perfil</string>
+    <string name="nuevo_usuario">Nuevo usuario</string>
+    <string name="nuevo_email">Nuevo email</string>
+    <string name="nueva_contrasena">Nueva contraseña</string>
+    <string name="juan_perez">juan perez</string>
+    <string name="mail_hint">juanperez89@gmail.com</string>
+    <string name="password_hint">*********</string>
+    <string name="guardar_cambios">Guardar cambios</string>
 </resources>
