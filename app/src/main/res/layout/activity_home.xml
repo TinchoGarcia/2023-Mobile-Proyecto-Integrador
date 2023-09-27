@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home">
+
+    <EditText
+        android:id="@+id/fechaSalida"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="31dp"
+        android:ems="10"
+        android:hint="@string/fechaEjemplo2"
+        android:inputType="date"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gris"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/fechaingreso"
+        tools:ignore="TextContrastCheck"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="145dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="532dp"
+        android:text="@string/fechaE"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toStartOf="@+id/fechaSalida"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FechaI" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="239dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginBottom="42dp"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/FechaI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/FechaI"
+        android:layout_width="145dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="46dp"
+        android:text="@string/fechaI"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toStartOf="@+id/fechaingreso"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/fechaingreso"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="29dp"
+        android:ems="10"
+        android:hint="@string/fechaEjemplo1"
+        android:inputType="date"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gris"
+        app:layout_constraintBottom_toTopOf="@+id/fechaSalida"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/FechaI"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="TextContrastCheck"
+        android:autofillHints="" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="287dp"
+        android:layout_height="227dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/room"
+        app:layout_constraintBottom_toTopOf="@+id/ratingBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fechaSalida">
+
+    </FrameLayout>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="@color/amarillo"
+        android:backgroundTintMode="add"
+        app:layout_constraintBottom_toTopOf="@+id/reservarButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/reservarButton"
+        android:layout_width="161dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="@color/naranja"
+        android:onClick="reservar"
+        android:text="@string/reservar"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="405dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+</androidx.constraintlayout.widget.ConstraintLayout>

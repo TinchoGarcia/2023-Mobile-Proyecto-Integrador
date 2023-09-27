@@ -3,7 +3,7 @@
     <string name="bienvenido">Bienvenida/o a Hotel California</string>
     <string name="login">Login</string>
     <string name="email">email@gmail.com</string>
-    <string name="contraseña">Contraseña</string>
+    <string name="contrasena">Password</string>
     <string name="ingresar">Ingresar</string>
     <string name="regitro">Registrate</string>
     <string name="hoteln">Hotel California</string>
@@ -19,7 +19,7 @@
     <string name="precio1">$1893.44</string>
     <string name="precio2">$2500</string>
     <string name="precio3">$6589.99</string>
-    <string name="eservas">Reservas</string>
+    <string name="reservas">Reservas</string>
     <string name="pesos">Pesos</string>
     <string name="pagado">Pagado</string>
     <string name="repetir">Repetir +</string>
