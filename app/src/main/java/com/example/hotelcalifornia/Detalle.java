@@ -14,11 +14,13 @@ public class Detalle extends AppCompatActivity {
         setContentView(R.layout.activity_detalle);
     }
 
-    public void realizarPago (View view){
+    public void realizarPago(View view) {
         Intent intent = new Intent(this, Tarjeta.class);
         startActivity(intent);
-}
-    public void iraReservas (View view){
+    }
+
+    public void iraReservas(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
 }

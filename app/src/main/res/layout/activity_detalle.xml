@@ -10,14 +10,16 @@
         android:id="@+id/volverHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
         android:onClick="iraReservas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="36dp" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
-        android:id="@+id/finalizarpagotext"
+        android:id="@+id/datosTarjetaText"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="41dp"
@@ -39,7 +41,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/finalizarpagotext" />
+        app:layout_constraintTop_toBottomOf="@+id/datosTarjetaText" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -57,9 +59,8 @@
             android:layout_marginTop="-50sp"
             android:scaleX="0.5"
             android:scaleY="0.5"
-            android:src="@tools:sample/avatars"
-            app:srcCompat="@drawable/pexels_photo_271639"
-            tools:srcCompat="@drawable/pexels_photo_271639" />
+            android:src="@drawable/pexels_photo_271639" />
+
 
         <TextView
             android:id="@+id/PromocionText"
