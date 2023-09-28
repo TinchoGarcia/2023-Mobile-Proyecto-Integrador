@@ -41,4 +41,7 @@
     <string name="mail_hint">juanperez89@gmail.com</string>
     <string name="password_hint">*********</string>
     <string name="guardar_cambios">Guardar cambios</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="mensaje_ok">Su reserva ha sido realizada con exito</string>
+    <string name="mensaje_reintente">Por favor reintente nuevamente..</string>
 </resources>
