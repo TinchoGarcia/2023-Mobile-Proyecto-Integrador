@@ -43,7 +43,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/contenedorDatosTarjeta"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="300dp"
         android:layout_marginStart="55dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="55dp"
@@ -62,12 +62,25 @@
             android:text="N° de Tarjeta"
             android:textColor="@color/white" />
 
+        <EditText
+            android:id="@+id/nTarjetaInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="20sp"
+            android:ems="10"
+            android:hint="Ingrese su N de tarjeta"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:elevation="5dp"/>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/bgNdeTarjeta"
             android:layout_width="280dp"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="30dp"
+            android:elevation="4dp"
             app:cardCornerRadius="10dp" />
 
         <TextView
@@ -79,12 +92,25 @@
             android:text="Fecha de Venc."
             android:textColor="@color/white" />
 
+        <EditText
+            android:id="@+id/fechaVencInput"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="80sp"
+            android:ems="10"
+            android:hint="Fecha de Venc"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:elevation="5dp"/>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/bgFechaVenc"
             android:layout_width="110dp"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="90dp"
+            android:elevation="4dp"
             app:cardCornerRadius="10dp" />
 
 
@@ -97,12 +123,25 @@
             android:text="Cod. de Seguridad"
             android:textColor="@color/white" />
 
+        <EditText
+            android:id="@+id/codSeguridadInput"
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140sp"
+            android:layout_marginTop="80sp"
+            android:ems="10"
+            android:hint="Cod Seguridad"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:elevation="5dp"/>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/bgCodSeguridad"
             android:layout_width="155dp"
             android:layout_height="30dp"
             android:layout_marginStart="135dp"
             android:layout_marginTop="90dp"
+            android:elevation="4dp"
             app:cardCornerRadius="10dp" />
 
         <TextView
@@ -114,12 +153,25 @@
             android:text="Nombre y Apellido"
             android:textColor="@color/white" />
 
+        <EditText
+            android:id="@+id/nombreyapellidoInput"
+            android:layout_width="270sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="140sp"
+            android:ems="10"
+            android:hint="Introduzca su nombre completo"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:elevation="5dp"/>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/bgNombreApellido"
             android:layout_width="280dp"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="150dp"
+            android:elevation="4dp"
             app:cardCornerRadius="10dp" />
 
         <TextView
@@ -136,7 +188,7 @@
         <Button
             android:id="@+id/confirmarPagoButton"
             android:layout_width="272dp"
-            android:layout_height="37dp"
+            android:layout_height="48dp"
             android:layout_marginStart="15sp"
             android:layout_marginTop="235sp"
             android:backgroundTint="@color/naranja"

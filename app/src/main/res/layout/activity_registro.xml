@@ -68,11 +68,12 @@
             android:layout_marginTop="50sp"
             android:backgroundTint="@color/white"
             android:backgroundTintMode="add"
+            android:elevation="25dp"
             android:ems="10"
             android:gravity="center"
+            android:hint="Pepe Argento"
             android:inputType="text"
             android:minHeight="48dp"
-            android:text="Ingrese nombre de Usuario"
             android:textColor="@color/black" />
 
         <androidx.cardview.widget.CardView
@@ -82,6 +83,7 @@
             android:layout_marginStart="10sp"
             android:layout_marginTop="50sp"
             android:layout_marginEnd="10sp"
+            android:elevation="4dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="15sp" />
 
@@ -100,7 +102,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
             android:layout_marginTop="170sp"
+            android:elevation="25dp"
             android:ems="10"
+            android:hint="15/05/1986"
             android:inputType="date"
             android:minHeight="48dp" />
 
@@ -112,6 +116,7 @@
             android:layout_marginStart="10sp"
             android:layout_marginTop="170sp"
             android:layout_marginEnd="10sp"
+            android:elevation="4dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="15sp" />
 
@@ -130,10 +135,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
             android:layout_marginTop="290sp"
+            android:elevation="25dp"
             android:ems="10"
+            android:hint="pepito@hotel.com"
             android:inputType="text"
-            android:minHeight="48dp"
-            android:text="Introduzca su email" />
+            android:minHeight="48dp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/BgEmail"
@@ -142,6 +148,7 @@
             android:layout_marginStart="10sp"
             android:layout_marginTop="290sp"
             android:layout_marginEnd="10sp"
+            android:elevation="4dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="15sp" />
 
@@ -160,10 +167,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
             android:layout_marginTop="400sp"
+            android:elevation="25dp"
             android:ems="10"
-            android:inputType="text"
-            android:minHeight="48dp"
-            android:text="Introduzca su contraseña" />
+            android:hint="**********"
+            android:inputType="text|textPassword"
+            android:minHeight="48dp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/BgPass"
@@ -172,6 +180,7 @@
             android:layout_marginStart="10sp"
             android:layout_marginTop="400sp"
             android:layout_marginEnd="10sp"
+            android:elevation="4dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="15sp" />
 
