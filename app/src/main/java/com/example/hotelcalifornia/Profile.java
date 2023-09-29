@@ -27,8 +27,8 @@ public class Profile extends AppCompatActivity {
     }
     //lleva a editar mi perfil
     public void goToLogin(View view) {
-        //Intent intent = new Intent(this, MainActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
     //lleva a login a traves de boton eliminar cuenta y cerrar sesion
 
