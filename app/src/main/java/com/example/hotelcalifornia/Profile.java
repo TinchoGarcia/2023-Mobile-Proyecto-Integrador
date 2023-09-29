@@ -17,8 +17,8 @@ public class Profile extends AppCompatActivity {
     }
     public void goToHome(View view) {
 
-        Intent intent = new Intent(this, Edition.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, Home.class);
+        //startActivity(intent);
     }
     public void goToEdition(View view) {
 
