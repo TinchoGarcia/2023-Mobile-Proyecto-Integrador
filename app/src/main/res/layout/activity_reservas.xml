@@ -6,11 +6,169 @@
     android:layout_height="match_parent"
     tools:context=".Reservas">
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="155dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="56dp"
+        android:backgroundTint="@color/naranja"
+        android:onClick="pago"
+        android:text="@string/repetir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
+
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="140dp"
-        android:layout_height="51dp"
-        android:text="@string/reservar"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:id="@+id/textView7"
+        android:layout_width="139dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="54dp"
+        android:gravity="center"
+        android:text="@string/pagado"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/checkBox2" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="292dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="58dp"
+        android:text="@string/precio3"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="136dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="55dp"
+        android:gravity="center"
+        android:text="@string/pagado"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/checkBox" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="292dp"
+        android:layout_height="54dp"
+        android:text="@string/precio1"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="58dp"
+        tools:layout_editor_absoluteY="206dp" />
+
+    <TextView
+        android:id="@+id/pesos"
+        android:layout_width="139dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="54dp"
+        android:gravity="center"
+        android:text="@string/pesos"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/radioButton" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="155dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="61dp"
+        android:backgroundTint="@color/naranja"
+        android:onClick="pago"
+        android:text="@string/pagar"
+        android:textColorLink="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="155dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="61dp"
+        android:backgroundTint="@color/naranja"
+        android:onClick="pago"
+        android:text="@string/repetir"
+        android:textColor="@color/white"
+        android:textColorLink="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toTopOf="@+id/checkBox"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="292dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="60dp"
+        android:text="@string/precio2"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="119dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="146dp"
+        android:clickable="true"
+        android:onClick="cancelar"
+        android:text="@string/cancelar"
+        android:textAlignment="center"
+        android:textColorLink="@color/azul"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="409dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@drawable/selector"/>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="158dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="114dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="139dp"
+        android:text="@string/reservas"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

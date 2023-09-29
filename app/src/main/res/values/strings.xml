@@ -14,6 +14,8 @@
     <string name="fechaEjemplo2">01/00/2023</string>
     <string name="compra">Compra</string>
     <string name="perfil">Usuario</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="menu">Inicio</string>
     <string name="home">home</string>
     <string name="pagar">Pagar +</string>
     <string name="precio1">$1893.44</string>
