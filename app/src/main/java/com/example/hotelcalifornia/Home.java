@@ -12,17 +12,18 @@ import android.view.View;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Home extends AppCompatActivity {
 
+    BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        //bottomNavigationView.setSelectedItemId(R.id.menu);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.menu);
 
 
-        //bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-           /* @SuppressLint("NonConstantResourceId")
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
@@ -39,7 +40,7 @@ public class Home extends AppCompatActivity {
                 }
                 return false;
             }
-        });*/
+        });
 
     }
     public void reservar(View view){

@@ -4,7 +4,8 @@
     <item
         android:state_selected="true"
         android:drawable="@color/naranja"
-        android:color="@color/azul"/>
+        android:color="@color/azul"
+       />
 
     <item
         android:state_selected="false"
