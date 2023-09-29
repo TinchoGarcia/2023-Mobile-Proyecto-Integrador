@@ -24,7 +24,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:contentDescription="@string/boton_atras"
-        android:onClick="mi_perfil"
+        android:onClick="goToProfile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
@@ -115,7 +115,7 @@
         android:layout_marginTop="128dp"
         android:backgroundTint="@color/naranja"
         android:fontFamily="sans-serif-condensed"
-        android:onClick="@string/mi_perfil"
+        android:onClick="goToProfile"
         android:text="@string/guardar_cambios"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"

@@ -8,6 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Profile extends AppCompatActivity {
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_perfil);
+
+
+    }
     public void goToHome(View view) {
 
         Intent intent = new Intent(this, Edition.class);
@@ -19,9 +26,9 @@ public class Profile extends AppCompatActivity {
         startActivity(intent);
     }
     //lleva a editar mi perfil
-    public void goToProfile(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+    public void goToLogin(View view) {
+        //Intent intent = new Intent(this, MainActivity.class);
+        //startActivity(intent);
     }
     //lleva a login a traves de boton eliminar cuenta y cerrar sesion
 
@@ -31,13 +38,8 @@ public class Profile extends AppCompatActivity {
     }//lleva a contacto atraves del boton contactanos
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfil);
 
 
-    }
 
 
 }

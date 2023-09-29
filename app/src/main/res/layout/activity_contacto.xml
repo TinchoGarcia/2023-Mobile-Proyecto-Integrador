@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:contentDescription="@string/boton_atras"
-        android:onClick="@string/mi_perfil"
+        android:onClick="goToProfile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
@@ -35,7 +35,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="132dp"
         android:backgroundTint="@color/naranja"
-        android:onClick="@string/home"
+        android:onClick="goToHome"
         android:text="@string/enviar"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

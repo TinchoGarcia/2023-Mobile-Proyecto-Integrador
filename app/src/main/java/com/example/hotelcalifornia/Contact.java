@@ -7,10 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 
 public class Contact extends AppCompatActivity {
-    public void mi_perfil(View view) {
+    public void goToProfile(View view) {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
 
+    }
+    public void goToHome(View view) {
+
+        // Intent intent = new Intent(this, Home.class);
+        // startActivity(intent);
     }
 
     @Override

@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Edition extends AppCompatActivity {
 
-    public void mi_perfil(View view) {
+    public void goToProfile(View view) {
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
 
