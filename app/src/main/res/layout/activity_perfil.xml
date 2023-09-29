@@ -24,7 +24,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:contentDescription="@string/boton_atras"
-        android:onClick="@string/home"
+        android:onClick="goToHome"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
@@ -46,7 +46,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="28dp"
         android:backgroundTint="@color/azul"
-        android:onClick="@string/editar_perfil"
+        android:onClick="goToEdition"
         android:text="@string/editar_perfil"
         android:textAlignment="viewStart"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="34dp"
         android:backgroundTint="@color/azul"
-        android:onClick="@string/login"
+        android:onClick="goToProfile"
         android:text="@string/eliminar_cuenta"
         android:textAlignment="viewStart"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,10 +72,12 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/azul"
+        android:onClick="goToContact"
         android:text="@string/cont_ctanos"
         android:textAlignment="viewStart"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switch1" />
+        app:layout_constraintTop_toBottomOf="@+id/switch1"
+        app:srcCompat="?attr/homeAsUpIndicator" />
 
     <Button
         android:id="@+id/button5"
@@ -83,7 +85,7 @@
         android:layout_height="51dp"
         android:layout_marginTop="34dp"
         android:backgroundTint="@color/azul"
-        android:onClick="@string/login"
+        android:onClick="goToProfile"
         android:text="@string/cerrar_sesion"
         android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"

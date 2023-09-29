@@ -44,4 +44,8 @@
     <string name="notifications">Notificaciones</string>
     <string name="mensaje_ok">Su reserva ha sido realizada con exito</string>
     <string name="mensaje_reintente">Por favor reintente nuevamente..</string>
+    <string name="envianos">Envianos</string>
+    <string name="texto_contacto">Detalla aquí tu consulta/sugerencia</string>
+    <string name="tu_mensaje">tu mensaje!</string>
+    <string name="enviar">Enviar</string>
 </resources>

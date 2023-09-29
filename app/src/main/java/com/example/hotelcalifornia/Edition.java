@@ -1,10 +1,19 @@
 package com.example.hotelcalifornia;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
 
 public class Edition extends AppCompatActivity {
+
+    public void mi_perfil(View view) {
+        Intent intent = new Intent(this, Profile.class);
+        startActivity(intent);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -12,3 +21,5 @@ public class Edition extends AppCompatActivity {
         setContentView(R.layout.activity_edicion);
     }
 }
+
+
