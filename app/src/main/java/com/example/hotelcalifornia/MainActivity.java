@@ -17,10 +17,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+
     public void home(View view){
 
         Intent intento=new Intent(this,Home.class);
         startActivity(intento);
+
+    public void iraregistro (View view){
+        Intent intent = new Intent(this, Registro.class);
+        startActivity(intent);
     }
 }
 

@@ -13,10 +13,21 @@
         android:theme="@style/Theme.HotelCalifornia"
         tools:targetApi="31">
         <activity
+
             android:name=".Reservas"
             android:exported="false" />
         <activity
             android:name=".Home"
+            android:exported="false" />
+        <activity
+            android:name=".Tarjeta"
+            android:exported="false" />
+        <activity
+            android:name=".Detalle"
+            android:exported="false" />
+        <activity
+            android:name=".Registro"
+
             android:exported="false" />
         <activity
             android:name=".MainActivity"
