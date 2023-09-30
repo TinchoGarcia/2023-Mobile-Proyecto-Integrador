@@ -18,12 +18,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void home(View view){
+    public void home(View view) {
 
-        Intent intento=new Intent(this,Home.class);
+        Intent intento = new Intent(this, Home.class);
         startActivity(intento);
+    }
 
-    public void iraregistro (View view){
+    public void iraregistro(View view){
         Intent intent = new Intent(this, Registro.class);
         startActivity(intent);
     }

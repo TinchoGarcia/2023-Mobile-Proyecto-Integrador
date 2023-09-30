@@ -46,13 +46,13 @@ public class Reservas extends AppCompatActivity {
 
     }
 
-   /*public void pago(View view){
-        Intent pagar=new Intent()this,Detalle.class);
+   public void pago(View view){
+        Intent pagar=new Intent(this,Detalle.class);
         startActivity(pagar);
-    }*/
+    }
 
     public void cancelar(View view){
-        Intent cancelar=new Intent(this, MainActivity.class);
+        Intent cancelar=new Intent(this, Home.class);
         startActivity(cancelar);
     }
 

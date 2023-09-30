@@ -20,7 +20,7 @@ public class Detalle extends AppCompatActivity {
     }
 
     public void iraReservas(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Reservas.class);
         startActivity(intent);
     }
 }

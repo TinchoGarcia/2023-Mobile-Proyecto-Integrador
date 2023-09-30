@@ -8,15 +8,18 @@ import android.view.View;
 
 public class Notification extends AppCompatActivity {
 
-    public void goToHome(View view) {
 
-       // Intent intent = new Intent(this, Home.class);
-        // startActivity(intent);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notificaciones);
     }
+
+    public void goToHome(View view) {
+
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
+    }
+
 }

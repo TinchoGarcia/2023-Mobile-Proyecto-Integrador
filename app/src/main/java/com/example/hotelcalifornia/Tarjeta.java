@@ -17,10 +17,10 @@ public class Tarjeta extends AppCompatActivity {
         Intent intent = new Intent(this, Detalle.class);
         startActivity(intent);
     }
-    // Descomentar lo siguiente al tener la Activity de Notificaciones
-    /* public void notificaciones (View view){
-        Intent intent = new Intent(this, Notificaciones.class);
+
+    public void notificaciones (View view){
+        Intent intent = new Intent(this, Notification.class);
         startActivity(intent);
 
-    } */
+    }
 }

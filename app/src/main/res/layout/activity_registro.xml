@@ -158,7 +158,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10sp"
             android:layout_marginTop="370sp"
-            android:text="@string/contraseña"
+            android:text="@string/contrasena"
             android:textColor="@color/white" />
 
         <EditText
@@ -207,7 +207,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="36dp"
-        android:onClick="iraHome"
+        android:onClick="iraMainActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator"

@@ -14,8 +14,8 @@ public class Contact extends AppCompatActivity {
     }
     public void goToHome(View view) {
 
-        // Intent intent = new Intent(this, Home.class);
-        // startActivity(intent);
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
     }
 
     @Override
