@@ -27,6 +27,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Contact"
+            android:exported="false" />
+        <activity
+            android:name=".Notification"
+            android:exported="false" />
+        <activity
+            android:name=".Edition"
+            android:exported="false" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
     </application>
 
 </manifest>
