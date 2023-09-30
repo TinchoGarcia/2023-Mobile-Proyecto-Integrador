@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
 public class Home extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
@@ -22,22 +24,29 @@ public class Home extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.menu);
 
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
 
-                if (id == R.id.menu){
-                    Intent intent=new Intent(getApplicationContext(), Home.class);
+                if (id == R.id.menu) {
+                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                    startActivity(intent);
+                    return true;
+                } else if (id == R.id.compra) {
+                    Intent intent = new Intent(getApplicationContext(), Reservas.class);
+                    startActivity(intent);
+                    return true;
+                } else if (id == R.id.notificaciones) {
+                    Intent intent = new Intent(getApplicationContext(), Notification.class);
+                    startActivity(intent);
+                    return true;
+                } else if (id == R.id.perfil) {
+                    Intent intent = new Intent(getApplicationContext(), Profile.class);
                     startActivity(intent);
                     return true;
                 }
-                else if (id == R.id.compra){
-                    Intent intent=new Intent(getApplicationContext(), Reservas.class);
-                    startActivity(intent);
-                    return true;
-                }
+
                 return false;
             }
         });
