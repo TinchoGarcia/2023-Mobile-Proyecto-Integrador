@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="101dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="101dp"
         android:autofillHints=""
         android:ems="10"
@@ -22,7 +22,7 @@
         android:textColor="@color/black"
         android:textColorHint="@color/gris"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         tools:ignore="TextContrastCheck" />
@@ -32,7 +32,7 @@
         android:layout_width="145dp"
         android:layout_height="27dp"
         android:layout_marginStart="133dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="133dp"
         android:text="@string/fechaE"
         android:textSize="18sp"
@@ -75,7 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="101dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="101dp"
         android:autofillHints=""
         android:ems="10"
@@ -84,6 +84,7 @@
         android:textColor="@color/black"
         android:textColorHint="@color/gris"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/FechaI"
         tools:ignore="TextContrastCheck" />
@@ -93,17 +94,14 @@
         android:layout_width="233dp"
         android:layout_height="165dp"
         android:layout_marginStart="62dp"
-        android:layout_marginTop="83dp"
         android:layout_marginEnd="62dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/room"
         android:foregroundGravity="center"
         app:layout_constraintBottom_toTopOf="@+id/reservarButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fechaSalida"
-        app:layout_constraintVertical_bias="0.214">
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent">
 
     </FrameLayout>
 
@@ -113,7 +111,7 @@
         android:layout_height="56dp"
         android:layout_marginStart="125dp"
         android:layout_marginEnd="125dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/naranja"
         android:gravity="center"
         android:onClick="reservar"

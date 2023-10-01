@@ -8,6 +8,21 @@
     android:backgroundTint="@color/white"
     tools:context=".Reservas">
 
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="292dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="54dp"
+        android:text="@string/precio1"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="158dp"
@@ -53,14 +68,15 @@
         android:layout_width="292dp"
         android:layout_height="54dp"
         android:layout_marginStart="61dp"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="58dp"
         android:text="@string/precio3"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <TextView
         android:id="@+id/textView6"
@@ -76,38 +92,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="292dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="60dp"
-        android:text="@string/precio1"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:ignore="MissingConstraints" />
-
     <TextView
         android:id="@+id/pesos"
         android:layout_width="139dp"
         android:layout_height="48dp"
         android:layout_marginStart="61dp"
+        android:layout_marginTop="2dp"
         android:gravity="center"
         android:text="@string/pesos"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="155dp"
         android:layout_height="48dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="56dp"
         android:backgroundTint="@color/naranja"
         android:onClick="pago"
@@ -115,7 +118,7 @@
         android:textColorLink="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pesos"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
 
     <Button
         android:id="@+id/button2"
@@ -138,31 +141,33 @@
         android:layout_width="292dp"
         android:layout_height="54dp"
         android:layout_marginStart="59dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="60dp"
         android:text="@string/precio2"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pesos" />
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="119dp"
         android:layout_height="48dp"
         android:layout_marginStart="147dp"
-        android:layout_marginTop="48dp"
         android:layout_marginEnd="145dp"
+        android:layout_marginBottom="13dp"
         android:clickable="true"
         android:onClick="cancelar"
         android:text="@string/cancelar"
         android:textAlignment="center"
         android:textColorLink="@color/azul"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
