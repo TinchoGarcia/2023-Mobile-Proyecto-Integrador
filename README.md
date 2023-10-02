@@ -36,6 +36,8 @@ Componentes claves de la aplicación:
 
 * ***Pruebas:*** se realizarán pruebas para garantizar la funcionalidad y experiencia de usuario.
 
+Video de muestra de proyecto SPRINT 1: https://www.youtube.com/watch?v=jXo5IYPl2wI
+
 
 Referencias a los repositoris previos:
 https://github.com/FedeGonzalez2016/2022-Fullstack-Proyecto-Integrador
