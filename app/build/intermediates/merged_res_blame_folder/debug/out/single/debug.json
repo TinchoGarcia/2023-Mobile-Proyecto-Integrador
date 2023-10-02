@@ -1,0 +1,150 @@
+[
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\menu\\bottom_nav_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\drawable_logohc.png.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\drawable\\logohc.png"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\layout_activity_registro.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\layout\\activity_registro.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\layout_activity_reservas.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\layout\\activity_reservas.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\layout_activity_home.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\layout_activity_tarjeta.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\layout\\activity_tarjeta.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\drawable_selector.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\drawable\\selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\drawable_baseline_shopping_bag_24.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\drawable\\baseline_shopping_bag_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\layout_activity_contacto.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\layout\\activity_contacto.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\drawable_baseline_keyboard_arrow_down_24.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\drawable\\baseline_keyboard_arrow_down_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\drawable_istockphoto_1300003353_612x612.jpg.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\drawable\\istockphoto_1300003353_612x612.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\layout_activity_perfil.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\layout\\activity_perfil.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\layout_activity_edicion.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\layout\\activity_edicion.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\layout_activity_notificaciones.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\layout\\activity_notificaciones.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\drawable_baseline_notification_important_24.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\drawable\\baseline_notification_important_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\drawable_room.png.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\drawable\\room.png"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\drawable_baseline_person_2_24.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\drawable\\baseline_person_2_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\layout_activity_detalle.xml.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\layout\\activity_detalle.xml"
+    },
+    {
+        "merged": "com.example.hotelcalifornia.app-merged_res-28:/layout_activity_tarjeta.xml.flat",
+        "source": "com.example.hotelcalifornia.app-main-30:/layout/activity_tarjeta.xml"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\drawable_pexels_photo_271639.webp.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\drawable\\pexels_photo_271639.webp"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-merged_res-28:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Tincho\\.gradle\\daemon\\8.0\\com.example.hotelcalifornia.app-main-30:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    }
+]

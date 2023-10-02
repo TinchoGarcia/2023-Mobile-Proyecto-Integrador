@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Hotel_California.iml" filepath="$PROJECT_DIR$/.idea/modules/Hotel_California.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Hotel_California.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Hotel_California.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Hotel_California.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Hotel_California.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Hotel_California.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Hotel_California.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Hotel_California.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Hotel_California.app.unitTest.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="amarillo">#FFEB3B</color>
+    <color name="azul">#33464e</color>
+    <color name="black">#FF000000</color>
+    <color name="claro">#dfe2e3</color>
+    <color name="clear">#a3b4b9</color>
+    <color name="gris">#afb0b1</color>
+    <color name="marron">#89553b</color>
+    <color name="naranja">#d7794a</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Hotel California</string>
+    <string name="bienvenido">Bienvenida/o a Hotel California</string>
+    <string name="boton_atras">Ir hacia atrás</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="compra">Compra</string>
+    <string name="cont_ctanos">Contáctanos</string>
+    <string name="contrasena">Password</string>
+    <string name="edicio_perfil">Editar mi perfil</string>
+    <string name="editar_perfil">Editar perfil</string>
+    <string name="eliminar_cuenta">Eliminar cuenta</string>
+    <string name="email">email@gmail.com</string>
+    <string name="envianos">Envianos</string>
+    <string name="enviar">Enviar</string>
+    <string name="fechaE">fecha de salida:</string>
+    <string name="fechaEjemplo1">00/00/2023</string>
+    <string name="fechaEjemplo2">01/00/2023</string>
+    <string name="fechaI">Fecha de ingreso:</string>
+    <string name="general">General</string>
+    <string name="guardar_cambios">Guardar cambios</string>
+    <string name="home">home</string>
+    <string name="hoteln">Hotel California</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="juan_perez">juan perez</string>
+    <string name="login">Login</string>
+    <string name="mail_hint">juanperez89@gmail.com</string>
+    <string name="mensaje_ok">Su reserva ha sido realizada con exito</string>
+    <string name="mensaje_reintente">Por favor reintente nuevamente..</string>
+    <string name="menu">Inicio</string>
+    <string name="mi_perfil">Mi perfil</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="nueva_contrasena">Nueva contraseña</string>
+    <string name="nuevo_email">Nuevo email</string>
+    <string name="nuevo_usuario">Nuevo usuario</string>
+    <string name="pagado">Pagado</string>
+    <string name="pagar">Pagar +</string>
+    <string name="password_hint">*********</string>
+    <string name="perfil">Usuario</string>
+    <string name="pesos">Pesos</string>
+    <string name="precio1">$1893.44</string>
+    <string name="precio2">$2500</string>
+    <string name="precio3">$6589.99</string>
+    <string name="recibir_notificaciones">Recibir notificaciones</string>
+    <string name="regitro">Registrate</string>
+    <string name="repetir">Repetir +</string>
+    <string name="reservar">Reservar</string>
+    <string name="reservas">Reservas</string>
+    <string name="texto_contacto">Detalla aquí tu consulta/sugerencia</string>
+    <string name="tu_mensaje">tu mensaje!</string>
+    <style name="Base.Theme.HotelCalifornia" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.HotelCalifornia" parent="Base.Theme.HotelCalifornia"/>
+</resources>
