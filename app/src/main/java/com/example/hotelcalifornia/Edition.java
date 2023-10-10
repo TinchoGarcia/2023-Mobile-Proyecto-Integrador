@@ -2,9 +2,11 @@ package com.example.hotelcalifornia;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +23,8 @@ public class Edition extends AppCompatActivity {
 
     }
 
+    private boolean passwordVisible = false;
+
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -30,7 +34,6 @@ public class Edition extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
-
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -46,7 +49,7 @@ public class Edition extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.notificaciones) {
-                    Intent intent = new Intent(getApplicationContext(), Notification.class);
+                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.perfil) {
@@ -56,10 +59,31 @@ public class Edition extends AppCompatActivity {
                 }
 
                 return false;
+
+
+            }
+        });
+        ImageButton buttonShowPassword = findViewById(R.id.imageButton5);
+        EditText editTextPassword = findViewById(R.id.editTextText2);
+
+        buttonShowPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                passwordVisible = !passwordVisible;
+                if (passwordVisible) {
+                    // Mostrar contraseña
+                    editTextPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                } else {
+                    // Ocultar contraseña
+                    editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+                // Mover el cursor al final del texto
+                editTextPassword.setSelection(editTextPassword.getText().length());
             }
         });
 
     }
+
 }
 
 

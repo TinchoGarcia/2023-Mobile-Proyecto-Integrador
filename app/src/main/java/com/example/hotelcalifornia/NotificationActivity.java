@@ -2,7 +2,7 @@ package com.example.hotelcalifornia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.widget.Toast;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,7 +11,7 @@ import android.view.View;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class Notification extends AppCompatActivity {
+public class NotificationActivity extends AppCompatActivity {
 
 
 
@@ -20,7 +20,8 @@ public class Notification extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notificaciones);
-
+        String mensaje = getIntent().getStringExtra("mensaje");
+        mostrarMensaje(mensaje);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
 
@@ -39,7 +40,7 @@ public class Notification extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.notificaciones) {
-                    Intent intent = new Intent(getApplicationContext(), Notification.class);
+                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.perfil) {
@@ -52,12 +53,17 @@ public class Notification extends AppCompatActivity {
             }
         });
 
+
     }
+
 
     public void goToHome(View view) {
 
         Intent intent = new Intent(this, Home.class);
         startActivity(intent);
     }
-
+    public void mostrarMensaje(String mensaje) {
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+    }
 }
+

@@ -1,13 +1,16 @@
 package com.example.hotelcalifornia;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -52,14 +55,18 @@ public class Tarjeta extends AppCompatActivity {
         });
 
     }
+
     public void iraDetalle (View view){
         Intent intent = new Intent(this, Detalle.class);
         startActivity(intent);
     }
 
     public void notificaciones (View view){
-        Intent intent = new Intent(this, Notification.class);
+        String mensaje = "¡Reserva confirmada con éxito!";
+        Intent intent = new Intent(this, NotificationActivity.class);
+        intent.putExtra("mensaje", mensaje);
         startActivity(intent);
 
     }
+
 }

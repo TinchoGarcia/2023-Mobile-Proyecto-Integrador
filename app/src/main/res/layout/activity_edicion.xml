@@ -94,15 +94,15 @@
 
     <EditText
         android:id="@+id/editTextText2"
-        android:layout_width="314dp"
-        android:layout_height="79dp"
+        android:layout_width="244dp"
+        android:layout_height="62dp"
         android:layout_marginStart="48dp"
         android:layout_marginTop="15sp"
         android:autofillHints="@string/password_hint"
         android:ems="10"
         android:fontFamily="sans-serif-condensed"
         android:hint="@string/password_hint"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:textColorHint="@color/azul"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -111,8 +111,8 @@
         android:id="@+id/button2"
         android:layout_width="292dp"
         android:layout_height="54dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="204dp"
         android:backgroundTint="@color/naranja"
         android:fontFamily="sans-serif-condensed"
         android:onClick="goToProfile"
@@ -132,5 +132,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu='@menu/bottom_nav_menu' />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="308dp"
+        android:layout_marginTop="66dp"
+        android:contentDescription="mostrar_contrasena"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
+        app:srcCompat="@android:drawable/ic_menu_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
