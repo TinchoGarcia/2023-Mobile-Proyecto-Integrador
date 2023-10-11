@@ -2,182 +2,207 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     android:backgroundTint="@color/white"
+    android:textAlignment="center"
     tools:context=".Reservas">
+
+    <ImageButton
+        android:id="@+id/volverHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="58dp"
+        android:onClick="IraHome"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?attr/homeAsUpIndicator"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <CheckBox
         android:id="@+id/checkBox3"
-        android:layout_width="292dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="54dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="86dp"
+        android:layout_marginEnd="7dp"
         android:text="@string/precio1"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="158dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="28dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="127dp"
+        android:layout_marginBottom="86dp"
         android:text="@string/reservas"
         android:textAlignment="center"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="155dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="55dp"
-        android:backgroundTint="@color/naranja"
-        android:onClick="pago"
-        android:text="@string/repetir"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
 
     <TextView
-        android:id="@+id/textView7"
-        android:layout_width="139dp"
+        android:id="@+id/pagado"
+        android:layout_width="140dp"
         android:layout_height="48dp"
-        android:layout_marginStart="61dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="63dp"
         android:gravity="center"
         android:text="@string/pagado"
         android:textAlignment="center"
+        android:textColor="@color/gris"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkBox2"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
-    <CheckBox
+    <TextView
         android:id="@+id/checkBox2"
-        android:layout_width="292dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="61dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="58dp"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:text="@string/precio3"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/pagado"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="136dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="59dp"
-        android:layout_marginEnd="1dp"
-        android:gravity="center"
-        android:text="@string/pagado"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
-
-    <TextView
+    <Button
         android:id="@+id/pesos"
-        android:layout_width="139dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="61dp"
-        android:layout_marginTop="2dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="7dp"
+        android:backgroundTint="@color/naranja"
         android:gravity="center"
-        android:text="@string/pesos"
+        android:onClick="modificar"
+        android:text="@string/modificar"
         android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        android:textColorLink="@color/clear"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/button7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox3"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="155dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="56dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="35dp"
         android:backgroundTint="@color/naranja"
         android:onClick="pago"
         android:text="@string/pagar"
         android:textColorLink="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/button7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/pesos"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="155dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="60dp"
-        android:backgroundTint="@color/naranja"
-        android:onClick="pago"
-        android:text="@string/repetir"
-        android:textColor="@color/white"
-        android:textColorLink="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox"
-        tools:ignore="DuplicateSpeakableTextCheck" />
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="292dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="60dp"
-        android:text="@string/precio2"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/checkBox3" />
 
     <TextView
         android:id="@+id/textView8"
-        android:layout_width="119dp"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginStart="147dp"
-        android:layout_marginEnd="145dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginStart="165dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="166dp"
         android:clickable="true"
         android:onClick="cancelar"
         android:text="@string/cancelar"
         android:textAlignment="center"
         android:textColorLink="@color/azul"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pagado" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="411dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
         app:backgroundTint="@color/gris"
         app:itemIconTint="@drawable/selector"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="89dp"
+        android:backgroundTint="@color/gris"
+        android:onClick="@string/eliminar"
+        android:text="@string/eliminar"
+        android:textColor="@color/white"
+        android:textColorLink="@color/clear"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pesos"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="300dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginEnd="53dp"
+        android:text="@string/HabitacionSD"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        tools:ignore="TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/fechaFicticia"
+        android:textAlignment="center"
+        android:textColor="@color/gris"
+        app:layout_constraintEnd_toStartOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="107dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/fechaF2"
+        android:textAlignment="center"
+        android:textColor="@color/gris"
+        app:layout_constraintBottom_toTopOf="@+id/pagado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView13" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

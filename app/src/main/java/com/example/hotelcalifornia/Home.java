@@ -1,19 +1,26 @@
 package com.example.hotelcalifornia;
 
+
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class Home extends AppCompatActivity {
 
+    TextView TextViewIngreso = findViewById(R.id.textViewIngreso),TextViewSalida = findViewById(R.id.textViewSalida);
+    private DatePickerDialog.OnDateSetListener dateSetListener;
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +29,9 @@ public class Home extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
-
-
+        Button = (Button) findViewById(R.id.buttonIngreso);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
+            @Override  //barra de navegación
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
 
@@ -51,9 +57,10 @@ public class Home extends AppCompatActivity {
             }
         });
 
+
     }
     public void reservar(View view){
         Intent reservas=new Intent(this, Reservas.class);
         startActivity(reservas);
-    }
+    } //leva a reservas
 }

@@ -65,5 +65,14 @@ public class Reservas extends AppCompatActivity {
         startActivity(cancelar);
     }
 
+    public void IraHome(View view) {
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
+    } //
+
+    public void modificar(View view){
+        Intent modificar=new Intent(this, Home.class);
+        startActivity(modificar);
+    }
 
 }
