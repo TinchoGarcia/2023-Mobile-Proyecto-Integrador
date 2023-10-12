@@ -49,6 +49,8 @@
             android:layout_width="303dp"
             android:layout_height="55dp"
             android:layout_gravity="center"
+            android:backgroundTint="@color/white"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="18dp">
 
             <EditText
@@ -71,6 +73,8 @@
             android:layout_height="55dp"
             android:layout_gravity="bottom|center"
             android:layout_marginBottom="35dp"
+            android:backgroundTint="@color/white"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="18dp">
 
             <EditText
