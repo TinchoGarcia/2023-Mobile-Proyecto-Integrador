@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.net.Uri;
+import android.widget.EditText;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -19,8 +22,14 @@ public class Contact extends AppCompatActivity {
     }
     public void goToHome(View view) {
 
-        Intent intent = new Intent(this, Home.class);
-        startActivity(intent);
+        EditText mensajeEditText = findViewById(R.id.editTextText3);
+        String mensaje = mensajeEditText.getText().toString();
+        String destinatario = "destinatario@example.com";
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", destinatario, null));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Mensaje desde la aplicación");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, mensaje);
+        startActivity(Intent.createChooser(emailIntent, "Enviar correo con..."));
     }
     BottomNavigationView bottomNavigationView;
     @Override
@@ -46,7 +55,7 @@ public class Contact extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.notificaciones) {
-                    Intent intent = new Intent(getApplicationContext(), Notification.class);
+                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.perfil) {

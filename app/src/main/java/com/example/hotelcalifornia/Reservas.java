@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -45,7 +44,7 @@ public class Reservas extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.notificaciones) {
-                    Intent intent = new Intent(getApplicationContext(), Notification.class);
+                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.perfil) {

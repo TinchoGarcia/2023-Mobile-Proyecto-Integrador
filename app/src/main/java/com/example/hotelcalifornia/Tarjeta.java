@@ -38,7 +38,7 @@ public class Tarjeta extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.notificaciones) {
-                    Intent intent = new Intent(getApplicationContext(), Notification.class);
+                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.perfil) {
@@ -58,7 +58,9 @@ public class Tarjeta extends AppCompatActivity {
     }
 
     public void notificaciones (View view){
-        Intent intent = new Intent(this, Notification.class);
+        String mensaje = "¡Reserva confirmada con éxito!";
+        Intent intent = new Intent(this, NotificationActivity.class);
+        intent.putExtra("mensaje", mensaje);
         startActivity(intent);
 
     }

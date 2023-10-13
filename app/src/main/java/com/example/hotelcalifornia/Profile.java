@@ -4,13 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+
 
 public class Profile extends AppCompatActivity {
 
@@ -39,7 +40,7 @@ public class Profile extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.notificaciones) {
-                    Intent intent = new Intent(getApplicationContext(), Notification.class);
+                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.perfil) {

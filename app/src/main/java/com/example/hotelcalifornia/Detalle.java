@@ -37,7 +37,7 @@ public class Detalle extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.notificaciones) {
-                    Intent intent = new Intent(getApplicationContext(), Notification.class);
+                    Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.perfil) {

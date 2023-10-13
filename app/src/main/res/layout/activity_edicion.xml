@@ -94,8 +94,8 @@
 
     <EditText
         android:id="@+id/editTextText2"
-        android:layout_width="314dp"
-        android:layout_height="79dp"
+        android:layout_width="244dp"
+        android:layout_height="70dp"
         android:layout_marginStart="48dp"
         android:layout_marginTop="15sp"
         android:autofillHints="@string/password_hint"
@@ -132,5 +132,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu='@menu/bottom_nav_menu' />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="66dp"
+        android:contentDescription="visibilizar password"
+        app:layout_constraintStart_toEndOf="@+id/editTextText2"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
+        app:srcCompat="@android:drawable/ic_menu_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

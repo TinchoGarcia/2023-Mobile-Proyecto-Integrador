@@ -42,7 +42,7 @@
             android:name=".Contact"
             android:exported="false" />
         <activity
-            android:name=".Notification"
+            android:name=".NotificationActivity"
             android:exported="false" />
         <activity
             android:name=".Edition"
