@@ -193,6 +193,7 @@
             android:layout_height="48dp"
             android:text="@string/triple"
             android:textAlignment="center" />
+
     </androidx.cardview.widget.CardView>
 
 
