@@ -86,9 +86,11 @@ public class Reservas extends AppCompatActivity {
         builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+              Intent intent =new Intent(getApplicationContext(), Home.class);
+              startActivity(intent);
             }
         });
+        builder.setNegativeButton("Cancelar", null);
         builder.create().show();
     }
 
