@@ -25,10 +25,23 @@ public class Contact extends AppCompatActivity {
         EditText mensajeEditText = findViewById(R.id.editTextText3);
         String mensaje = mensajeEditText.getText().toString();
 
+        // Dirección de correo electrónico a la que enviar el mensaje
+        String destinatario = "destinatario@example.com";
+
         // Crear un Intent para enviar el mensaje a través de una aplicación de envío
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
+
+        // Establecer el destinatario del correo electrónico
+        sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{destinatario});
+
+        // Establecer el asunto del correo electrónico
+        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Mensaje desde la aplicación");
+
+        // Establecer el cuerpo del correo electrónico
         sendIntent.putExtra(Intent.EXTRA_TEXT, mensaje);
+
+        // Establecer el tipo de contenido como texto plano
         sendIntent.setType("text/plain");
 
         // Mostrar el selector de aplicaciones para que el usuario elija
@@ -42,6 +55,7 @@ public class Contact extends AppCompatActivity {
             Toast.makeText(this, "No hay aplicaciones disponibles para enviar el mensaje.", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     BottomNavigationView bottomNavigationView;
     @Override
