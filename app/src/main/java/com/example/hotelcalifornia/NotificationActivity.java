@@ -51,7 +51,11 @@ public class NotificationActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("mensaje")) {
+            String mensaje = intent.getStringExtra("mensaje");
+            mostrarMensaje(mensaje);
+        }
     }
 
     public void goToHome(View view) {

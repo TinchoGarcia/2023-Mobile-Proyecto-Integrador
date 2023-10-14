@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.net.Uri;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,16 +22,27 @@ public class Contact extends AppCompatActivity {
 
     }
     public void goToHome(View view) {
-
         EditText mensajeEditText = findViewById(R.id.editTextText3);
         String mensaje = mensajeEditText.getText().toString();
-        String destinatario = "destinatario@example.com";
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                "mailto", destinatario, null));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Mensaje desde la aplicación");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, mensaje);
-        startActivity(Intent.createChooser(emailIntent, "Enviar correo con..."));
+
+        // Crear un Intent para enviar el mensaje a través de una aplicación de envío
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, mensaje);
+        sendIntent.setType("text/plain");
+
+        // Mostrar el selector de aplicaciones para que el usuario elija
+        Intent chooserIntent = Intent.createChooser(sendIntent, "Enviar mensaje con...");
+
+        // Verificar si hay aplicaciones disponibles para manejar el Intent
+        if (sendIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(chooserIntent);
+        } else {
+            // Manejar el caso donde no hay aplicaciones disponibles
+            Toast.makeText(this, "No hay aplicaciones disponibles para enviar el mensaje.", Toast.LENGTH_SHORT).show();
+        }
     }
+
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
