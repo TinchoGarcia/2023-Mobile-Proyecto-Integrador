@@ -11,11 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.hotelcaliforniaDatos.HotelSQLiteHelper;
+import com.example.hotelcaliforniaNegocio.GestorDeClientes;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText emailLogin, passwordLogin;
     Button inicio;
+    SQLiteDatabase db;
+    private static final String DB = "SqliteDb";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -23,14 +26,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        emailLogin=findViewById(R.id.emailLogin);
-        passwordLogin=findViewById(R.id.passwordLogin);
-        inicio=findViewById(R.id.inicio);
+        emailLogin = findViewById(R.id.emailLogin);
+        passwordLogin = findViewById(R.id.passwordLogin);
+        inicio = findViewById(R.id.inicio);
 
         // Creamos o hacemos conexión a la DB
-        HotelSQLiteHelper hotelSqlHelper = new HotelSQLiteHelper(this, "DbHotelCalifornia", null, 1);
-        SQLiteDatabase db = hotelSqlHelper.getReadableDatabase();
-        // continuar con el código para obtener datos de la db y poder loguearse.
+        db = HotelSQLiteHelper.getInstance(this).getDatabase();
     }
 
     public void iraregistro(View view){
@@ -39,8 +40,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void home(View view){
-        Intent intent = new Intent(this, Home.class);
-        startActivity(intent);
+        if (loginExitoso(emailLogin, passwordLogin)){
+            Intent intent = new Intent(this, Home.class);
+            startActivity(intent);
+        } else {
+            // TODO: debería mostrar algún mensaje en rojo que las credenciales no son válidas
+        }
+    }
+
+    private boolean loginExitoso(EditText email, EditText password){
+        GestorDeClientes gestorDeClientes = new GestorDeClientes(db);
+        // TODO: agregar validaciones para cada campo con mensajes para el usuario
+        String mail = email.getText().toString();
+        String pass = password.getText().toString();
+
+        return gestorDeClientes.login(mail, pass);
     }
 }
-
