@@ -19,6 +19,8 @@ public class GestorDeClientes {
         return UserSession.getInstance().getCliente();
     }
 
+    public void logout(){ UserSession.getInstance().logout(); }
+
     public boolean login(String email, String password){
         if (email.isEmpty() || password.isEmpty())
             return false;
@@ -27,8 +29,9 @@ public class GestorDeClientes {
         for (Cliente cliente : clientes) {
             String mail = cliente.getEmail();
             String pass = cliente.getPassword();
+            boolean activo = cliente.getActivo();
 
-            if (mail.equals(email) && pass.equals(password)){
+            if (mail.equals(email) && pass.equals(password) && activo){
                 UserSession.getInstance().setCliente(cliente);
                 return true;
             }
@@ -48,5 +51,10 @@ public class GestorDeClientes {
         clienteNuevo.setActivo(true);
         clienteDA.create(clienteNuevo);
         return true;
+    }
+
+    public void eliminarCliente() {
+        Cliente cliente = UserSession.getInstance().getCliente();
+        clienteDA.delete(cliente.getId());
     }
 }

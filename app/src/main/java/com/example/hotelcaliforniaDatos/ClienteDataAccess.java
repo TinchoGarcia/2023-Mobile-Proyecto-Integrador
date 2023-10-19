@@ -47,12 +47,18 @@ public class ClienteDataAccess implements CUDDataAccess<Cliente>, RDataAccess<Cl
 
     @Override
     public void delete(Cliente entidad) {
-
+        int id = entidad.getId();
+        delete(id);
     }
 
     @Override
     public void delete(int id) {
-
+        // Seteamos el campo activo en false
+        ContentValues valores = new ContentValues();
+        valores.put("activo",0);
+        //Actualizamos el registro en la base de datos
+        String[] args = new String[]{ String.valueOf(id) };
+        db.update("Cliente", valores, "clienteId = ?", args);
     }
 
     @Override

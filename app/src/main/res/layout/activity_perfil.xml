@@ -59,7 +59,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="34dp"
         android:backgroundTint="@color/azul"
-        android:onClick="goToLogin"
+        android:onClick="onEliminarCuenta"
         android:text="@string/eliminar_cuenta"
         android:textAlignment="viewStart"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +85,7 @@
         android:layout_height="51dp"
         android:layout_marginTop="32dp"
         android:backgroundTint="@color/azul"
-        android:onClick="goToLogin"
+        android:onClick="onLogout"
         android:text="@string/cerrar_sesion"
         android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +127,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu='@menu/bottom_nav_menu' />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

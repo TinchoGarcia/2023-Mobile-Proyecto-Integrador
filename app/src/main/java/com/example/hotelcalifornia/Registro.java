@@ -37,7 +37,6 @@ public class Registro extends AppCompatActivity {
         passwordRegistro = findViewById(R.id.introducirPass);
 
         crear = findViewById(R.id.CrearRegistro);
-
     }
 
     public void iraMainActivity (View view){
