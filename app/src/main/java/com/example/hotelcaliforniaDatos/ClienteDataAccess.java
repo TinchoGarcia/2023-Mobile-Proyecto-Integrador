@@ -1,5 +1,6 @@
 package com.example.hotelcaliforniaDatos;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -12,7 +13,6 @@ import java.util.Date;
 
 public class ClienteDataAccess implements CUDDataAccess<Cliente>, RDataAccess<Cliente> {
     SQLiteDatabase db;
-
     private static final String FORMATO_FECHA_DB = "yyyy-MM-dd";
 
     public ClienteDataAccess(SQLiteDatabase db) {
@@ -21,6 +21,18 @@ public class ClienteDataAccess implements CUDDataAccess<Cliente>, RDataAccess<Cl
 
     @Override
     public void create(Cliente entidad) {
+        //Creamos el registro a insertar como objeto ContentValues
+        ContentValues nuevoRegistro = new ContentValues();
+        nuevoRegistro.put("usuario", entidad.getUsuario());
+        nuevoRegistro.put("email", entidad.getEmail());
+        nuevoRegistro.put("password", entidad.getPassword());
+        String fechaNacimiento =
+                new SimpleDateFormat(FORMATO_FECHA_DB).format(entidad.getFechaNac());
+        nuevoRegistro.put("fechaDeNacimiento", fechaNacimiento);
+        nuevoRegistro.put("activo", entidad.getActivo());
+
+        //Insertamos el registro en la base de datos
+        db.insert("Cliente", null, nuevoRegistro);
     }
 
     @Override
