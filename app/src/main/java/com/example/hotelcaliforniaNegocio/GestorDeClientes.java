@@ -7,6 +7,7 @@ import com.example.hotelcaliforniaModelo.Cliente;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 
 public class GestorDeClientes {
     ClienteDataAccess clienteDA;
@@ -56,5 +57,17 @@ public class GestorDeClientes {
     public void eliminarCliente() {
         Cliente cliente = UserSession.getInstance().getCliente();
         clienteDA.delete(cliente.getId());
+    }
+
+    public boolean esEmailExistente(String email) {
+        HashSet<String> emailsExistentes = new HashSet<>();
+        ArrayList<Cliente> clientes = clienteDA.getAll();
+
+        for (Cliente cliente : clientes) {
+            String mail = cliente.getEmail();
+            emailsExistentes.add(mail);
+        }
+
+        return emailsExistentes.contains(email);
     }
 }
