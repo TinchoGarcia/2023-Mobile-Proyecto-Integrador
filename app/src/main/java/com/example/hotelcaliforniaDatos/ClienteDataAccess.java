@@ -10,13 +10,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class ClienteDataAccess implements CUDDataAccess<Cliente>, RDataAccess<Cliente> {
     SQLiteDatabase db;
+    SimpleDateFormat formatoFecha;
     private static final String FORMATO_FECHA_DB = "yyyy-MM-dd";
 
     public ClienteDataAccess(SQLiteDatabase db) {
         this.db = db;
+        formatoFecha = new SimpleDateFormat(FORMATO_FECHA_DB, Locale.getDefault());
     }
 
     @Override
@@ -26,10 +29,10 @@ public class ClienteDataAccess implements CUDDataAccess<Cliente>, RDataAccess<Cl
         nuevoRegistro.put("usuario", entidad.getUsuario());
         nuevoRegistro.put("email", entidad.getEmail());
         nuevoRegistro.put("password", entidad.getPassword());
-        String fechaNacimiento =
-                new SimpleDateFormat(FORMATO_FECHA_DB).format(entidad.getFechaNac());
+        String fechaNacimiento = formatoFecha.format(entidad.getFechaNac());
         nuevoRegistro.put("fechaDeNacimiento", fechaNacimiento);
         nuevoRegistro.put("activo", entidad.getActivo());
+        nuevoRegistro.put("recibeNotificaciones", entidad.getRecibeNotificaciones());
 
         //Insertamos el registro en la base de datos
         db.insert("Cliente", null, nuevoRegistro);
@@ -72,7 +75,7 @@ public class ClienteDataAccess implements CUDDataAccess<Cliente>, RDataAccess<Cl
         if(db != null)
         {
             String[] campos = new String[] {
-                    "clienteId", "usuario", "email", "password", "fechaDeNacimiento", "activo" };
+                    "clienteId", "usuario", "email", "password", "fechaDeNacimiento", "activo", "recibeNotificaciones" };
             Cursor c = db.query("Cliente", campos, null, null, null, null, null);
 
             if (c.moveToFirst()) { // Verifica que exista al menos un registro.
@@ -95,13 +98,11 @@ public class ClienteDataAccess implements CUDDataAccess<Cliente>, RDataAccess<Cl
                     cliente.setPassword(password);
 
                     String fechaDeNacimiento = c.getString(4);
-                    SimpleDateFormat formato = new SimpleDateFormat(FORMATO_FECHA_DB);
                     Date fechaNac;
                     try {
-                        fechaNac = formato.parse(fechaDeNacimiento);
-
+                        fechaNac = formatoFecha.parse(fechaDeNacimiento);
                     } catch (ParseException e) {
-                        fechaNac = new Date(1900,01,01);
+                        fechaNac = new Date(1900,1,1);
                     }
                     cliente.setFechaNac(fechaNac);
 
@@ -109,9 +110,14 @@ public class ClienteDataAccess implements CUDDataAccess<Cliente>, RDataAccess<Cl
                     boolean activo = activoData == 1;
                     cliente.setActivo(activo);
 
+                    int recibeNotificacionesData = c.getInt(6);
+                    boolean recibeNotificaciones = recibeNotificacionesData == 1;
+                    cliente.setRecibeNotificaciones(recibeNotificaciones);
+
                     clientes.add(cliente);
                 } while(c.moveToNext());
             }
+            c.close();
         }
         return clientes;
     }

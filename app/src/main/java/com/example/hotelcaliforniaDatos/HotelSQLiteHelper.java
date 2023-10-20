@@ -2,14 +2,13 @@ package com.example.hotelcaliforniaDatos;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.hotelcalifornia.R;
 
 public class HotelSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "DbHotelCaliforniaFinal";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static HotelSQLiteHelper instance;
     private Context context;
     private SQLiteDatabase database;
@@ -51,10 +50,10 @@ public class HotelSQLiteHelper extends SQLiteOpenHelper {
                           int versionNueva) {
         // NOTA: Por simplicidad utilizamos la opción de eliminar todas las tablas
         // y crearlas de nuevo en el estado iniical.
-        db.execSQL("DROP TABLE IF EXISTS Reserva");
-        db.execSQL("DROP TABLE IF EXISTS Cliente");
-        db.execSQL("DROP TABLE IF EXISTS Habitacion");
-        db.execSQL("DROP TABLE IF EXISTS Hotel");
+        db.execSQL(context.getString(R.string.drop_reserva));
+        db.execSQL(context.getString(R.string.drop_cliente));
+        db.execSQL(context.getString(R.string.drop_habitacion));
+        db.execSQL(context.getString(R.string.drop_hotel));
 
         createDataHotel(db);
         createDataHabitacion(db);

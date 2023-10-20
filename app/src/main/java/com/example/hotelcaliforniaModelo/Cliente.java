@@ -8,6 +8,7 @@ public class Cliente extends ClaseBase {
     String password;
     Date fechaNac;
     Boolean activo;
+    Boolean recibeNotificaciones;
 
     public String getUsuario() {
         return usuario;
@@ -47,5 +48,13 @@ public class Cliente extends ClaseBase {
 
     public void setActivo(Boolean activo) {
         this.activo = activo;
+    }
+
+    public Boolean getRecibeNotificaciones() {
+        return recibeNotificaciones;
+    }
+
+    public void setRecibeNotificaciones(Boolean recibeNotificaciones) {
+        this.recibeNotificaciones = recibeNotificaciones;
     }
 }
