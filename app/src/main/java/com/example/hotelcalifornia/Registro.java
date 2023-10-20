@@ -26,6 +26,7 @@ public class Registro extends AppCompatActivity {
     GestorDeClientes gestorDeClientes;
     private static final String FORMATO_FECHA_FORMULARIO = "dd/MM/yyyy";
     private static final int LONG_MIN_PASS = 6;
+    private static final String TAG_ERROR_REGISTRO = "Registro no logrado";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,34 +54,34 @@ public class Registro extends AppCompatActivity {
             startActivity(intent);
         } else {
             String mjeError = resultadoRegistro.second;
-            Log.e("Registro no logrado", mjeError);
+            Log.e(TAG_ERROR_REGISTRO, mjeError);
             // TODO: Mostrar algun mensaje en pantalla con el mensaje que contiene
             //  la info de por qué no se pudo registrar.
         }
     }
 
     private Pair<Boolean, String> registrar(EditText usuario, EditText fechaNac, EditText email, EditText password) {
-        String usu = getString(usuario);
-        String fecha = getString(fechaNac);
-        String mail = getString(email);
-        String pass = getString(password);
+        String usu = Utils.getStringFromEditText(usuario);
+        String fecha = Utils.getStringFromEditText(fechaNac);
+        String mail = Utils.getStringFromEditText(email);
+        String pass = Utils.getStringFromEditText(password);
 
         String mjeError;
         // Validamos campos completos.
         if (usu.isEmpty() || fecha.isEmpty() || mail.isEmpty() || pass.isEmpty()){
-            mjeError = "Debe completar todos los campos";
+            mjeError = "Debe completar todos los campos.";
             return Pair.create(false, mjeError);
         }
 
         // Validamos mail nuevo en Db
         if (gestorDeClientes.esEmailExistente(mail)){
-            mjeError = "El email ingresado ya existe";
+            mjeError = "El email ingresado ya existe.";
             return Pair.create(false, mjeError);
         }
 
         // Validamos longitud de password mayor o igual a 6.
         if (pass.length()<LONG_MIN_PASS){
-            mjeError = "Su contraseña debe contener al menos 6 caracteres";
+            mjeError = "Su contraseña debe contener al menos 6 caracteres.";
             return Pair.create(false, mjeError);
         }
 
@@ -98,11 +99,7 @@ public class Registro extends AppCompatActivity {
         if (gestorDeClientes.registrar(usu, fechaNacimiento, mail, pass)){
             return Pair.create(true, "");
         } else {
-            return Pair.create(false, "Error desconocido por el sistema.");
+            return Pair.create(false, "No fue posible su registro, intente nuevamente.");
         }
-    }
-
-    private String getString(EditText editText){
-        return editText.getText().toString();
     }
 }

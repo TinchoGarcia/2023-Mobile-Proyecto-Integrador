@@ -6,6 +6,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText emailLogin, passwordLogin;
     Button inicio;
-    SQLiteDatabase db;
-    private static final String DB = "SqliteDb";
+    GestorDeClientes gestorDeClientes;
+    private static final String TAG_ERROR_LOGIN = "Login incorrecto";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -31,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         inicio = findViewById(R.id.inicio);
 
         // Creamos o hacemos conexión a la DB
-        db = HotelSQLiteHelper.getInstance(this).getDatabase();
+        SQLiteDatabase db = HotelSQLiteHelper.getInstance(this).getDatabase();
+        gestorDeClientes = new GestorDeClientes(db);
     }
 
     public void iraregistro(View view){
@@ -40,20 +43,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void home(View view){
-        if (loginExitoso(emailLogin, passwordLogin)){
+        Pair<Boolean, String> resultadoLogin = login(emailLogin, passwordLogin);
+        if (resultadoLogin.first) {
             Intent intent = new Intent(this, Home.class);
             startActivity(intent);
         } else {
-            // TODO: debería mostrar algún mensaje en rojo que las credenciales no son válidas
+            String mjeError = resultadoLogin.second;
+            Log.e(TAG_ERROR_LOGIN, mjeError);
+            // TODO: Mostrar algun mensaje en pantalla con el mensaje que contiene
+            //  la info de por qué no se pudo registrar.
         }
     }
 
-    private boolean loginExitoso(EditText email, EditText password){
-        GestorDeClientes gestorDeClientes = new GestorDeClientes(db);
-        // TODO: agregar validaciones para cada campo con mensajes para el usuario
-        String mail = email.getText().toString();
-        String pass = password.getText().toString();
+    private Pair<Boolean, String> login(EditText email, EditText password){
+        String mail = Utils.getStringFromEditText(email);
+        String pass = Utils.getStringFromEditText(password);
 
-        return gestorDeClientes.login(mail, pass);
+        String mjeError;
+        // Validamos campos completos.
+        if (mail.isEmpty() || pass.isEmpty()){
+            mjeError = "Debe completar todos los campos.";
+            return Pair.create(false, mjeError);
+        }
+        if (gestorDeClientes.login(mail, pass)){
+            return Pair.create(true, "");
+        } else {
+            return Pair.create(false, "Error desconocido por el sistema.");
+        }
     }
 }
