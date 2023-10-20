@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -42,6 +44,28 @@ public class Registro extends AppCompatActivity {
         fechaNacRegistro = findViewById(R.id.editfechaNacimiento);
         emailRegistro = findViewById(R.id.introducirEmail);
         passwordRegistro = findViewById(R.id.introducirPass);
+
+        fechaNacRegistro.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // No es necesario implementar esta función.
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // No es necesario implementar esta función.
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String input = s.toString();
+                if (input.length() == 2 || input.length() == 5) {
+                    input += "/";
+                    fechaNacRegistro.setText(input);
+                    fechaNacRegistro.setSelection(input.length());
+                }
+            }
+        });
 
         crear = findViewById(R.id.CrearRegistro);
     }
