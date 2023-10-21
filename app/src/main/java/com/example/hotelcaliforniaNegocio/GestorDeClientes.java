@@ -3,6 +3,8 @@ package com.example.hotelcaliforniaNegocio;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.hotelcaliforniaDatos.ClienteDataAccess;
+import com.example.hotelcaliforniaDatos.IReadableDataAccess;
+import com.example.hotelcaliforniaDatos.IWritableDataAccess;
 import com.example.hotelcaliforniaModelo.Cliente;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ public class GestorDeClientes {
     public final String KEY_EMAIL = "email";
     public final String KEY_PASSWORD = "password";
 
-    ClienteDataAccess clienteDA;
+    IWritableDataAccess<Cliente> clienteDA;
 
     public GestorDeClientes(SQLiteDatabase db) {
         clienteDA = new ClienteDataAccess(db);

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class ClienteDataAccess implements CUDDataAccess<Cliente>, RDataAccess<Cliente> {
+public class ClienteDataAccess implements IWritableDataAccess<Cliente> {
     SQLiteDatabase db;
     SimpleDateFormat formatoFecha;
     private static final String FORMATO_FECHA_DB = "yyyy-MM-dd";

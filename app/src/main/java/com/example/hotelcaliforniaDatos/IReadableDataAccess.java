@@ -5,7 +5,7 @@ import com.example.hotelcaliforniaModelo.ClaseBase;
 
 import java.util.ArrayList;
 
-public interface RDataAccess<T extends ClaseBase> {
+public interface IReadableDataAccess<T extends ClaseBase> {
     T getById(int id);
     ArrayList<T> getAll();
 }
