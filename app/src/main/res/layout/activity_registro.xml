@@ -139,7 +139,7 @@
             android:elevation="25dp"
             android:ems="10"
             android:hint="pepito@hotel.com"
-            android:inputType="text"
+            android:inputType="text|textEmailAddress"
             android:minHeight="48dp" />
 
         <androidx.cardview.widget.CardView
@@ -212,6 +212,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        android:contentDescription="volver" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
