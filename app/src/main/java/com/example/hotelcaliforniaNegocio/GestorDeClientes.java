@@ -7,18 +7,36 @@ import com.example.hotelcaliforniaModelo.Cliente;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class GestorDeClientes {
+    public final String KEY_ID_CLIENTE = "id";
+    public final String KEY_USUARIO = "usuario";
+    public final String KEY_EMAIL = "email";
+    public final String KEY_PASSWORD = "password";
+
     ClienteDataAccess clienteDA;
 
     public GestorDeClientes(SQLiteDatabase db) {
         clienteDA = new ClienteDataAccess(db);
     }
 
-    public Cliente getClienteLogueado(){
-        return UserSession.getInstance().getCliente();
+    public Map<String, String> getDatosClienteLogueado(){
+        Cliente clienteLogueado = UserSession.getInstance().getCliente();
+
+        Map<String, String> datosCliente = new HashMap<>();
+        datosCliente.put(KEY_ID_CLIENTE, String.valueOf(clienteLogueado.getId()));
+        datosCliente.put(KEY_USUARIO, String.valueOf(clienteLogueado.getUsuario()));
+        datosCliente.put(KEY_EMAIL, String.valueOf(clienteLogueado.getEmail()));
+        datosCliente.put(KEY_PASSWORD, String.valueOf(clienteLogueado.getPassword()));
+
+        return datosCliente;
     }
+
+    private Cliente getClienteLogueado(){ return UserSession.getInstance().getCliente(); }
 
     public void logout(){ UserSession.getInstance().logout(); }
 
@@ -60,14 +78,29 @@ public class GestorDeClientes {
     }
 
     public boolean esEmailExistente(String email) {
-        HashSet<String> emailsExistentes = new HashSet<>();
+        Set<String> emailsExistentes = new HashSet<>();
         ArrayList<Cliente> clientes = clienteDA.getAll();
 
         for (Cliente cliente : clientes) {
             String mail = cliente.getEmail();
             emailsExistentes.add(mail);
         }
-
         return emailsExistentes.contains(email);
+    }
+    public boolean modificarDatosCliente(String usuario, String email, String password) {
+        Cliente clienteLogueado = getClienteLogueado();
+        // Modificamos los datos del cliente logueado
+        clienteLogueado.setUsuario(usuario);
+        clienteLogueado.setEmail(email);
+        clienteLogueado.setPassword(password);
+
+        Cliente clienteModificado = clienteDA.update(clienteLogueado);
+        if (clienteModificado != null){
+            UserSession.getInstance().setCliente(clienteModificado);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

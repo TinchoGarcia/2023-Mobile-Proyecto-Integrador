@@ -27,7 +27,7 @@ public class Registro extends AppCompatActivity {
     Button crear;
     GestorDeClientes gestorDeClientes;
     private static final String FORMATO_FECHA_FORMULARIO = "dd/MM/yyyy";
-    private static final int LONG_MIN_PASS = 6;
+    static final int LONG_MIN_PASS = 6;
     private static final String TAG_ERROR_REGISTRO = "Registro no logrado";
 
     @Override
