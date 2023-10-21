@@ -103,4 +103,13 @@ public class GestorDeClientes {
             return false;
         }
     }
+
+    public void modificarDatosCliente(boolean recibeNotificaciones) {
+        Cliente clienteLogueado = getClienteLogueado();
+        // Modificamos los datos del cliente logueado
+        clienteLogueado.setRecibeNotificaciones(recibeNotificaciones);
+        Cliente clienteModificado = clienteDA.update(clienteLogueado);
+
+        UserSession.getInstance().setCliente(clienteModificado);
+    }
 }

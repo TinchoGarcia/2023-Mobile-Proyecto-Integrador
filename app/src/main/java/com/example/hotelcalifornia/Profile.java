@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class Profile extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
+    Switch recibeNotSwitch;
     SQLiteDatabase db;
     GestorDeClientes gestorDeClientes;
 
@@ -30,6 +33,10 @@ public class Profile extends AppCompatActivity {
         // Creamos o hacemos conexión a la DB
         db = HotelSQLiteHelper.getInstance(this).getDatabase();
         gestorDeClientes = new GestorDeClientes(db);
+
+        // Inicalizamos switch notificaciones y modificamos datos en la DB segun la selección
+        recibeNotSwitch = findViewById(R.id.switchNotificaciones);
+        setRecibeNotificacionesSegun(recibeNotSwitch);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -59,6 +66,25 @@ public class Profile extends AppCompatActivity {
         });
 
     }
+
+    private void setRecibeNotificacionesSegun(Switch sw) {
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // El Switch está encendido, el cliente recibe notificaciones.
+                    recibeNotificaciones(true);
+                } else {
+                    recibeNotificaciones(false);
+                }
+            }
+        });
+    }
+
+    private void recibeNotificaciones(boolean recibeNotif) {
+        gestorDeClientes.modificarDatosCliente(recibeNotif);
+    }
+
     public void goToHome(View view) {
 
         Intent intent = new Intent(this, Home.class);
