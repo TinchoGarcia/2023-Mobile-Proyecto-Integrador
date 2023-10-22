@@ -82,7 +82,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/pagado"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/textCheckIn" />
 
     <Button
         android:id="@+id/modificar"
@@ -181,7 +181,7 @@
         tools:ignore="TextSizeCheck" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/textCheckIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="115dp"
@@ -205,7 +205,7 @@
         android:textAlignment="center"
         android:textColor="@color/gris"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintStart_toEndOf="@+id/textCheckIn"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

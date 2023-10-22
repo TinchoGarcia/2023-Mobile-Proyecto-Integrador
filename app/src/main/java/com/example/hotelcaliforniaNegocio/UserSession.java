@@ -2,7 +2,7 @@ package com.example.hotelcaliforniaNegocio;
 
 import com.example.hotelcaliforniaModelo.Cliente;
 
-class UserSession {
+public class UserSession {
     private static UserSession instance;
 
     // Almacena la información del usuario logueado
@@ -12,7 +12,7 @@ class UserSession {
         // Constructor privado para asegurar que solo haya una instancia
     }
 
-    protected static UserSession getInstance() {
+    public static UserSession getInstance() {
         if (instance == null) {
             instance = new UserSession();
         }
@@ -23,7 +23,7 @@ class UserSession {
         this.cliente = cliente;
     }
 
-    protected Cliente getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
