@@ -7,17 +7,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.hotelcaliforniaDatos.HotelSQLiteHelper;
+import com.example.hotelcaliforniaDatos.ReservaDataAccess;
+import com.example.hotelcaliforniaModelo.Reserva;
+import com.example.hotelcaliforniaNegocio.UserSession;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.ArrayList;
 
 public class Reservas extends AppCompatActivity {
     Button buttonEliminar;
     BottomNavigationView bottomNavigationView;
+    SQLiteDatabase db;
+    ReservaDataAccess reservaDA;
+    TextView textViewCheckin;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -28,6 +39,15 @@ public class Reservas extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
         buttonEliminar = (Button) findViewById(R.id.buttonEliminar);
+
+        textViewCheckin = findViewById(R.id.textCheckIn);
+
+        db = HotelSQLiteHelper.getInstance(this).getDatabase();
+        reservaDA = new ReservaDataAccess(db);
+        int idCliente = UserSession.getInstance().getCliente().getId();
+        ArrayList<Reserva> reservas = reservaDA.getAll(idCliente);
+        Reserva primerreserva = reservas.get(0);
+        textViewCheckin.setText(primerreserva.getCheckIn().toString());
 
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
