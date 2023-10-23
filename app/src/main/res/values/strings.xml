@@ -61,4 +61,12 @@
     <string name="ingreso">Ingreso</string>
     <string name="salida">Salida</string>
 
+    <string name="btnR">botón para reservar habitación</string>
+    <string name="btnIngr">botón para ingresar fecha de Ingreso</string>
+    <string name="btnSali">botón para ingresar fecha de salida</string>
+    <string name="btnPag">botón para pagar la reserva</string>
+    <string name="btnMod">botón para modificar la reserva</string>
+    <string name="btnEli">botón para eliminar la reserva</string>
+    <string name="volverH">botón para volver a atrás</string>
+
 </resources>

@@ -84,14 +84,10 @@ public class Reservas extends AppCompatActivity {
         startActivity(pagar);
     }
 
-    public void cancelar(View view) {
-        Intent cancelar = new Intent(this, Home.class);
-        startActivity(cancelar);
-    }
 
     public void IraHome(View view) {
         Intent intent = new Intent(this, Home.class);
-        startActivity(intent);
+        finish();
     } //flechita para volver
 
     public void modificar(View view) {
