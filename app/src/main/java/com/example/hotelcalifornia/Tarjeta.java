@@ -52,10 +52,11 @@ public class Tarjeta extends AppCompatActivity {
         });
 
     }
-    public void iraDetalle (View view){
+    public void volverADetalle (View view){
         Intent intent = new Intent(this, Detalle.class);
-        startActivity(intent);
+        finish();
     }
+
 
     public void notificaciones (View view){
         String mensaje = "¡Reserva confirmada con éxito!";
