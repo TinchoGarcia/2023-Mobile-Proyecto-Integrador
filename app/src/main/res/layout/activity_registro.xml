@@ -30,7 +30,7 @@
         android:layout_marginTop="28dp"
         android:minHeight="48dp"
         android:onClick="iraMainActivity"
-        android:text="Ingresá tus datos o logueate"
+        android:text="@string/ingres_tus_datos_o_logueate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datosTarjetaText" />
 

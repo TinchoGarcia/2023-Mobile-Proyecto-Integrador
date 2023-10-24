@@ -1,9 +1,6 @@
 package com.example.hotelcalifornia;
 
-import static com.example.hotelcalifornia.Registro.LONG_MIN_PASS;
-
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -12,12 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelcaliforniaNegocio.GestorDeClientes;
-import com.example.hotelcaliforniaDatos.HotelSQLiteHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -27,6 +24,7 @@ import java.util.Map;
 public class Edition extends AppCompatActivity {
     private static final String TAG_ERROR_EDICION = "Editar perfil error";
     EditText usuarioEditar, emailEditar, passwordEditar;
+    TextView textEditacionDatosError;
     private boolean passwordVisible = false;
     BottomNavigationView bottomNavigationView;
     GestorDeClientes gestorDeClientes;
@@ -36,16 +34,15 @@ public class Edition extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edicion);
 
-        // Obtenemos la instancia de la db:
-        SQLiteDatabase db = HotelSQLiteHelper.getInstance(this).getDatabase();
-        gestorDeClientes = new GestorDeClientes(db);
+        gestorDeClientes = new GestorDeClientes(this);
 
         // Seteamos el texto de cada editText con los datos del usuario logueado
         setearEditTextConDatosClienteLogueado();
 
+        textEditacionDatosError = findViewById(R.id.textErrorEditarPerfil);
+
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
-
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -112,13 +109,13 @@ public class Edition extends AppCompatActivity {
         Pair<Boolean, String> resultadoEdicion
                 = editarDatos(usuarioEditar, emailEditar, passwordEditar);
         if (resultadoEdicion.first){
+            textEditacionDatosError.setText(resultadoEdicion.second);
             Intent intent = new Intent(this, Profile.class);
             startActivity(intent);
         } else {
             String mjeError = resultadoEdicion.second;
             Log.e(TAG_ERROR_EDICION, mjeError);
-            // TODO: Mostrar algun mensaje en pantalla con el mensaje que contiene
-            //  la info de por qué no se pudo registrar.
+            textEditacionDatosError.setText(mjeError);
         }
     }
 
@@ -128,28 +125,29 @@ public class Edition extends AppCompatActivity {
         String pass = Utils.getStringFromEditText(password);
 
         String mjeError;
+        String[] datos = new String[]{usu, mail, pass};
         // Validamos campos completos.
-        if (usu.isEmpty() || mail.isEmpty() || pass.isEmpty()){
-            mjeError = "Debe completar todos los campos.";
+        if (Utils.existeDatoStringVacio(datos)){
+            mjeError = "* Debe completar todos los campos.";
             return Pair.create(false, mjeError);
         }
 
         // Validamos mail nuevo en Db
         if (modificoEmail(mail) && gestorDeClientes.esEmailExistente(mail)){
-            mjeError = "El email ingresado ya existe.";
+            mjeError = "* El email ingresado ya existe.";
             return Pair.create(false, mjeError);
         }
 
         // Validamos longitud de password mayor o igual a 6.
-        if (pass.length()<LONG_MIN_PASS) {
-            mjeError = "Su contraseña debe contener al menos 6 caracteres.";
+        if (pass.length()<Utils.LONG_MIN_PASS) {
+            mjeError = "* Su contraseña debe contener al menos 6 caracteres.";
             return Pair.create(false, mjeError);
         }
 
         if (gestorDeClientes.modificarDatosCliente(usu, mail, pass)){
             return Pair.create(true, "");
         } else {
-            return Pair.create(false, "No fue posible editar su perfil, intente nuevamente.");
+            return Pair.create(false, "* No fue posible editar su perfil, intente nuevamente.");
         }
     }
 

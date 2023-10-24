@@ -94,6 +94,14 @@
 
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/textErrorLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/rojo"
+        android:textSize="16sp" />
+
     <Button
         android:id="@+id/inicio"
         android:layout_width="191dp"

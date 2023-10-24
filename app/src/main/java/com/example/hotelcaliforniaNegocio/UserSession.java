@@ -2,7 +2,7 @@ package com.example.hotelcaliforniaNegocio;
 
 import com.example.hotelcaliforniaModelo.Cliente;
 
-public class UserSession {
+class UserSession {
     private static UserSession instance;
 
     // Almacena la información del usuario logueado

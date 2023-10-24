@@ -1,6 +1,7 @@
 package com.example.hotelcaliforniaDatos;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -17,8 +18,9 @@ public class ClienteDataAccess implements IWritableDataAccess<Cliente> {
     SimpleDateFormat formatoFecha;
     private static final String FORMATO_FECHA_DB = "yyyy-MM-dd";
 
-    public ClienteDataAccess(SQLiteDatabase db) {
-        this.db = db;
+
+    public ClienteDataAccess(Context context) {
+        this.db = HotelSQLiteHelper.getInstance(context).getDatabase();
         formatoFecha = new SimpleDateFormat(FORMATO_FECHA_DB, Locale.getDefault());
     }
 
@@ -34,8 +36,10 @@ public class ClienteDataAccess implements IWritableDataAccess<Cliente> {
         nuevoRegistro.put("activo", entidad.getActivo());
         nuevoRegistro.put("recibeNotificaciones", entidad.getRecibeNotificaciones());
 
-        //Insertamos el registro en la base de datos
-        db.insert("Cliente", null, nuevoRegistro);
+        if (db != null){
+            //Insertamos el registro en la base de datos
+            db.insert("Cliente", null, nuevoRegistro);
+        }
     }
 
     @Override
@@ -84,33 +88,33 @@ public class ClienteDataAccess implements IWritableDataAccess<Cliente> {
             Cursor c = db.query("Cliente", campos, "clienteId = ?", args, null, null, null);
 
             if (c.moveToFirst()) { // Verifica que exista al menos un registro.
-                    cliente.setId(id);
+                cliente.setId(id);
 
-                    String usuario = c.getString(1);
-                    cliente.setUsuario(usuario);
+                String usuario = c.getString(1);
+                cliente.setUsuario(usuario);
 
-                    String email = c.getString(2);
-                    cliente.setEmail(email);
+                String email = c.getString(2);
+                cliente.setEmail(email);
 
-                    String password = c.getString(3);
-                    cliente.setPassword(password);
+                String password = c.getString(3);
+                cliente.setPassword(password);
 
-                    String fechaDeNacimiento = c.getString(4);
-                    Date fechaNac;
-                    try {
-                        fechaNac = formatoFecha.parse(fechaDeNacimiento);
-                    } catch (ParseException e) {
-                        fechaNac = new Date(1900,1,1);
-                    }
-                    cliente.setFechaNac(fechaNac);
+                String fechaDeNacimiento = c.getString(4);
+                Date fechaNac;
+                try {
+                    fechaNac = formatoFecha.parse(fechaDeNacimiento);
+                } catch (ParseException e) {
+                    fechaNac = new Date(1900,1,1);
+                }
+                cliente.setFechaNac(fechaNac);
 
-                    int activoData = c.getInt(5);
-                    boolean activo = activoData == 1;
-                    cliente.setActivo(activo);
+                int activoData = c.getInt(5);
+                boolean activo = activoData == 1;
+                cliente.setActivo(activo);
 
-                    int recibeNotificacionesData = c.getInt(6);
-                    boolean recibeNotificaciones = recibeNotificacionesData == 1;
-                    cliente.setRecibeNotificaciones(recibeNotificaciones);
+                int recibeNotificacionesData = c.getInt(6);
+                boolean recibeNotificaciones = recibeNotificacionesData == 1;
+                cliente.setRecibeNotificaciones(recibeNotificaciones);
             }
             c.close();
         }

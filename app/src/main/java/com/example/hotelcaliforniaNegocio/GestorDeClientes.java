@@ -1,9 +1,8 @@
 package com.example.hotelcaliforniaNegocio;
 
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Context;
 
 import com.example.hotelcaliforniaDatos.ClienteDataAccess;
-import com.example.hotelcaliforniaDatos.IReadableDataAccess;
 import com.example.hotelcaliforniaDatos.IWritableDataAccess;
 import com.example.hotelcaliforniaModelo.Cliente;
 
@@ -22,8 +21,8 @@ public class GestorDeClientes {
 
     IWritableDataAccess<Cliente> clienteDA;
 
-    public GestorDeClientes(SQLiteDatabase db) {
-        clienteDA = new ClienteDataAccess(db);
+    public GestorDeClientes(Context context) {
+        clienteDA = new ClienteDataAccess(context);
     }
 
     public Map<String, String> getDatosClienteLogueado(){
@@ -70,8 +69,13 @@ public class GestorDeClientes {
         clienteNuevo.setPassword(pass);
         clienteNuevo.setFechaNac(fecha);
         clienteNuevo.setActivo(true);
-        clienteDA.create(clienteNuevo);
-        return true;
+        clienteNuevo.setRecibeNotificaciones(true);
+        try {
+            clienteDA.create(clienteNuevo);
+            return true;
+        } catch (Exception ex){
+            return false;
+        }
     }
 
     public void eliminarCliente() {

@@ -1,9 +1,9 @@
 package com.example.hotelcalifornia;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,8 +12,8 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
-import com.example.hotelcaliforniaDatos.HotelSQLiteHelper;
 import com.example.hotelcaliforniaNegocio.GestorDeClientes;
 
 import java.text.ParseException;
@@ -25,9 +25,8 @@ public class Registro extends AppCompatActivity {
 
     EditText usuarioRegistro, fechaNacRegistro, emailRegistro, passwordRegistro;
     Button crear;
+    TextView textErrorRegistro;
     GestorDeClientes gestorDeClientes;
-    private static final String FORMATO_FECHA_FORMULARIO = "dd/MM/yyyy";
-    static final int LONG_MIN_PASS = 6;
     private static final String TAG_ERROR_REGISTRO = "Registro no logrado";
 
     @Override
@@ -35,15 +34,14 @@ public class Registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
-        // Obtenemos la instancia de la db:
-        SQLiteDatabase db = HotelSQLiteHelper.getInstance(this).getDatabase();
-        gestorDeClientes = new GestorDeClientes(db);
+        gestorDeClientes = new GestorDeClientes(this);
 
         // Inicializamos los elementos dinámicos.
         usuarioRegistro = findViewById(R.id.IngresarUsuario);
         fechaNacRegistro = findViewById(R.id.editfechaNacimiento);
         emailRegistro = findViewById(R.id.introducirEmail);
         passwordRegistro = findViewById(R.id.introducirPass);
+        textErrorRegistro = findViewById(R.id.detallereservatext);
 
         fechaNacRegistro.addTextChangedListener(new TextWatcher() {
             @Override
@@ -74,13 +72,15 @@ public class Registro extends AppCompatActivity {
         Pair<Boolean, String> resultadoRegistro
                 = registrar(usuarioRegistro, fechaNacRegistro, emailRegistro, passwordRegistro);
         if (resultadoRegistro.first) {
+            textErrorRegistro.setText(R.string.ingres_tus_datos_o_logueate);
+            textErrorRegistro.setTextColor(ContextCompat.getColorStateList(this, R.color.black));
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else {
             String mjeError = resultadoRegistro.second;
             Log.e(TAG_ERROR_REGISTRO, mjeError);
-            // TODO: Mostrar algun mensaje en pantalla con el mensaje que contiene
-            //  la info de por qué no se pudo registrar.
+            textErrorRegistro.setText(mjeError);
+            textErrorRegistro.setTextColor(ContextCompat.getColorStateList(this, R.color.rojo));
         }
     }
 
@@ -96,26 +96,27 @@ public class Registro extends AppCompatActivity {
         String pass = Utils.getStringFromEditText(password);
 
         String mjeError;
+        String[] datos = new String[]{usu, fecha, mail, pass};
         // Validamos campos completos.
-        if (usu.isEmpty() || fecha.isEmpty() || mail.isEmpty() || pass.isEmpty()){
-            mjeError = "Debe completar todos los campos.";
+        if (Utils.existeDatoStringVacio(datos)){
+            mjeError = "* Debe completar todos los campos.";
             return Pair.create(false, mjeError);
         }
 
         // Validamos mail nuevo en Db
         if (gestorDeClientes.esEmailExistente(mail)){
-            mjeError = "El email ingresado ya existe.";
+            mjeError = "* El email ingresado ya existe.";
             return Pair.create(false, mjeError);
         }
 
         // Validamos longitud de password mayor o igual a 6.
-        if (pass.length()<LONG_MIN_PASS){
-            mjeError = "Su contraseña debe contener al menos 6 caracteres.";
+        if (pass.length()<Utils.LONG_MIN_PASS){
+            mjeError = "* Su contraseña debe contener al menos 6 caracteres.";
             return Pair.create(false, mjeError);
         }
 
         // Validamos y parseamos fecha a tipo Date.
-        SimpleDateFormat formato = new SimpleDateFormat(FORMATO_FECHA_FORMULARIO, Locale.getDefault());
+        SimpleDateFormat formato = new SimpleDateFormat(Utils.FORMATO_FECHA_FORMULARIO, Locale.getDefault());
         Date fechaNacimiento;
         try {
             fechaNacimiento = formato.parse(fecha);
@@ -128,7 +129,7 @@ public class Registro extends AppCompatActivity {
         if (gestorDeClientes.registrar(usu, fechaNacimiento, mail, pass)){
             return Pair.create(true, "");
         } else {
-            return Pair.create(false, "No fue posible su registro, intente nuevamente.");
+            return Pair.create(false, "* No fue posible su registro, intente nuevamente.");
         }
     }
 }
