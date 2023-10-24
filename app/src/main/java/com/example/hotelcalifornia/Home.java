@@ -22,9 +22,6 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class Home extends AppCompatActivity {
 
-    String []habitaciones = {"Habitación Single/Doble","Habitación Triple","Suite Exclusiva","Suite Junior"};
-    int []fotos = {R.drawable.individualbeds,R.drawable.singledoble,R.drawable.suite,R.drawable.suiteii};
-    ViewPager2 viewPagerHabitaciones; //para el viewpager de las habitaciones
 
     EditText fechaIng, fechaSal; //para el calendario
     private DatePickerDialog.OnDateSetListener dateSetListener;
@@ -42,8 +39,7 @@ public class Home extends AppCompatActivity {
         fechaIng = findViewById(R.id.fechaIng);
         fechaSal = findViewById(R.id.fechaSal);
 
-        //viewPagerHabitaciones= findViewById(R.id.viewPagerHabitaciones);
-        //viewPagerHabitaciones.setAdapter(new Adaptadorhabitaciones());
+
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override  //barra de navegación
@@ -97,43 +93,5 @@ public class Home extends AppCompatActivity {
         startActivity(reservas);
     } //leva a reservas
 
-    //para en ViewPager -carousel
-   /* private class Adaptadorhabitaciones extends RecyclerView.Adapter<Adaptadorhabitaciones.AdaptadorhabitacionesHolder> {
-        @NonNull
-        @Override
-        public AdaptadorhabitacionesHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new AdaptadorhabitacionesHolder(getLayoutInflater().inflate(R.layout.layouthabitaciones,parent, false));
 
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull AdaptadorhabitacionesHolder holder, int position) {
-            holder.imprimir(position);
-        }
-
-        @Override
-        public int getItemCount() {
-            return habitaciones.length;
-        }
-
-        class AdaptadorhabitacionesHolder extends RecyclerView.ViewHolder{
-            ImageButton hab1;
-            TextView textHab;
-            public AdaptadorhabitacionesHolder(@NonNull View itemView) {
-                super(itemView);
-                hab1= itemView.findViewById(R.id.imageHab);
-                textHab=itemView.findViewById(R.id.RoomSingleD);
-            }
-
-            public void imprimir(int position) {
-                hab1.setImageResource(fotos[position]);
-                textHab.setText(habitaciones[position]);
-            }
-
-        }
-
-
-    }
-
-*/
 }

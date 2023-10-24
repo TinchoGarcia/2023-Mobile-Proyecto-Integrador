@@ -84,6 +84,11 @@ public class Registro extends AppCompatActivity {
         }
     }
 
+    public void volverAMainActivity (View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        finish();
+    }
+
     private Pair<Boolean, String> registrar(EditText usuario, EditText fechaNac, EditText email, EditText password) {
         String usu = Utils.getStringFromEditText(usuario);
         String fecha = Utils.getStringFromEditText(fechaNac);
