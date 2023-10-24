@@ -36,8 +36,10 @@ public class ClienteDataAccess implements IWritableDataAccess<Cliente> {
         nuevoRegistro.put("activo", entidad.getActivo());
         nuevoRegistro.put("recibeNotificaciones", entidad.getRecibeNotificaciones());
 
-        //Insertamos el registro en la base de datos
-        db.insert("Cliente", null, nuevoRegistro);
+        if (db != null){
+            //Insertamos el registro en la base de datos
+            db.insert("Cliente", null, nuevoRegistro);
+        }
     }
 
     @Override
