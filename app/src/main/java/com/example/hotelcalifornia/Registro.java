@@ -1,6 +1,7 @@
 package com.example.hotelcalifornia;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.hotelcaliforniaNegocio.GestorDeClientes;
 
@@ -23,6 +25,7 @@ public class Registro extends AppCompatActivity {
 
     EditText usuarioRegistro, fechaNacRegistro, emailRegistro, passwordRegistro;
     Button crear;
+    TextView textErrorRegistro;
     GestorDeClientes gestorDeClientes;
     private static final String TAG_ERROR_REGISTRO = "Registro no logrado";
 
@@ -38,6 +41,7 @@ public class Registro extends AppCompatActivity {
         fechaNacRegistro = findViewById(R.id.editfechaNacimiento);
         emailRegistro = findViewById(R.id.introducirEmail);
         passwordRegistro = findViewById(R.id.introducirPass);
+        textErrorRegistro = findViewById(R.id.detallereservatext);
 
         fechaNacRegistro.addTextChangedListener(new TextWatcher() {
             @Override
@@ -68,13 +72,15 @@ public class Registro extends AppCompatActivity {
         Pair<Boolean, String> resultadoRegistro
                 = registrar(usuarioRegistro, fechaNacRegistro, emailRegistro, passwordRegistro);
         if (resultadoRegistro.first) {
+            textErrorRegistro.setText(R.string.ingres_tus_datos_o_logueate);
+            textErrorRegistro.setTextColor(ContextCompat.getColorStateList(this, R.color.black));
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else {
             String mjeError = resultadoRegistro.second;
             Log.e(TAG_ERROR_REGISTRO, mjeError);
-            // TODO: Mostrar algun mensaje en pantalla con el mensaje que contiene
-            //  la info de por qué no se pudo registrar.
+            textErrorRegistro.setText(mjeError);
+            textErrorRegistro.setTextColor(ContextCompat.getColorStateList(this, R.color.rojo));
         }
     }
 
@@ -93,19 +99,19 @@ public class Registro extends AppCompatActivity {
         String[] datos = new String[]{usu, fecha, mail, pass};
         // Validamos campos completos.
         if (Utils.existeDatoStringVacio(datos)){
-            mjeError = "Debe completar todos los campos.";
+            mjeError = "* Debe completar todos los campos.";
             return Pair.create(false, mjeError);
         }
 
         // Validamos mail nuevo en Db
         if (gestorDeClientes.esEmailExistente(mail)){
-            mjeError = "El email ingresado ya existe.";
+            mjeError = "* El email ingresado ya existe.";
             return Pair.create(false, mjeError);
         }
 
         // Validamos longitud de password mayor o igual a 6.
         if (pass.length()<Utils.LONG_MIN_PASS){
-            mjeError = "Su contraseña debe contener al menos 6 caracteres.";
+            mjeError = "* Su contraseña debe contener al menos 6 caracteres.";
             return Pair.create(false, mjeError);
         }
 
@@ -123,7 +129,7 @@ public class Registro extends AppCompatActivity {
         if (gestorDeClientes.registrar(usu, fechaNacimiento, mail, pass)){
             return Pair.create(true, "");
         } else {
-            return Pair.create(false, "No fue posible su registro, intente nuevamente.");
+            return Pair.create(false, "* No fue posible su registro, intente nuevamente.");
         }
     }
 }
