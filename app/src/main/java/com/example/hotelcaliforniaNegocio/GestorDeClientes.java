@@ -69,8 +69,13 @@ public class GestorDeClientes {
         clienteNuevo.setPassword(pass);
         clienteNuevo.setFechaNac(fecha);
         clienteNuevo.setActivo(true);
-        clienteDA.create(clienteNuevo);
-        return true;
+        clienteNuevo.setRecibeNotificaciones(true);
+        try {
+            clienteDA.create(clienteNuevo);
+            return true;
+        } catch (Exception ex){
+            return false;
+        }
     }
 
     public void eliminarCliente() {
