@@ -1,9 +1,9 @@
 package com.example.hotelcaliforniaDatos;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.hotelcaliforniaModelo.Cliente;
 import com.example.hotelcaliforniaModelo.Reserva;
 
 import java.text.ParseException;
@@ -15,8 +15,8 @@ import java.util.Locale;
 public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
 
     SQLiteDatabase db;
-    public ReservaDataAccess(SQLiteDatabase db) {
-        this.db = db;
+    public ReservaDataAccess(Context context) {
+        this.db = HotelSQLiteHelper.getInstance(context).getDatabase();
     }
 
     @Override
@@ -34,10 +34,10 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
         ArrayList<Reserva> reservas = new ArrayList<>();
         if(db != null)
         {
-                String[] args = new String[]{
-                        String.valueOf(id)
-                };
-                String[] campos = new String[] {
+            String[] args = new String[]{
+                    String.valueOf(id)
+            };
+            String[] campos = new String[] {
                     "reservaId", "habitacionId", "clienteId", "chechIn", "checkOut", "notificadoAlCliente", "anulada","pagada" };
             Cursor c = db.query("Reserva", campos, "clienteId = ?", args, null, null, null);
 

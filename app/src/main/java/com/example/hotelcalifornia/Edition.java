@@ -1,9 +1,6 @@
 package com.example.hotelcalifornia;
 
-import static com.example.hotelcalifornia.Registro.LONG_MIN_PASS;
-
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -17,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hotelcaliforniaNegocio.GestorDeClientes;
-import com.example.hotelcaliforniaDatos.HotelSQLiteHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -36,9 +32,7 @@ public class Edition extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edicion);
 
-        // Obtenemos la instancia de la db:
-        SQLiteDatabase db = HotelSQLiteHelper.getInstance(this).getDatabase();
-        gestorDeClientes = new GestorDeClientes(db);
+        gestorDeClientes = new GestorDeClientes(this);
 
         // Seteamos el texto de cada editText con los datos del usuario logueado
         setearEditTextConDatosClienteLogueado();
@@ -128,8 +122,9 @@ public class Edition extends AppCompatActivity {
         String pass = Utils.getStringFromEditText(password);
 
         String mjeError;
+        String[] datos = new String[]{usu, mail, pass};
         // Validamos campos completos.
-        if (usu.isEmpty() || mail.isEmpty() || pass.isEmpty()){
+        if (Utils.existeDatoStringVacio(datos)){
             mjeError = "Debe completar todos los campos.";
             return Pair.create(false, mjeError);
         }
@@ -141,7 +136,7 @@ public class Edition extends AppCompatActivity {
         }
 
         // Validamos longitud de password mayor o igual a 6.
-        if (pass.length()<LONG_MIN_PASS) {
+        if (pass.length()<Utils.LONG_MIN_PASS) {
             mjeError = "Su contraseña debe contener al menos 6 caracteres.";
             return Pair.create(false, mjeError);
         }

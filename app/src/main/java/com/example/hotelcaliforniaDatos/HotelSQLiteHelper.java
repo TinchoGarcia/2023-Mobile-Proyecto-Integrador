@@ -25,7 +25,7 @@ public class HotelSQLiteHelper extends SQLiteOpenHelper {
         return instance;
     }
 
-    public SQLiteDatabase getDatabase() {
+    protected SQLiteDatabase getDatabase() {
         if (database == null || !database.isOpen()) {
             database = getWritableDatabase();
         }

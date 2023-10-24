@@ -1,7 +1,6 @@
 package com.example.hotelcalifornia;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,7 +18,6 @@ import com.google.android.material.navigation.NavigationBarView;
 public class Profile extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     Switch recibeNotSwitch;
-    SQLiteDatabase db;
     GestorDeClientes gestorDeClientes;
 
     @Override
@@ -30,9 +28,7 @@ public class Profile extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
 
-        // Creamos o hacemos conexión a la DB
-        db = HotelSQLiteHelper.getInstance(this).getDatabase();
-        gestorDeClientes = new GestorDeClientes(db);
+        gestorDeClientes = new GestorDeClientes(this);
 
         // Inicalizamos switch notificaciones y modificamos datos en la DB segun la selección
         recibeNotSwitch = findViewById(R.id.switchNotificaciones);
@@ -106,7 +102,7 @@ public class Profile extends AppCompatActivity {
     // Cerrar sesión implica: que el cliente logueado sea null + cerrar la conexión a la db.
     public void onLogout(View view){
         gestorDeClientes.logout();
-        db.close();
+        HotelSQLiteHelper.getInstance(this).close();
         goToLogin(view);
     }
 

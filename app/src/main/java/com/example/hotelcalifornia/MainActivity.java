@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.hotelcaliforniaDatos.HotelSQLiteHelper;
 import com.example.hotelcaliforniaNegocio.GestorDeClientes;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,9 +30,8 @@ public class MainActivity extends AppCompatActivity {
         passwordLogin = findViewById(R.id.passwordLogin);
         inicio = findViewById(R.id.inicio);
 
-        // Creamos o hacemos conexión a la DB
-        SQLiteDatabase db = HotelSQLiteHelper.getInstance(this).getDatabase();
-        gestorDeClientes = new GestorDeClientes(db);
+        // Obtenemos un gestor y le pasamos el Contexto para que haga la conexión a la DB
+        gestorDeClientes = new GestorDeClientes(this);
     }
 
     public void iraregistro(View view){
@@ -60,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
         String pass = Utils.getStringFromEditText(password);
 
         String mjeError;
+        String[] datos = new String[]{mail, pass};
         // Validamos campos completos.
-        if (mail.isEmpty() || pass.isEmpty()){
+        if (Utils.existeDatoStringVacio(datos)){
             mjeError = "Debe completar todos los campos.";
             return Pair.create(false, mjeError);
         }

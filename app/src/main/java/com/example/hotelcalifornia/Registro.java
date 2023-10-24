@@ -3,7 +3,6 @@ package com.example.hotelcalifornia;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.hotelcaliforniaDatos.HotelSQLiteHelper;
 import com.example.hotelcaliforniaNegocio.GestorDeClientes;
 
 import java.text.ParseException;
@@ -26,8 +24,6 @@ public class Registro extends AppCompatActivity {
     EditText usuarioRegistro, fechaNacRegistro, emailRegistro, passwordRegistro;
     Button crear;
     GestorDeClientes gestorDeClientes;
-    private static final String FORMATO_FECHA_FORMULARIO = "dd/MM/yyyy";
-    static final int LONG_MIN_PASS = 6;
     private static final String TAG_ERROR_REGISTRO = "Registro no logrado";
 
     @Override
@@ -35,9 +31,7 @@ public class Registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
-        // Obtenemos la instancia de la db:
-        SQLiteDatabase db = HotelSQLiteHelper.getInstance(this).getDatabase();
-        gestorDeClientes = new GestorDeClientes(db);
+        gestorDeClientes = new GestorDeClientes(this);
 
         // Inicializamos los elementos dinámicos.
         usuarioRegistro = findViewById(R.id.IngresarUsuario);
@@ -96,8 +90,9 @@ public class Registro extends AppCompatActivity {
         String pass = Utils.getStringFromEditText(password);
 
         String mjeError;
+        String[] datos = new String[]{usu, fecha, mail, pass};
         // Validamos campos completos.
-        if (usu.isEmpty() || fecha.isEmpty() || mail.isEmpty() || pass.isEmpty()){
+        if (Utils.existeDatoStringVacio(datos)){
             mjeError = "Debe completar todos los campos.";
             return Pair.create(false, mjeError);
         }
@@ -109,13 +104,13 @@ public class Registro extends AppCompatActivity {
         }
 
         // Validamos longitud de password mayor o igual a 6.
-        if (pass.length()<LONG_MIN_PASS){
+        if (pass.length()<Utils.LONG_MIN_PASS){
             mjeError = "Su contraseña debe contener al menos 6 caracteres.";
             return Pair.create(false, mjeError);
         }
 
         // Validamos y parseamos fecha a tipo Date.
-        SimpleDateFormat formato = new SimpleDateFormat(FORMATO_FECHA_FORMULARIO, Locale.getDefault());
+        SimpleDateFormat formato = new SimpleDateFormat(Utils.FORMATO_FECHA_FORMULARIO, Locale.getDefault());
         Date fechaNacimiento;
         try {
             fechaNacimiento = formato.parse(fecha);

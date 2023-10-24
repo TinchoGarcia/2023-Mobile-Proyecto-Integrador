@@ -14,10 +14,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.hotelcaliforniaDatos.HotelSQLiteHelper;
 import com.example.hotelcaliforniaDatos.ReservaDataAccess;
 import com.example.hotelcaliforniaModelo.Reserva;
-import com.example.hotelcaliforniaNegocio.UserSession;
+import com.example.hotelcaliforniaNegocio.GestorDeClientes;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -28,6 +27,7 @@ public class Reservas extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     SQLiteDatabase db;
     ReservaDataAccess reservaDA;
+    GestorDeClientes gestorDeClientes;
     TextView textViewCheckin;
 
     @SuppressLint("MissingInflatedId")
@@ -42,9 +42,10 @@ public class Reservas extends AppCompatActivity {
 
         textViewCheckin = findViewById(R.id.textCheckIn);
 
-        db = HotelSQLiteHelper.getInstance(this).getDatabase();
-        reservaDA = new ReservaDataAccess(db);
-        int idCliente = UserSession.getInstance().getCliente().getId();
+        gestorDeClientes = new GestorDeClientes(this);
+
+        reservaDA = new ReservaDataAccess(this);
+        int idCliente = Integer.parseInt(gestorDeClientes.getDatosClienteLogueado().get(gestorDeClientes.KEY_ID_CLIENTE));
         ArrayList<Reserva> reservas = reservaDA.getAll(idCliente);
         Reserva primerreserva = reservas.get(0);
         textViewCheckin.setText(primerreserva.getCheckIn().toString());
