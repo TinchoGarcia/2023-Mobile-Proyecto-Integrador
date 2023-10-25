@@ -65,26 +65,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textCheckIn" />
 
     <Button
-        android:id="@+id/buttonModificar"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/naranja"
-        android:contentDescription="@string/btnMod"
-        android:gravity="center"
-        android:onClick="modificar"
-        android:text="@string/modificar"
-        android:textAlignment="center"
-        android:textColorLink="@color/clear"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonEliminar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textMontoTotal"
-        tools:ignore="TextContrastCheck" />
-
-    <Button
         android:id="@+id/buttonPagar"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -115,9 +95,9 @@
 
     <Button
         android:id="@+id/buttonEliminar"
-        android:layout_width="0dp"
+        android:layout_width="104dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/gris"
@@ -127,9 +107,8 @@
         android:textColor="@color/white"
         android:textColorLink="@color/clear"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonModificar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonModificar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonPagar"
         tools:ignore="TextContrastCheck" />
 
