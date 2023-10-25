@@ -22,12 +22,16 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class Reservas extends AppCompatActivity {
-    Button buttonEliminar, buttonModificar, buttonPagar;
+    Button buttonEliminar, buttonPagar;
     ImageButton buttonPrevReserva, buttonNextReserva;
-    TextView textViewCheckin, textViewCheckout, textViewTipoHabitacion, textViewMontoTotal, textNoHayReservas;
+    TextView textViewCheckin, textViewCheckout, textViewTipoHabitacion, textViewMontoTotal;
+    TextView textNoHayReservas, textReservaVencida;
     BottomNavigationView bottomNavigationView;
     GestorDeReservas gestorDeReservas;
     private int reservaActualIndex = 0;
@@ -45,13 +49,13 @@ public class Reservas extends AppCompatActivity {
         inicializarEventosVisuales();
 
         gestorDeReservas = new GestorDeReservas(this);
-        if (gestorDeReservas.usuarioTieneReservas()){
-            // Mostramos la reserva actual o la última hecha por el cliente.
-            mostrarReserva(reservaActualIndex);
+        if (gestorDeReservas.usuarioTieneReservas()) {
+            // Mostramos la reserva actual o la última hecha por el cliente que no esté anulada.
             mostrarElementosVisuales(true);
+            mostrarReserva(reservaActualIndex);
         } else {
-            textNoHayReservas.setText(R.string.usuario_sin_reservas);
             mostrarElementosVisuales(false);
+            textNoHayReservas.setText(R.string.usuario_sin_reservas);
         }
 
         activarBotonesPrevAndNext();
@@ -84,38 +88,6 @@ public class Reservas extends AppCompatActivity {
 
     }
 
-    private void mostrarElementosVisuales(boolean mostrar) {
-        if (!mostrar){
-            // TextView
-            textViewTipoHabitacion.setVisibility(View.INVISIBLE);
-            textViewCheckin.setVisibility(View.INVISIBLE);
-            textViewCheckout.setVisibility(View.INVISIBLE);
-            textViewMontoTotal.setVisibility(View.INVISIBLE);
-            textNoHayReservas.setVisibility(View.VISIBLE);
-
-            // Botones
-            buttonEliminar.setVisibility(View.INVISIBLE);
-            buttonModificar.setVisibility(View.INVISIBLE);
-            buttonPagar.setVisibility(View.INVISIBLE);
-            buttonPrevReserva.setVisibility(View.INVISIBLE);
-            buttonNextReserva.setVisibility(View.INVISIBLE);
-        } else {
-            // TextView
-            textViewTipoHabitacion.setVisibility(View.VISIBLE);
-            textViewCheckin.setVisibility(View.VISIBLE);
-            textViewCheckout.setVisibility(View.VISIBLE);
-            textViewMontoTotal.setVisibility(View.VISIBLE);
-            textNoHayReservas.setVisibility(View.INVISIBLE);
-
-            // Botones
-            buttonEliminar.setVisibility(View.VISIBLE);
-            buttonModificar.setVisibility(View.VISIBLE);
-            buttonPagar.setVisibility(View.VISIBLE);
-            buttonPrevReserva.setVisibility(View.VISIBLE);
-            buttonNextReserva.setVisibility(View.VISIBLE);
-        }
-    }
-
     private void inicializarEventosVisuales() {
         // TextView
         textViewTipoHabitacion = findViewById(R.id.textTipoHab);
@@ -123,51 +95,92 @@ public class Reservas extends AppCompatActivity {
         textViewCheckout = findViewById(R.id.textCheckout);
         textViewMontoTotal = findViewById(R.id.textMontoTotal);
         textNoHayReservas = findViewById(R.id.textNoHayReservas);
+        textReservaVencida = findViewById(R.id.textReservaVencida);
 
         // Botones
-        buttonEliminar = (Button) findViewById(R.id.buttonEliminar);
-        buttonModificar = findViewById(R.id.buttonModificar);
+        buttonEliminar = findViewById(R.id.buttonEliminar);
         buttonPagar = findViewById(R.id.buttonPagar);
         buttonPrevReserva = findViewById(R.id.buttonPrevReserva);
         buttonNextReserva = findViewById(R.id.buttonNextReserva);
     }
 
-    private void mostrarReserva(int reservaActualIndex) {
-        Reserva reserva = gestorDeReservas.obtenerReserva(reservaActualIndex);
+    private void mostrarElementosVisuales(boolean mostrar) {
+        int visibility = mostrar ? View.VISIBLE : View.INVISIBLE;
+        int visibilityNoHayReservas = mostrar ? View.INVISIBLE : View.VISIBLE;
 
+        List<View> elementosVisuales = Arrays.asList(
+                textViewTipoHabitacion,
+                textViewCheckin,
+                textViewCheckout,
+                textViewMontoTotal,
+                buttonEliminar,
+                buttonPagar,
+                buttonPrevReserva,
+                buttonNextReserva
+        );
+        elementosVisuales.forEach(view -> view.setVisibility(visibility));
+        textNoHayReservas.setVisibility(visibilityNoHayReservas);
+    }
+
+    private void mostrarReserva(int reservaActualIndex) {
+        Reserva reserva = gestorDeReservas.obtenerReservaParaMostrar(reservaActualIndex);
         // Seteamos los textos de la info
-        textViewTipoHabitacion.setText(reserva.getHabitacion().getHabTipo());
-        SimpleDateFormat formato = new SimpleDateFormat(Utils.FORMATO_FECHA_FORMULARIO, Locale.getDefault());
+        SimpleDateFormat formato
+                = new SimpleDateFormat(Utils.FORMATO_FECHA_FORMULARIO, Locale.getDefault());
         String fechaCheckin = formato.format(reserva.getCheckIn());
         String fechaCheckout = formato.format(reserva.getCheckOut());
+        String tipoHabitacion = reserva.getHabitacion().getHabTipo();
         textViewCheckin.setText(fechaCheckin);
         textViewCheckout.setText(fechaCheckout);
+        textViewTipoHabitacion.setText(tipoHabitacion);
         // TODO: Cambiar por valor que da la función de Fer
         textViewMontoTotal.setText(String.valueOf(reserva.getHabitacion().getHabPrecio()) + "FER");
 
+        actualizarVisualizacionSegunElEstadoDe(reserva);
+    }
+
+    private void actualizarVisualizacionSegunElEstadoDe(Reserva reserva) {
         // Seteamos si los botones están habilitados o no.
-        if (reserva.isPagada()){
-            buttonPagar.setText(R.string.pagada);
-            buttonPagar.setClickable(false);
-            buttonPagar.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.gris));
-        } else{
-            buttonPagar.setText(R.string.pagar);
-            buttonPagar.setClickable(true);
-            buttonPagar.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.naranja));
+        if (reserva.isPagada()) {
+            actualizarBotonPagar(R.string.pagada, false, R.color.gris);
+        } else {
+            actualizarBotonPagar(R.string.pagar, true, R.color.naranja);
         }
+
+        Date fechaActual = new Date();
+        boolean reservaVencida = reserva.getCheckIn().before(fechaActual);
+        if (reservaVencida && reserva.isPagada()) {
+            ajustarVistaSegunReserva(R.string.gracias, View.INVISIBLE, View.VISIBLE);
+        } else if (reservaVencida && !reserva.isPagada()) {
+            ajustarVistaSegunReserva(R.string.reserva_anulada, View.INVISIBLE, View.INVISIBLE);
+        } else {
+            ajustarVistaSegunReserva(R.string.empty, View.VISIBLE, View.VISIBLE);
+        }
+    }
+
+    private void actualizarBotonPagar(int idText, boolean isClickeable, int idColor) {
+        buttonPagar.setText(idText);
+        buttonPagar.setClickable(isClickeable);
+        buttonPagar.setBackgroundTintList(ContextCompat.getColorStateList(this, idColor));
+    }
+
+    private void ajustarVistaSegunReserva(int idText, int visibilidadEliminar, int visibilidadPagar){
+        textReservaVencida.setText(idText);
+        buttonEliminar.setVisibility(visibilidadEliminar);
+        buttonPagar.setVisibility(visibilidadPagar);
     }
 
     private void activarBotonesPrevAndNext() {
         // Obtenemos todas las reservas del usuario logueado
-        ArrayList<Reserva> listaDeReservas = gestorDeReservas.obtenerReservasClienteLogueado();
+        ArrayList<Reserva> listaDeReservas = gestorDeReservas.obtenerReservasNoAnuladasClienteLogueado();
 
         // Ocultamos los botones si es la primer reserva o la ultima
-        if (reservaActualIndex == 0){
+        if (reservaActualIndex == 0) {
             buttonPrevReserva.setVisibility(View.INVISIBLE);
         } else {
             buttonPrevReserva.setVisibility(View.VISIBLE);
         }
-        if (reservaActualIndex == listaDeReservas.size() - 1){
+        if (reservaActualIndex == listaDeReservas.size() - 1) {
             buttonNextReserva.setVisibility(View.INVISIBLE);
         } else {
             buttonNextReserva.setVisibility(View.VISIBLE);
@@ -201,20 +214,15 @@ public class Reservas extends AppCompatActivity {
     }
 
     public void pago(View view) {
+        //TODO: Completar el intent con el id de la Reserva para usarla en la vista siguiente
         Intent pagar = new Intent(this, Detalle.class);
         startActivity(pagar);
     }
-
 
     public void IraHome(View view) {
         Intent intent = new Intent(this, Home.class);
         finish();
     } //flechita para volver
-
-    public void modificar(View view) {
-        Intent modificar = new Intent(this, Home.class);
-        startActivity(modificar);
-    }
 
     public void eliminar(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -222,8 +230,10 @@ public class Reservas extends AppCompatActivity {
         builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-              Intent intent =new Intent(getApplicationContext(), Home.class);
-              startActivity(intent);
+                // TODO: Completar con un update a la Db de modificar como anulada = true la reserva actual:
+                //  Reserva reserva = gestorDeReservas.obtenerReserva(reservaActualIndex);
+                Intent intent = new Intent(getApplicationContext(), Home.class);
+                startActivity(intent);
             }
         });
         builder.setNegativeButton("Cancelar", null);

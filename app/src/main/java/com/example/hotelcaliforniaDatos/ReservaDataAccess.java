@@ -3,6 +3,7 @@ package com.example.hotelcaliforniaDatos;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.hotelcaliforniaModelo.Habitacion;
 import com.example.hotelcaliforniaModelo.Reserva;
@@ -60,7 +61,7 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
                     // Lo harcodeamos por ahora:
                     Habitacion hab = new Habitacion();
                     hab.setHabTipo("Simple, hab id = " + String.valueOf(habitacionId));
-                    hab.setHabPrecio(habitacionId*1000);
+                    hab.setHabPrecio(reservaId*1000);
                     reserva.setHabitacion(hab);
 
                     int clienteId = c.getInt(2);
@@ -73,9 +74,10 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
                     try {
                         checkin = formatoFecha.parse(fechaCheckIn);
                         chechout = formatoFecha.parse(fechaCheckOut);
-                    } catch (ParseException e) {
-                        checkin = new Date(1900,1,1);
-                        chechout = new Date(1900,2,2);
+                    } catch (ParseException ex) {
+                        Log.e("FECHA", ex.getMessage());
+                        checkin = new Date(1900, 1, 1);
+                        chechout = new Date(1900, 2, 2);
                     }
                     reserva.setCheckIn(checkin);
                     reserva.setCheckOut(chechout);
