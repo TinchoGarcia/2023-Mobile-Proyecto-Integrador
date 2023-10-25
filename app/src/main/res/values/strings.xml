@@ -16,6 +16,7 @@
     <string name="menu">Inicio</string>
     <string name="home">home</string>
     <string name="pagar">Pagar +</string>
+    <string name="pagada">Pagada</string>
     <string name="precio1">$75.500</string>
     <string name="precio2">$98.000</string>
     <string name="precio3">$34.500</string>
@@ -61,4 +62,15 @@
     <string name="ingreso">Ingreso</string>
     <string name="salida">Salida</string>
 
+    <string name="btnR">botón para reservar habitación</string>
+    <string name="btnIngr">botón para ingresar fecha de Ingreso</string>
+    <string name="btnSali">botón para ingresar fecha de salida</string>
+    <string name="btnPag">botón para pagar la reserva</string>
+    <string name="btnMod">botón para modificar la reserva</string>
+    <string name="btnEli">botón para eliminar la reserva</string>
+    <string name="volverH">botón para volver a atrás</string>
+    <string name="boton_prev_reserva">Botón para visualizar una reserva más nueva</string>
+    <string name="boton_next_reserva">Botón para visualizar una reserva anterior</string>
+    <string name="ingres_tus_datos_o_logueate">Ingresá tus datos o logueate</string>
+    <string name="usuario_sin_reservas">El usuario no tiene reservas.</string>
 </resources>
