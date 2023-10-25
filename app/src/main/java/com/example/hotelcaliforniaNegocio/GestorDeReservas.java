@@ -19,19 +19,20 @@ public class GestorDeReservas {
     }
 
     public boolean usuarioTieneReservas() {
-        return !obtenerReservasClienteLogueado().isEmpty();
+        return !obtenerReservasNoAnuladasClienteLogueado().isEmpty();
     }
 
-    public Reserva obtenerReserva(int reservaIndex) {
-        return (0 <= reservaIndex && reservaIndex <= obtenerReservasClienteLogueado().size())
-                ? obtenerReservasClienteLogueado().get(reservaIndex)
+    public Reserva obtenerReservaParaMostrar(int reservaIndex) {
+        return (0 <= reservaIndex && reservaIndex <= obtenerReservasNoAnuladasClienteLogueado().size())
+                ? obtenerReservasNoAnuladasClienteLogueado().get(reservaIndex)
                 : null;
     }
 
-    public ArrayList<Reserva> obtenerReservasClienteLogueado() {
+    public ArrayList<Reserva> obtenerReservasNoAnuladasClienteLogueado() {
         String idClienteString = gestorDeClientes.getDatosClienteLogueado().get(gestorDeClientes.KEY_ID_CLIENTE);
         int idCliente = Integer.parseInt(Objects.requireNonNull(idClienteString));
         ArrayList<Reserva> reservas = ((ReservaDataAccess) reservaDA).getAll(idCliente);
+        reservas.removeIf(Reserva::isAnulada);
         return reservas;
     }
 }

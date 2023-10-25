@@ -61,7 +61,7 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
                     // Lo harcodeamos por ahora:
                     Habitacion hab = new Habitacion();
                     hab.setHabTipo("Simple, hab id = " + String.valueOf(habitacionId));
-                    hab.setHabPrecio(habitacionId*1000);
+                    hab.setHabPrecio(reservaId*1000);
                     reserva.setHabitacion(hab);
 
                     int clienteId = c.getInt(2);
