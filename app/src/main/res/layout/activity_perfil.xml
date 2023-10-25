@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/reservasT"
-        android:layout_width="119dp"
-        android:layout_height="57dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/mi_perfil"
         android:textSize="30sp"
@@ -57,7 +57,7 @@
         android:layout_width="320dp"
         android:layout_height="51dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/azul"
         android:onClick="onEliminarCuenta"
         android:text="@string/eliminar_cuenta"
@@ -83,6 +83,7 @@
         android:id="@+id/button5"
         android:layout_width="320dp"
         android:layout_height="51dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="32dp"
         android:backgroundTint="@color/azul"
         android:onClick="onLogout"
