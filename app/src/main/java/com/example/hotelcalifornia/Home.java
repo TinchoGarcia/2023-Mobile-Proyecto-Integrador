@@ -15,9 +15,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
+import com.example.hotelcaliforniaDatos.HabitacionDataAccess;
+import com.example.hotelcaliforniaModelo.Habitacion;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.ArrayList;
 
 
 public class Home extends AppCompatActivity {
@@ -38,6 +45,21 @@ public class Home extends AppCompatActivity {
 
         fechaIng = findViewById(R.id.fechaIng);
         fechaSal = findViewById(R.id.fechaSal);
+        RadioGroup radioGroup = findViewById(R.id.RadioGroup);
+
+        // Crear una instancia de HabitacionDataAccess
+        HabitacionDataAccess habitacionDataAccess = new HabitacionDataAccess(this);
+
+        // Obtener todas las habitaciones desde la base de datos
+        ArrayList<Habitacion> habitaciones = habitacionDataAccess.getAll();
+
+        // Configurar el texto de los RadioButtons con nombre y precio
+        for (int i = 0; i < habitaciones.size(); i++) {
+            RadioButton radioButton = (RadioButton) radioGroup.getChildAt(i);
+            Habitacion habitacion = habitaciones.get(i);
+            String textoRadioButton = habitacion.getHabTipo() + " - $" + habitacion.getHabPrecio();
+            radioButton.setText(textoRadioButton);
+        }
 
 
 
