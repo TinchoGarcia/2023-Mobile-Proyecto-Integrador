@@ -46,24 +46,26 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="334dp"
-        android:layout_height="14dp"
-        android:layout_marginTop="92dp"
-        android:text="Reserva realizada con éxito!"
+        android:layout_width="wrap_content"
+        android:layout_height="54dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/reserva_realizada_con_xito"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.65"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="79dp"
+        android:id="@+id/imageView5"
+        android:layout_width="56dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="83dp"
+        android:contentDescription="@string/imagen_de_notifiaciones_realizada"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-        app:srcCompat="?android:attr/textCheckMark" />
+        app:srcCompat="@android:drawable/checkbox_on_background" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
