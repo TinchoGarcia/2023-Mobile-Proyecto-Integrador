@@ -7,14 +7,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
+import com.example.hotelcaliforniaNegocio.GestorDeReservas;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class Detalle extends AppCompatActivity {
 
-    TextView textPrecioTotal; 
-    GestorDeReservas gestorDeReservas; 
+    TextView textPrecioTotal;
+    GestorDeReservas gestorDeReservas;
 
     BottomNavigationView bottomNavigationView;
     @Override
@@ -69,7 +71,9 @@ public class Detalle extends AppCompatActivity {
     }
 
     private void mostrarPrecioTotal() {
-        // gestorDeReservas.calculoPrecio()
+        // float precioTotal = gestorDeReservas.calculoPrecio()
+        // textPrecioTotal.setText(precioTotal);
+        // TODO: Abrir intent con el id de la reserva y completar
     }
 
 }
