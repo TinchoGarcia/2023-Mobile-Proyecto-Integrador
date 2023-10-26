@@ -28,7 +28,61 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
 
     @Override
     public Reserva getById(int id) {
-        return null;
+        Reserva reserva = new Reserva();
+        if(db != null)
+        {
+            String[] campos = new String[] {
+                     "habitacionId", "clienteId", "chechIn", "checkOut", "notificadoAlCliente", "anulada","pagada" };
+            String[] args = new String[]{ String.valueOf(id) };
+            Cursor c = db.query("Reserva", campos, "reservaId = ?", args, null, null, null);
+
+            if (c.moveToFirst()) { // Verifica que exista al menos un registro.
+
+
+                    int habitacionId = c.getInt(0);
+                    // TODO: esto deberia verse asi
+                    // reserva.setHabitacion(habitacionDA.getById(habitacionId));
+                    // Lo harcodeamos por ahora:
+                    Habitacion hab = new Habitacion();
+                    hab.setHabTipo("Simple, hab id = " + String.valueOf(habitacionId));
+                    hab.setHabPrecio(id*1000);
+                    reserva.setHabitacion(hab);
+
+                    int clienteId = c.getInt(1);
+                    reserva.setCliente(clienteDA.getById(clienteId));
+
+                    String fechaCheckIn = c.getString(2);
+                    String fechaCheckOut = c.getString(3);
+                    Date checkin, chechout;
+                    SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                    try {
+                        checkin = formatoFecha.parse(fechaCheckIn);
+                        chechout = formatoFecha.parse(fechaCheckOut);
+                    } catch (ParseException ex) {
+                        Log.e("FECHA", ex.getMessage());
+                        checkin = new Date(1900, 1, 1);
+                        chechout = new Date(1900, 2, 2);
+                    }
+                    reserva.setCheckIn(checkin);
+                    reserva.setCheckOut(chechout);
+
+                    int notificadoAlCliente = c.getInt(4);
+                    boolean notificado = notificadoAlCliente == 1;
+                    reserva.setNotificadoAlCliente(notificado);
+
+                    int anulada = c.getInt(5);
+                    boolean anu = anulada == 1;
+                    reserva.setAnulada(anu);
+
+                    int pagada = c.getInt(6);
+                    boolean pago = pagada == 1;
+                    reserva.setPagada(pago);
+
+
+            }
+            c.close();
+        }
+        return reserva;
     }
 
     @Override
