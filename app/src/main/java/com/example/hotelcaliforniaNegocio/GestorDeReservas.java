@@ -35,4 +35,14 @@ public class GestorDeReservas {
         reservas.removeIf(Reserva::isAnulada);
         return reservas;
     }
+
+   public float calculoPrecio(Date fechaIngreso, Date fechaEgreso, float precioHab) { 
+    long milisegundosIngreso = fechaIngreso.getTime();
+    long milisegundosEgreso = fechaEgreso.getTime();
+    long diferenciaMilisegundos = milisegundosEgreso - milisegundosIngreso;
+    long diferenciaDias = diferenciaMilisegundos / (24 * 60 * 60 * 1000);
+    float precioTotal = precioHab * diferenciaDias;
+    return precioTotal;
+}
+
 }
