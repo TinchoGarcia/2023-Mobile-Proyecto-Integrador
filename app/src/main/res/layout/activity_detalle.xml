@@ -76,7 +76,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="140sp"
             android:layout_marginTop="280sp"
-            android:text="$52.000"
             android:textSize="24sp"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>

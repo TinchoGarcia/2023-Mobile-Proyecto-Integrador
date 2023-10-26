@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/radioButtonDoubleRoom"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -62,12 +63,13 @@
         android:id="@+id/bottomNavigationView"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
+        android:layout_marginTop="68dp"
         app:backgroundTint="@color/gris"
         app:itemIconTint="@drawable/selector"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reservarButton"
         app:menu="@menu/bottom_nav_menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
@@ -120,8 +122,7 @@
         android:textColorHint="@color/gris"
         app:layout_constraintEnd_toStartOf="@+id/buttonIngreso"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reservasT"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/reservasT" />
 
     <RadioGroup
         android:id="@+id/RadioGroup"
@@ -137,32 +138,24 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonSalida">
 
         <RadioButton
-            android:id="@+id/habitacionSD"
+            android:id="@+id/radioButtonSingleRoom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/singleRoom"
             android:textAlignment="center" />
 
         <RadioButton
-            android:id="@+id/habitacionTriple"
+            android:id="@+id/radioButtonTripleRoom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/triple"
             android:textAlignment="center" />
 
         <RadioButton
-            android:id="@+id/suiteExclusiva"
+            android:id="@+id/radioButtonSuiteExclusiva"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/suite"
-            android:textAlignment="center" />
-
-        <RadioButton
-            android:id="@+id/suiteJunior"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:text="@string/suiteJunior"
             android:textAlignment="center" />
     </RadioGroup>
 
