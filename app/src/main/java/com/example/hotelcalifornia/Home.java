@@ -112,6 +112,7 @@ public class Home extends AppCompatActivity {
 
     public void reservar(View view){
         Intent reservas=new Intent(this, Reservas.class);
+        reservas.putExtra("idhabitacion", "habitacionId");
         startActivity(reservas);
     } //leva a reservas
 
