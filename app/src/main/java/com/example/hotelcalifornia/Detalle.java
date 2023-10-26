@@ -13,14 +13,20 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class Detalle extends AppCompatActivity {
 
+    TextView textPrecioTotal; 
+    GestorDeReservas gestorDeReservas; 
+
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
-
+        gestorDeReservas = new GestorDeReservas(this);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
+        textPrecioTotal = findViewById(R.id.precioText); 
+    
+        mostrarPrecioTotal();
 
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -61,4 +67,9 @@ public class Detalle extends AppCompatActivity {
         Intent intent = new Intent(this, Reservas.class);
         finish();
     }
+
+    private void mostrarPrecioTotal() {
+        // gestorDeReservas.calculoPrecio()
+    }
+
 }
