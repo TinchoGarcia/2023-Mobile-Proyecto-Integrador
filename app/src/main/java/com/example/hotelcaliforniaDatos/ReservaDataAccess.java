@@ -179,7 +179,23 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
 
     @Override
     public Reserva update(Reserva entidad) {
-        return null;
+        //Creamos un registro que será modificado
+        ContentValues nuevoRegistro = new ContentValues();
+        nuevoRegistro.put("habitacionId", entidad.getHabitacion().getId());
+        nuevoRegistro.put("clienteId", entidad.getCliente().getId());
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        nuevoRegistro.put("chechIn", formatoFecha.format(entidad.getCheckIn()));
+        nuevoRegistro.put("checkOut", formatoFecha.format(entidad.getCheckOut()));
+        nuevoRegistro.put("notificadoAlCliente", entidad.isNotificadoAlCliente());
+        nuevoRegistro.put("anulada", entidad.isAnulada());
+        nuevoRegistro.put("pagada", entidad.isPagada());
+
+        int reservaId = entidad.getId();
+        //Modificamos el registro en la base de datos
+        String[] args = new String[]{ String.valueOf(reservaId)};
+        db.update("Reserva", nuevoRegistro, "reservaId = ?", args);
+
+        return getById(reservaId);
     }
 
     @Override

@@ -161,6 +161,7 @@ public class Home extends AppCompatActivity {
         reserva.setNotificadoAlCliente(false);
         reservaDA.create(reserva);
         Intent reservas=new Intent(this, Reservas.class);
+        reservas.putExtra("idhabitacion", "habitacionId");
         startActivity(reservas);
     } //lleva a reservas
 
