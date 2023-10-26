@@ -7,6 +7,7 @@ import com.example.hotelcaliforniaDatos.ReservaDataAccess;
 import com.example.hotelcaliforniaModelo.Reserva;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 public class GestorDeReservas {
@@ -36,7 +37,7 @@ public class GestorDeReservas {
         return reservas;
     }
 
-   public float calculoPrecio(Date fechaIngreso, Date fechaEgreso, float precioHab) { 
+   public float calculoPrecio(Date fechaIngreso, Date fechaEgreso, float precioHab) {
     long milisegundosIngreso = fechaIngreso.getTime();
     long milisegundosEgreso = fechaEgreso.getTime();
     long diferenciaMilisegundos = milisegundosEgreso - milisegundosIngreso;
