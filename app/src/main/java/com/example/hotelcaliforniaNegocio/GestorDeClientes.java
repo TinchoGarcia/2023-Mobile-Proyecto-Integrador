@@ -37,7 +37,7 @@ public class GestorDeClientes {
         return datosCliente;
     }
 
-    private Cliente getClienteLogueado(){ return UserSession.getInstance().getCliente(); }
+    public Cliente getClienteLogueado(){ return UserSession.getInstance().getCliente(); }
 
     public void logout(){ UserSession.getInstance().logout(); }
 
