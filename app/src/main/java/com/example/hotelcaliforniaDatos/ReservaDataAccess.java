@@ -1,5 +1,6 @@
 package com.example.hotelcaliforniaDatos;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -104,7 +105,22 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
 
     @Override
     public void create(Reserva entidad) {
+        //"habitacionId", "clienteId", "chechIn", "checkOut", "notificadoAlCliente", "anulada","pagada"
+        //Creamos el registro a insertar como objeto ContentValues
+        ContentValues nuevoRegistro = new ContentValues();
+        nuevoRegistro.put("habitacionId", entidad.getHabitacion().getId());
+        nuevoRegistro.put("clienteId", entidad.getCliente().getId());
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        nuevoRegistro.put("chechIn", formatoFecha.format(entidad.getCheckIn()));
+        nuevoRegistro.put("checkOut", formatoFecha.format(entidad.getCheckOut()));
+        nuevoRegistro.put("notificadoAlCliente", entidad.isNotificadoAlCliente());
+        nuevoRegistro.put("anulada", entidad.isAnulada());
+        nuevoRegistro.put("pagada", entidad.isPagada());
 
+        if (db != null){
+            //Insertamos el registro en la base de datos
+            db.insert("Reserva", null, nuevoRegistro);
+        }
     }
 
     @Override
