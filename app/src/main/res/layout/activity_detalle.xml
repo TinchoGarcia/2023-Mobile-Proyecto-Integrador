@@ -67,8 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100sp"
-            android:layout_marginTop="240sp"
-            android:text="Exclusivo - Fin de Semana" />
+            android:layout_marginTop="240sp" />
 
         <TextView
             android:id="@+id/precioText"

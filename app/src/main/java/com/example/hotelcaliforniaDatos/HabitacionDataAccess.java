@@ -4,12 +4,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.hotelcaliforniaModelo.Cliente;
 import com.example.hotelcaliforniaModelo.Habitacion;
 
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class HabitacionDataAccess implements IReadableDataAccess<Habitacion> {
     SQLiteDatabase db;
@@ -24,8 +21,8 @@ public class HabitacionDataAccess implements IReadableDataAccess<Habitacion> {
             String[] campos = new String[] {
                     "habitacionId", "numero", "precio", "descripcion", "tipoHabitacion"
             };
-            //String[] args = new String[] {String.valueOf(id)};
-            Cursor c = db.query("Habitacion", campos, "habitacionId = ?", null, null, null, null);
+            String[] args = new String[] {String.valueOf(id)};
+            Cursor c = db.query("Habitacion", campos, "habitacionId = ?", args, null, null, null);
 
             while (c.moveToNext()) {
                 habitacion.setId(id);

@@ -19,18 +19,19 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class Tarjeta extends AppCompatActivity {
 
-
+    int reservaActualId;
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tarjeta);
 
+        // Abrimos el intenet con el dato de la reserva id
+        Intent intenet = getIntent();
+        reservaActualId = intenet.getIntExtra(Reservas.RESERVA, 0);
+
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
-
-
-
 
         EditText codSeguridadInput = findViewById(R.id.codSeguridadInput);
 
@@ -106,7 +107,6 @@ public class Tarjeta extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 }
-
                 return false;
             }
         });
@@ -116,7 +116,6 @@ public class Tarjeta extends AppCompatActivity {
         Intent intent = new Intent(this, Detalle.class);
         finish();
     }
-
 
     public void notificaciones (View view){
         String mensaje = "¡Reserva confirmada con éxito!";

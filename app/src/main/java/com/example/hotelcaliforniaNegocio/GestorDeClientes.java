@@ -8,33 +8,14 @@ import com.example.hotelcaliforniaModelo.Cliente;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class GestorDeClientes {
-    public final String KEY_ID_CLIENTE = "id";
-    public final String KEY_USUARIO = "usuario";
-    public final String KEY_EMAIL = "email";
-    public final String KEY_PASSWORD = "password";
-
     IWritableDataAccess<Cliente> clienteDA;
 
     public GestorDeClientes(Context context) {
         clienteDA = new ClienteDataAccess(context);
-    }
-
-    public Map<String, String> getDatosClienteLogueado(){
-        Cliente clienteLogueado = UserSession.getInstance().getCliente();
-
-        Map<String, String> datosCliente = new HashMap<>();
-        datosCliente.put(KEY_ID_CLIENTE, String.valueOf(clienteLogueado.getId()));
-        datosCliente.put(KEY_USUARIO, String.valueOf(clienteLogueado.getUsuario()));
-        datosCliente.put(KEY_EMAIL, String.valueOf(clienteLogueado.getEmail()));
-        datosCliente.put(KEY_PASSWORD, String.valueOf(clienteLogueado.getPassword()));
-
-        return datosCliente;
     }
 
     public Cliente getClienteLogueado(){ return UserSession.getInstance().getCliente(); }
