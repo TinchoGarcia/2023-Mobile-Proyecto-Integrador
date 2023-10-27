@@ -80,6 +80,7 @@ public class Home extends AppCompatActivity {
         }
 
 
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override  //barra de navegación
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
