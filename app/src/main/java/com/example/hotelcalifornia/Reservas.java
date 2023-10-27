@@ -136,7 +136,7 @@ public class Reservas extends AppCompatActivity {
         textViewCheckout.setText(fechaCheckout);
         textViewTipoHabitacion.setText("Habitacion " + tipoHabitacion);
         float precioTotal = gestorDeReservas.calculoPrecio(reservaMostrandose.getCheckIn(), reservaMostrandose.getCheckOut(), reservaMostrandose.getHabitacion().getHabPrecio());
-        textViewMontoTotal.setText(String.valueOf(precioTotal ));
+        textViewMontoTotal.setText(String.valueOf((int) precioTotal ));
 
         actualizarVisualizacionSegunElEstadoDe(reservaMostrandose);
     }

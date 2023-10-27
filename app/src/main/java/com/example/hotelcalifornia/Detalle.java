@@ -101,7 +101,7 @@ public class Detalle extends AppCompatActivity {
 
          float precioTotal = obtenerPrecioTotal(reserva);
 
-         textPrecioTotal.setText(String.valueOf(precioTotal));
+         textPrecioTotal.setText(String.valueOf((int)precioTotal));
     }
 
 }

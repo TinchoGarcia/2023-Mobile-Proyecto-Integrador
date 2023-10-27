@@ -41,7 +41,7 @@ public class Tarjeta extends AppCompatActivity {
         gestorReservas = new GestorDeReservas(this);
         Reserva re = gestorReservas.obtenerReserva(reservaActualId);
         textoPrecio = findViewById(R.id.totalAPagar);
-        textoPrecio.setText("total a pagar: $" + String.valueOf(precio));
+        textoPrecio.setText("total a pagar: $" + String.valueOf((int)precio));
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
