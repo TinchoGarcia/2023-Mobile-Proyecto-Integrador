@@ -14,12 +14,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.hotelcaliforniaModelo.Cliente;
 import com.example.hotelcaliforniaNegocio.GestorDeClientes;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-
-import java.util.Map;
-
 
 public class Edition extends AppCompatActivity {
     private static final String TAG_ERROR_EDICION = "Editar perfil error";
@@ -98,11 +96,11 @@ public class Edition extends AppCompatActivity {
         passwordEditar = findViewById(R.id.editarPassword);
 
         // Obtenemos los datos del cliente logueado
-        Map<String, String> clienteLogueado = gestorDeClientes.getDatosClienteLogueado();
+        Cliente clienteLogueado = gestorDeClientes.getClienteLogueado();
 
-        usuarioEditar.setText(clienteLogueado.get(gestorDeClientes.KEY_USUARIO));
-        emailEditar.setText(clienteLogueado.get(gestorDeClientes.KEY_EMAIL));
-        passwordEditar.setText(clienteLogueado.get(gestorDeClientes.KEY_PASSWORD));
+        usuarioEditar.setText(clienteLogueado.getUsuario());
+        emailEditar.setText(clienteLogueado.getEmail());
+        passwordEditar.setText(clienteLogueado.getPassword());
     }
 
     public void editProfile(View view) {
@@ -152,7 +150,7 @@ public class Edition extends AppCompatActivity {
     }
 
     private boolean modificoEmail(String email) {
-        String emailOriginal = gestorDeClientes.getDatosClienteLogueado().get(gestorDeClientes.KEY_EMAIL);
+        String emailOriginal = gestorDeClientes.getClienteLogueado().getEmail();
         return !email.equals(emailOriginal);
     }
 

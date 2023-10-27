@@ -7,31 +7,52 @@ import com.example.hotelcaliforniaDatos.ReservaDataAccess;
 import com.example.hotelcaliforniaModelo.Reserva;
 
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.Date;
 
 public class GestorDeReservas {
     IWritableDataAccess<Reserva> reservaDA;
     GestorDeClientes gestorDeClientes;
 
-    public GestorDeReservas(Context context){
+    public GestorDeReservas(Context context) {
         reservaDA = new ReservaDataAccess(context);
         gestorDeClientes = new GestorDeClientes(context);
     }
 
     public boolean usuarioTieneReservas() {
-        return !obtenerReservasClienteLogueado().isEmpty();
+        return !obtenerReservasNoAnuladasClienteLogueado().isEmpty();
     }
 
-    public Reserva obtenerReserva(int reservaIndex) {
-        return (0 <= reservaIndex && reservaIndex <= obtenerReservasClienteLogueado().size())
-                ? obtenerReservasClienteLogueado().get(reservaIndex)
+    public Reserva obtenerReservaParaMostrar(int reservaIndex) {
+        ArrayList<Reserva> reservas = obtenerReservasNoAnuladasClienteLogueado();
+        int totalReservas = reservas.size();
+        int indiceInverso = totalReservas - 1 - reservaIndex;
+
+        return (0 <= indiceInverso && indiceInverso < totalReservas)
+                ? reservas.get(indiceInverso)
                 : null;
     }
 
-    public ArrayList<Reserva> obtenerReservasClienteLogueado() {
-        String idClienteString = gestorDeClientes.getDatosClienteLogueado().get(gestorDeClientes.KEY_ID_CLIENTE);
-        int idCliente = Integer.parseInt(Objects.requireNonNull(idClienteString));
+    public ArrayList<Reserva> obtenerReservasNoAnuladasClienteLogueado() {
+        int idCliente = gestorDeClientes.getClienteLogueado().getId();
         ArrayList<Reserva> reservas = ((ReservaDataAccess) reservaDA).getAll(idCliente);
+        reservas.removeIf(Reserva::isAnulada);
         return reservas;
+    }
+
+    public float calculoPrecio(Date fechaIngreso, Date fechaEgreso, float precioHab) {
+        long milisegundosIngreso = fechaIngreso.getTime();
+        long milisegundosEgreso = fechaEgreso.getTime();
+        long diferenciaMilisegundos = milisegundosEgreso - milisegundosIngreso;
+        long diferenciaDias = diferenciaMilisegundos / (24 * 60 * 60 * 1000);
+        float precioTotal = precioHab * diferenciaDias;
+        return precioTotal;
+    }
+
+    public Reserva obtenerReserva(int reservaId) {
+        return reservaDA.getById(reservaId);
+    }
+
+    public void modificarReserva(Reserva re) {
+        reservaDA.update(re);
     }
 }

@@ -193,16 +193,12 @@
         </androidx.cardview.widget.CardView>
 
 
-
-
-
         <TextView
             android:id="@+id/totalAPagar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15sp"
             android:layout_marginTop="200sp"
-            android:text="Total a Pagar: $52.000"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />

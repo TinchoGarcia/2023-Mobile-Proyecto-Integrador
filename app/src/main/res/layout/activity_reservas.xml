@@ -45,7 +45,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginTop="74dp"
-        android:text="TextView"
         android:textColor="@color/rojo"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,32 +64,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textCheckIn" />
 
     <Button
-        android:id="@+id/buttonModificar"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/naranja"
-        android:contentDescription="@string/btnMod"
-        android:gravity="center"
-        android:onClick="modificar"
-        android:text="@string/modificar"
-        android:textAlignment="center"
-        android:textColorLink="@color/clear"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonEliminar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textMontoTotal"
-        tools:ignore="TextContrastCheck" />
-
-    <Button
         android:id="@+id/buttonPagar"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="55dp"
         android:backgroundTint="@color/naranja"
         android:contentDescription="@string/btnPag"
         android:onClick="pago"
@@ -115,10 +94,10 @@
 
     <Button
         android:id="@+id/buttonEliminar"
-        android:layout_width="0dp"
+        android:layout_width="104dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/gris"
         android:contentDescription="@string/btnEli"
@@ -127,9 +106,8 @@
         android:textColor="@color/white"
         android:textColorLink="@color/clear"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonModificar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonModificar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonPagar"
         tools:ignore="TextContrastCheck" />
 
@@ -186,10 +164,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="40dp"
+        android:contentDescription="@string/boton_next_reserva"
         android:rotation="-90"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/boton_next_reserva"
         app:srcCompat="@android:drawable/ic_menu_more" />
 
     <ImageButton
@@ -198,10 +176,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="40dp"
+        android:contentDescription="@string/boton_prev_reserva"
         android:rotation="90"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/boton_prev_reserva"
         app:srcCompat="@android:drawable/ic_menu_more" />
+
+    <TextView
+        android:id="@+id/textReservaVencida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="55dp"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/azul"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEliminar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
