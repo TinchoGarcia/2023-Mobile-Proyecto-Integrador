@@ -135,8 +135,8 @@ public class Reservas extends AppCompatActivity {
         textViewCheckin.setText(fechaCheckin);
         textViewCheckout.setText(fechaCheckout);
         textViewTipoHabitacion.setText("Habitacion " + tipoHabitacion);
-        // TODO: Cambiar por valor que da la función de Fer
-        textViewMontoTotal.setText(String.valueOf(reservaMostrandose.getHabitacion().getHabPrecio()) + "FER");
+        float precioTotal = gestorDeReservas.calculoPrecio(reservaMostrandose.getCheckIn(), reservaMostrandose.getCheckOut(), reservaMostrandose.getHabitacion().getHabPrecio());
+        textViewMontoTotal.setText("$" + String.valueOf((int) precioTotal ));
 
         actualizarVisualizacionSegunElEstadoDe(reservaMostrandose);
     }
@@ -228,6 +228,8 @@ public class Reservas extends AppCompatActivity {
     } //flechita para volver
 
     public void eliminar(View view) {
+        reservaMostrandose.setAnulada(true);
+        gestorDeReservas.modificarReserva(reservaMostrandose);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("¿Esta seguro que desea eliminar la reserva?");
         builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {

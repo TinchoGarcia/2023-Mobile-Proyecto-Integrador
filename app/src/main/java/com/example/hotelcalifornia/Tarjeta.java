@@ -12,13 +12,23 @@ import android.text.Spanned;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.example.hotelcaliforniaModelo.Reserva;
+import com.example.hotelcaliforniaNegocio.GestorDeReservas;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class Tarjeta extends AppCompatActivity {
 
+    GestorDeReservas gestorReservas;
+
+    TextView textoPrecio;
+
+    Reserva re;
+    Button botonReservar;
     int reservaActualId;
     BottomNavigationView bottomNavigationView;
     @Override
@@ -28,7 +38,17 @@ public class Tarjeta extends AppCompatActivity {
 
         // Abrimos el intenet con el dato de la reserva id
         Intent intenet = getIntent();
+        float precio = getIntent().getFloatExtra(Detalle.PRECIOTOTAL, 0);
         reservaActualId = intenet.getIntExtra(Reservas.RESERVA, 0);
+
+        gestorReservas = new GestorDeReservas(this);
+        re = gestorReservas.obtenerReserva(reservaActualId);
+        textoPrecio = findViewById(R.id.totalAPagar);
+        textoPrecio.setText("total a pagar: $" + String.valueOf((int)precio));
+
+        botonReservar = findViewById(R.id.confirmarPagoButton);
+
+
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
@@ -118,10 +138,15 @@ public class Tarjeta extends AppCompatActivity {
     }
 
     public void notificaciones (View view){
+        re.setPagada(true);
+        gestorReservas.modificarReserva(re);
         String mensaje = "¡Reserva confirmada con éxito!";
         Intent intent = new Intent(this, NotificationActivity.class);
         intent.putExtra("mensaje", mensaje);
         startActivity(intent);
 
+
     }
+
+
 }

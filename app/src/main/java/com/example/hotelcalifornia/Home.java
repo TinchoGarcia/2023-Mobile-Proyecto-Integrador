@@ -37,6 +37,9 @@ public class Home extends AppCompatActivity {
     Button reservarButton;
     ReservaDataAccess reservaDA;
 
+    RadioGroup radioGroup;
+    ArrayList<Habitacion> habitaciones; // Declaración de la lista de habitaciones
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,27 +48,38 @@ public class Home extends AppCompatActivity {
 
         reservaDA = new ReservaDataAccess(this);
         reservarButton = findViewById(R.id.reservarButton);
-
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.menu);
+        radioGroup = findViewById(R.id.RadioGroup);
 
         fechaIng = findViewById(R.id.fechaIng);
         fechaSal = findViewById(R.id.fechaSal);
-        RadioGroup radioGroup = findViewById(R.id.RadioGroup);
 
         // Crear una instancia de HabitacionDataAccess
         HabitacionDataAccess habitacionDataAccess = new HabitacionDataAccess(this);
 
-        // Obtener todas las habitaciones desde la base de datos
-        ArrayList<Habitacion> habitaciones = habitacionDataAccess.getAll();
+        // Obtener todas las habitaciones desde la base de datos y asignarlas a la variable miembro habitaciones
+        habitaciones = habitacionDataAccess.getAll();
+        // Inicializa bottomNavigationView
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         // Configurar el texto de los RadioButtons con nombre y precio
         for (int i = 0; i < habitaciones.size(); i++) {
             RadioButton radioButton = (RadioButton) radioGroup.getChildAt(i);
             Habitacion habitacion = habitaciones.get(i);
-            String textoRadioButton = habitacion.getHabTipo() + " - $ " + (int)habitacion.getHabPrecio();
+            String textoRadioButton = habitacion.getHabTipo() + " - $ " + (int) habitacion.getHabPrecio();
             radioButton.setText(textoRadioButton);
         }
+        // Configura el OnItemSelectedListener solo si bottomNavigationView no es nulo
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    // Tu código para manejar la navegación
+                    return true;
+                }
+            });
+        }
+
+
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override  //barra de navegación
@@ -147,7 +161,7 @@ public class Home extends AppCompatActivity {
     //  crearReservaDe(int idHabitacion) para que sea más claro y legible el codigo
     //  y eliminar de aca el ReservaDataAccess y poner GestorDeReservas en su lugar
     public void reservar(View view){
-
+        // TODO : Agregar validaciones
         GestorDeClientes gestordeclientes =  new GestorDeClientes(this);
         Reserva reserva = new Reserva();
 
@@ -167,11 +181,20 @@ public class Home extends AppCompatActivity {
         Cliente cliente = gestordeclientes.getClienteLogueado();
         reserva.setCliente(cliente);
 
-        // TODO = Obtener habitaciones de radiobutton
-        Habitacion habitacion = new Habitacion();
-        habitacion.setId(22);
-        habitacion.setHabPrecio(657657);
-        reserva.setHabitacion(habitacion);
+        // Obtiene el ID de la habitación seleccionada desde el RadioGroup
+        int selectedRadioButtonId = radioGroup.getCheckedRadioButtonId();
+
+        // Verifica si se ha seleccionado un RadioButton válido
+        if (selectedRadioButtonId != -1) {
+
+            int selectedPosition = radioGroup.indexOfChild(findViewById(selectedRadioButtonId));
+
+                Habitacion habitacionSeleccionada = habitaciones.get(selectedPosition);
+                reserva.setHabitacion(habitacionSeleccionada);
+
+        } else {
+            // comentario de prueba
+        }
 
         reserva.setAnulada(false);
         reserva.setPagada(false);
