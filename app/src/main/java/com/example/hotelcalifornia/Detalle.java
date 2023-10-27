@@ -96,7 +96,7 @@ public class Detalle extends AppCompatActivity {
 
     private void mostrarDatosReserva() {
         Habitacion habitacion = reserva.getHabitacion();
-        String textoReserva = "Habitación " + habitacion.getHabTipo() + "\r\n" + "aqui va la descripcion" + habitacion.getHabDescripcion();
+        String textoReserva = "Habitación " + habitacion.getHabTipo() + "\r\n" + habitacion.getHabDescripcion();
         textDetalleHabitacion.setText(textoReserva);
 
          float precioTotal = obtenerPrecioTotal(reserva);
