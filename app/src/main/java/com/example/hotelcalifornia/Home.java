@@ -193,7 +193,7 @@ public class Home extends AppCompatActivity {
                 reserva.setHabitacion(habitacionSeleccionada);
 
         } else {
-            //TODO completar campos correctamente
+            //TODO completar
         }
 
         reserva.setAnulada(false);
