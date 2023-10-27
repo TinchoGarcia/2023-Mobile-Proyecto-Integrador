@@ -193,7 +193,7 @@ public class Home extends AppCompatActivity {
                 reserva.setHabitacion(habitacionSeleccionada);
 
         } else {
-
+            // comentario de prueba
         }
 
         reserva.setAnulada(false);
