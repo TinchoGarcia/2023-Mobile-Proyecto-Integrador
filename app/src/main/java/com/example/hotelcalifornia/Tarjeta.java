@@ -13,11 +13,18 @@ import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.example.hotelcaliforniaModelo.Reserva;
+import com.example.hotelcaliforniaNegocio.GestorDeReservas;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class Tarjeta extends AppCompatActivity {
+
+    GestorDeReservas gestorReservas;
+
+    TextView textoPrecio;
 
     int reservaActualId;
     BottomNavigationView bottomNavigationView;
@@ -28,7 +35,13 @@ public class Tarjeta extends AppCompatActivity {
 
         // Abrimos el intenet con el dato de la reserva id
         Intent intenet = getIntent();
+        float precio = getIntent().getFloatExtra(Detalle.PRECIOTOTAL, 0);
         reservaActualId = intenet.getIntExtra(Reservas.RESERVA, 0);
+
+        gestorReservas = new GestorDeReservas(this);
+        Reserva re = gestorReservas.obtenerReserva(reservaActualId);
+        textoPrecio = findViewById(R.id.totalAPagar);
+        textoPrecio.setText("total a pagar: $" + (int)precio);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);

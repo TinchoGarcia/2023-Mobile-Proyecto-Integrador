@@ -19,11 +19,17 @@ public class Detalle extends AppCompatActivity {
 
     TextView textPrecioTotal, textDetalleHabitacion;
     int reservaActualId;
+
+    GestorDeReservas gestorDeReservas;
+    Reserva reserva;
+
+    public static final String PRECIOTOTAL = "pTotal";
     BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
+
 
         // Inicializamos elementos visuales:
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -34,6 +40,9 @@ public class Detalle extends AppCompatActivity {
         // Obtenemos el id de la Reserva que selecciono el cliente
         Intent intenetReserva = getIntent();
         reservaActualId = intenetReserva.getIntExtra(Reservas.RESERVA, 0);
+
+        gestorDeReservas = new GestorDeReservas(this);
+        reserva = gestorDeReservas.obtenerReserva(reservaActualId);
 
         mostrarDatosReserva();
 
@@ -66,10 +75,18 @@ public class Detalle extends AppCompatActivity {
 
     }
 
+
     public void realizarPago(View view) {
         Intent intent = new Intent(this, Tarjeta.class);
         intent.putExtra(Reservas.RESERVA, reservaActualId);
+        float precioTotal = obtenerPrecioTotal(reserva);
+        intent.putExtra( PRECIOTOTAL , precioTotal);
         startActivity(intent);
+    }
+
+    private float obtenerPrecioTotal(Reserva res ) {
+        float precioTotal = gestorDeReservas.calculoPrecio(res.getCheckIn(), res.getCheckOut(), res.getHabitacion().getHabPrecio());
+        return precioTotal;
     }
 
     public void volverAReservas(View view) {
@@ -78,15 +95,13 @@ public class Detalle extends AppCompatActivity {
     }
 
     private void mostrarDatosReserva() {
-        GestorDeReservas gestorDeReservas = new GestorDeReservas(this);
-        Reserva reserva = gestorDeReservas.obtenerReserva(reservaActualId);
         Habitacion habitacion = reserva.getHabitacion();
         String textoReserva = "Habitación " + habitacion.getHabTipo() + "\r\n" + "aqui va la descripcion" + habitacion.getHabDescripcion();
         textDetalleHabitacion.setText(textoReserva);
 
-        // TODO: Abrir intent con el id de la reserva y completar
-        // float precioTotal = gestorDeReservas.calculoPrecio()
-        // textPrecioTotal.setText(precioTotal);
+         float precioTotal = obtenerPrecioTotal(reserva);
+
+         textPrecioTotal.setText((int) precioTotal);
     }
 
 }

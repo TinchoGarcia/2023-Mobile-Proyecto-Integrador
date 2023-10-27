@@ -135,8 +135,8 @@ public class Reservas extends AppCompatActivity {
         textViewCheckin.setText(fechaCheckin);
         textViewCheckout.setText(fechaCheckout);
         textViewTipoHabitacion.setText("Habitacion " + tipoHabitacion);
-        // TODO: Cambiar por valor que da la función de Fer
-        textViewMontoTotal.setText(String.valueOf(reservaMostrandose.getHabitacion().getHabPrecio()) + "FER");
+        float precioTotal = gestorDeReservas.calculoPrecio(reservaMostrandose.getCheckIn(), reservaMostrandose.getCheckOut(), reservaMostrandose.getHabitacion().getHabPrecio());
+        textViewMontoTotal.setText(String.valueOf(precioTotal ));
 
         actualizarVisualizacionSegunElEstadoDe(reservaMostrandose);
     }
