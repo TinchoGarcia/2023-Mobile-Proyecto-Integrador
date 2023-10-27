@@ -93,6 +93,7 @@ public class Home extends AppCompatActivity {
         });
     }
     public void fechaIngreso (View view){
+        fechaSal.setText("");
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
