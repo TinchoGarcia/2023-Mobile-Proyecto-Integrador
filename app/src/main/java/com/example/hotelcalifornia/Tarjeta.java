@@ -24,13 +24,11 @@ import com.google.android.material.navigation.NavigationBarView;
 public class Tarjeta extends AppCompatActivity {
 
     GestorDeReservas gestorReservas;
-
     TextView textoPrecio;
-
     Reserva re;
     Button botonReservar;
-    int reservaActualId;
     BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +37,7 @@ public class Tarjeta extends AppCompatActivity {
         // Abrimos el intenet con el dato de la reserva id
         Intent intenet = getIntent();
         float precio = getIntent().getFloatExtra(Detalle.PRECIOTOTAL, 0);
-        reservaActualId = intenet.getIntExtra(Reservas.RESERVA, 0);
+        int reservaActualId = intenet.getIntExtra(Reservas.RESERVA, 0);
 
         gestorReservas = new GestorDeReservas(this);
         re = gestorReservas.obtenerReserva(reservaActualId);
@@ -47,8 +45,6 @@ public class Tarjeta extends AppCompatActivity {
         textoPrecio.setText("total a pagar: $" + String.valueOf((int)precio));
 
         botonReservar = findViewById(R.id.confirmarPagoButton);
-
-
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
@@ -144,9 +140,6 @@ public class Tarjeta extends AppCompatActivity {
         Intent intent = new Intent(this, NotificationActivity.class);
         intent.putExtra("mensaje", mensaje);
         startActivity(intent);
-
-
     }
-
 
 }

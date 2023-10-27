@@ -241,14 +241,13 @@ public class Reservas extends AppCompatActivity {
     } //flechita para volver
 
     public void eliminar(View view) {
-        reservaMostrandose.setAnulada(true);
-        gestorDeReservas.modificarReserva(reservaMostrandose);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("¿Esta seguro que desea eliminar la reserva?");
         builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // TODO: Completar con un update a la Db de modificar como anulada = true la reserva actual
+                reservaMostrandose.setAnulada(true);
+                gestorDeReservas.modificarReserva(reservaMostrandose);
                 Intent intent = new Intent(getApplicationContext(), Home.class);
                 startActivity(intent);
             }
