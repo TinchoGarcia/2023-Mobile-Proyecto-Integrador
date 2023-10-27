@@ -12,6 +12,7 @@ import android.text.Spanned;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -26,6 +27,8 @@ public class Tarjeta extends AppCompatActivity {
 
     TextView textoPrecio;
 
+    Reserva re;
+    Button botonReservar;
     int reservaActualId;
     BottomNavigationView bottomNavigationView;
     @Override
@@ -39,9 +42,13 @@ public class Tarjeta extends AppCompatActivity {
         reservaActualId = intenet.getIntExtra(Reservas.RESERVA, 0);
 
         gestorReservas = new GestorDeReservas(this);
-        Reserva re = gestorReservas.obtenerReserva(reservaActualId);
+        re = gestorReservas.obtenerReserva(reservaActualId);
         textoPrecio = findViewById(R.id.totalAPagar);
         textoPrecio.setText("total a pagar: $" + String.valueOf((int)precio));
+
+        botonReservar = findViewById(R.id.confirmarPagoButton);
+
+
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
@@ -131,10 +138,15 @@ public class Tarjeta extends AppCompatActivity {
     }
 
     public void notificaciones (View view){
+        re.setPagada(true);
+        gestorReservas.modificarReserva(re);
         String mensaje = "¡Reserva confirmada con éxito!";
         Intent intent = new Intent(this, NotificationActivity.class);
         intent.putExtra("mensaje", mensaje);
         startActivity(intent);
 
+
     }
+
+
 }

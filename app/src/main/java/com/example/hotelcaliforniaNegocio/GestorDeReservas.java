@@ -52,4 +52,7 @@ public class GestorDeReservas {
         return reservaDA.getById(reservaId);
     }
 
+    public void modificarReserva(Reserva re) {
+        reservaDA.update(re);
+    }
 }
