@@ -1,17 +1,12 @@
 package com.example.hotelcalifornia;
 
-
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +14,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.example.hotelcaliforniaDatos.HabitacionDataAccess;
 import com.example.hotelcaliforniaDatos.ReservaDataAccess;
@@ -33,20 +27,16 @@ import com.google.android.material.navigation.NavigationBarView;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-
 public class Home extends AppCompatActivity {
-
-
     EditText fechaIng, fechaSal; //para el calendario
     private DatePickerDialog.OnDateSetListener dateSetListener;
     BottomNavigationView bottomNavigationView;
-
     Button reservarButton;
     ReservaDataAccess reservaDA;
-
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -74,11 +64,9 @@ public class Home extends AppCompatActivity {
         for (int i = 0; i < habitaciones.size(); i++) {
             RadioButton radioButton = (RadioButton) radioGroup.getChildAt(i);
             Habitacion habitacion = habitaciones.get(i);
-            String textoRadioButton = habitacion.getHabTipo() + " - $" + habitacion.getHabPrecio();
+            String textoRadioButton = habitacion.getHabTipo() + " - $ " + (double)habitacion.getHabPrecio();
             radioButton.setText(textoRadioButton);
         }
-
-
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override  //barra de navegación
@@ -108,25 +96,57 @@ public class Home extends AppCompatActivity {
         });
     }
     public void fechaIngreso (View view){
-        DatePickerDialog ing=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog ing = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int DayOfMonth) {
-                fechaIng.setText(DayOfMonth+"/"+(month+1)+"/"+year);
+            public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                fechaIng.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
             }
-        },2023, 9,1 );
+        }, year, month, day);
+
+        // Establecer la fecha mínima permitida como HOY
+        calendar.set(year, month, day);
+        ing.getDatePicker().setMinDate(calendar.getTimeInMillis());
+
         ing.show();
     }
 
-    public void fechaSalida (View view){
-        DatePickerDialog sal=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int DayOfMonth) {
-                fechaSal.setText(DayOfMonth+"/"+(month+1)+"/"+year);
-            }
-        },2023, 9,1 );
-        sal.show();
+    public void fechaSalida (View view) {
+        String fechaIngresoString = Utils.getStringFromEditText(fechaIng);
+
+        if (!fechaIngresoString.isEmpty()) {
+            String[] partesFecha = fechaIngresoString.split("/");
+            int year = Integer.parseInt(partesFecha[2]);
+            int month = Integer.parseInt(partesFecha[1]) - 1;
+            int day = Integer.parseInt(partesFecha[0]);
+
+            Calendar fechaIngresoCal = Calendar.getInstance();
+            fechaIngresoCal.set(year, month, day);
+            fechaIngresoCal.add(Calendar.DAY_OF_MONTH, 1);
+
+            int egresoYear = fechaIngresoCal.get(Calendar.YEAR);
+            int egresoMonth = fechaIngresoCal.get(Calendar.MONTH);
+            int egresoDay = fechaIngresoCal.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog sal = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker datePicker, int year, int month, int DayOfMonth) {
+                    fechaSal.setText(DayOfMonth + "/" + (month + 1) + "/" + year);
+                }
+            }, egresoYear, egresoMonth, egresoDay);
+
+            sal.getDatePicker().setMinDate(fechaIngresoCal.getTimeInMillis());
+            sal.show();
+        }
     }
 
+    // TODO: Llevar el codigo de aca a GestorDeReservas adentro de un método
+    //  crearReservaDe(int idHabitacion) para que sea más claro y legible el codigo
+    //  y eliminar de aca el ReservaDataAccess y poner GestorDeReservas en su lugar
     public void reservar(View view){
 
         GestorDeClientes gestordeclientes =  new GestorDeClientes(this);
@@ -142,28 +162,26 @@ public class Home extends AppCompatActivity {
         } catch (ParseException e) {
 
         }
-
         reserva.setCheckIn(fechaIngreso);
         reserva.setCheckOut(fechaEgreso);
-
 
         Cliente cliente = gestordeclientes.getClienteLogueado();
         reserva.setCliente(cliente);
 
         // TODO = Obtener habitaciones de radiobutton
-
         Habitacion habitacion = new Habitacion();
         habitacion.setId(22);
         habitacion.setHabPrecio(657657);
         reserva.setHabitacion(habitacion);
+
         reserva.setAnulada(false);
         reserva.setPagada(false);
         reserva.setNotificadoAlCliente(false);
+
         reservaDA.create(reserva);
+
         Intent reservas=new Intent(this, Reservas.class);
-        reservas.putExtra("idhabitacion", "habitacionId");
         startActivity(reservas);
     } //lleva a reservas
-
 
 }
