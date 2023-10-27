@@ -161,7 +161,7 @@ public class Home extends AppCompatActivity {
     //  crearReservaDe(int idHabitacion) para que sea más claro y legible el codigo
     //  y eliminar de aca el ReservaDataAccess y poner GestorDeReservas en su lugar
     public void reservar(View view){
-
+        // TODO : Agregar validaciones
         GestorDeClientes gestordeclientes =  new GestorDeClientes(this);
         Reserva reserva = new Reserva();
 
@@ -186,21 +186,14 @@ public class Home extends AppCompatActivity {
 
         // Verifica si se ha seleccionado un RadioButton válido
         if (selectedRadioButtonId != -1) {
-            // Obtén la posición del RadioButton seleccionado en el grupo
+
             int selectedPosition = radioGroup.indexOfChild(findViewById(selectedRadioButtonId));
 
-            // Verifica si la posición es válida y obtén la habitación correspondiente
-            if (selectedPosition >= 0 && selectedPosition < habitaciones.size()) {
                 Habitacion habitacionSeleccionada = habitaciones.get(selectedPosition);
-
-                // Obtén la ID de la habitación seleccionada y configúrala en el objeto reserva
-                int habitacionId = habitacionSeleccionada.getId();
                 reserva.setHabitacion(habitacionSeleccionada);
-            } else {
-                // Manejar caso en el que no se ha seleccionado un RadioButton válido
-            }
+
         } else {
-            // Manejar caso en el que no se ha seleccionado un RadioButton
+            //TODO completar
         }
 
         reserva.setAnulada(false);
