@@ -185,7 +185,6 @@ public class Home extends AppCompatActivity {
             int selectedPosition = radioGroup.indexOfChild(findViewById(selectedRadioButtonId));
             Habitacion habitacionSeleccionada = habitaciones.get(selectedPosition);
             reserva.setHabitacion(habitacionSeleccionada);
-
             reserva.setAnulada(false);
             reserva.setPagada(false);
             reserva.setNotificadoAlCliente(false);
