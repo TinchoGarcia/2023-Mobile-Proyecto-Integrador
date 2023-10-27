@@ -38,6 +38,7 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
             Cursor c = db.query("Reserva", campos, "reservaId = ?", args, null, null, null);
 
             if (c.moveToFirst()) { // Verifica que exista al menos un registro.
+                reserva.setId(id);
 
                 int habitacionId = c.getInt(0);
                 reserva.setHabitacion(habitacionDA.getById(habitacionId));
