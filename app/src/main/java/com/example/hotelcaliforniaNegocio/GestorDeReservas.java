@@ -23,8 +23,12 @@ public class GestorDeReservas {
     }
 
     public Reserva obtenerReservaParaMostrar(int reservaIndex) {
-        return (0 <= reservaIndex && reservaIndex <= obtenerReservasNoAnuladasClienteLogueado().size())
-                ? obtenerReservasNoAnuladasClienteLogueado().get(reservaIndex)
+        ArrayList<Reserva> reservas = obtenerReservasNoAnuladasClienteLogueado();
+        int totalReservas = reservas.size();
+        int indiceInverso = totalReservas - 1 - reservaIndex;
+
+        return (0 <= indiceInverso && indiceInverso < totalReservas)
+                ? reservas.get(indiceInverso)
                 : null;
     }
 
@@ -42,6 +46,10 @@ public class GestorDeReservas {
         long diferenciaDias = diferenciaMilisegundos / (24 * 60 * 60 * 1000);
         float precioTotal = precioHab * diferenciaDias;
         return precioTotal;
+    }
+
+    public Reserva obtenerReserva(int reservaId) {
+        return reservaDA.getById(reservaId);
     }
 
 }

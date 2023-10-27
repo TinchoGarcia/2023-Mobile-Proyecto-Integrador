@@ -34,7 +34,9 @@ public class Reservas extends AppCompatActivity {
     TextView textNoHayReservas, textReservaVencida;
     BottomNavigationView bottomNavigationView;
     GestorDeReservas gestorDeReservas;
+    Reserva reservaMostrandose;
     private int reservaActualIndex = 0;
+    public static final String RESERVA = "RESERVA_ID";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -123,20 +125,20 @@ public class Reservas extends AppCompatActivity {
     }
 
     private void mostrarReserva(int reservaActualIndex) {
-        Reserva reserva = gestorDeReservas.obtenerReservaParaMostrar(reservaActualIndex);
+        reservaMostrandose = gestorDeReservas.obtenerReservaParaMostrar(reservaActualIndex);
         // Seteamos los textos de la info
         SimpleDateFormat formato
                 = new SimpleDateFormat(Utils.FORMATO_FECHA_FORMULARIO, Locale.getDefault());
-        String fechaCheckin = formato.format(reserva.getCheckIn());
-        String fechaCheckout = formato.format(reserva.getCheckOut());
-        String tipoHabitacion = reserva.getHabitacion().getHabTipo();
+        String fechaCheckin = formato.format(reservaMostrandose.getCheckIn());
+        String fechaCheckout = formato.format(reservaMostrandose.getCheckOut());
+        String tipoHabitacion = reservaMostrandose.getHabitacion().getHabTipo();
         textViewCheckin.setText(fechaCheckin);
         textViewCheckout.setText(fechaCheckout);
         textViewTipoHabitacion.setText("Habitacion " + tipoHabitacion);
         // TODO: Cambiar por valor que da la función de Fer
-        textViewMontoTotal.setText(String.valueOf(reserva.getHabitacion().getHabPrecio()) + "FER");
+        textViewMontoTotal.setText(String.valueOf(reservaMostrandose.getHabitacion().getHabPrecio()) + "FER");
 
-        actualizarVisualizacionSegunElEstadoDe(reserva);
+        actualizarVisualizacionSegunElEstadoDe(reservaMostrandose);
     }
 
     private void actualizarVisualizacionSegunElEstadoDe(Reserva reserva) {
@@ -214,8 +216,9 @@ public class Reservas extends AppCompatActivity {
     }
 
     public void pago(View view) {
-        //TODO: Completar el intent con el id de la Reserva para usarla en la vista siguiente
         Intent pagar = new Intent(this, Detalle.class);
+        int reservaId = reservaMostrandose.getId();
+        pagar.putExtra(RESERVA, reservaId);
         startActivity(pagar);
     }
 
@@ -230,8 +233,7 @@ public class Reservas extends AppCompatActivity {
         builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                // TODO: Completar con un update a la Db de modificar como anulada = true la reserva actual:
-                //  Reserva reserva = gestorDeReservas.obtenerReserva(reservaActualIndex);
+                // TODO: Completar con un update a la Db de modificar como anulada = true la reserva actual
                 Intent intent = new Intent(getApplicationContext(), Home.class);
                 startActivity(intent);
             }

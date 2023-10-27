@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.hotelcaliforniaModelo.Cliente;
+import com.example.hotelcaliforniaModelo.Habitacion;
 import com.example.hotelcaliforniaModelo.Reserva;
 
 import java.text.ParseException;
@@ -17,8 +19,8 @@ import java.util.Locale;
 public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
 
     SQLiteDatabase db;
-    HabitacionDataAccess habitacionDA;
-    ClienteDataAccess clienteDA;
+    IReadableDataAccess<Habitacion> habitacionDA;
+    IWritableDataAccess<Cliente> clienteDA;
 
     public ReservaDataAccess(Context context) {
         this.db = HotelSQLiteHelper.getInstance(context).getDatabase();

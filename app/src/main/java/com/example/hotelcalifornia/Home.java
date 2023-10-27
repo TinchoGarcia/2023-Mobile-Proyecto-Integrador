@@ -33,7 +33,6 @@ import java.util.Locale;
 
 public class Home extends AppCompatActivity {
     EditText fechaIng, fechaSal; //para el calendario
-    private DatePickerDialog.OnDateSetListener dateSetListener;
     BottomNavigationView bottomNavigationView;
     Button reservarButton;
     ReservaDataAccess reservaDA;
@@ -64,7 +63,7 @@ public class Home extends AppCompatActivity {
         for (int i = 0; i < habitaciones.size(); i++) {
             RadioButton radioButton = (RadioButton) radioGroup.getChildAt(i);
             Habitacion habitacion = habitaciones.get(i);
-            String textoRadioButton = habitacion.getHabTipo() + " - $ " + (double)habitacion.getHabPrecio();
+            String textoRadioButton = habitacion.getHabTipo() + " - $ " + (int)habitacion.getHabPrecio();
             radioButton.setText(textoRadioButton);
         }
 
