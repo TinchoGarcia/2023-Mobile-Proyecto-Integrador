@@ -14,6 +14,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.example.hotelcaliforniaDatos.HabitacionDataAccess;
 import com.example.hotelcaliforniaDatos.ReservaDataAccess;
@@ -33,6 +34,7 @@ import java.util.Locale;
 
 public class Home extends AppCompatActivity {
     EditText fechaIng, fechaSal; //para el calendario
+    TextView textErrorReservar;
     BottomNavigationView bottomNavigationView;
     Button reservarButton;
     ReservaDataAccess reservaDA;
@@ -54,6 +56,7 @@ public class Home extends AppCompatActivity {
         fechaSal = findViewById(R.id.fechaSal);
         radioGroup = findViewById(R.id.RadioGroup);
         reservarButton = findViewById(R.id.reservarButton);
+        textErrorReservar = findViewById(R.id.textErrorReserva);
 
         // Obtenemos todas las habitaciones para mostrarlas
         HabitacionDataAccess habitacionDataAccess = new HabitacionDataAccess(this);
@@ -146,44 +149,52 @@ public class Home extends AppCompatActivity {
     //  crearReservaDe(int idHabitacion) para que sea más claro y legible el codigo
     //  y eliminar de aca el ReservaDataAccess y poner GestorDeReservas en su lugar
     public void reservar(View view){
-        // TODO : Agregar validaciones
-        GestorDeClientes gestordeclientes =  new GestorDeClientes(this);
-        Reserva reserva = new Reserva();
-
-        SimpleDateFormat formato = new SimpleDateFormat(Utils.FORMATO_FECHA_FORMULARIO, Locale.getDefault());
-        Date fechaIngreso = new Date();
-        Date fechaEgreso = new Date();
-        try {
-            fechaIngreso = formato.parse(fechaIng.getText().toString());
-            fechaEgreso = formato.parse(fechaSal.getText().toString());
-
-        } catch (ParseException e) {
-
-        }
-        reserva.setCheckIn(fechaIngreso);
-        reserva.setCheckOut(fechaEgreso);
-
-        Cliente cliente = gestordeclientes.getClienteLogueado();
-        reserva.setCliente(cliente);
-
-        // Obtiene el ID de la habitación seleccionada desde el RadioGroup
+        String fechaIngresoString = Utils.getStringFromEditText(fechaIng);
+        String fechaEgresoString = Utils.getStringFromEditText(fechaSal);
         int selectedRadioButtonId = radioGroup.getCheckedRadioButtonId();
-        if (selectedRadioButtonId != -1) {
+        // Validaciones
+
+        String[] fechas = new String[] { fechaIngresoString, fechaEgresoString };
+        if (Utils.existeDatoStringVacio(fechas)){
+            textErrorReservar.setText(R.string.mje_error_completar_fechas_reserva);
+        }
+        else if (selectedRadioButtonId == -1){
+            textErrorReservar.setText(R.string.mje_error_select_hab_reserva);
+        }
+        else
+        {
+            GestorDeClientes gestordeclientes = new GestorDeClientes(this);
+            Reserva reserva = new Reserva();
+
+            SimpleDateFormat formato = new SimpleDateFormat(Utils.FORMATO_FECHA_FORMULARIO, Locale.getDefault());
+            Date fechaIngreso = new Date();
+            Date fechaEgreso = new Date();
+            try {
+                fechaIngreso = formato.parse(fechaIng.getText().toString());
+                fechaEgreso = formato.parse(fechaSal.getText().toString());
+
+            } catch (ParseException e) {
+
+            }
+            reserva.setCheckIn(fechaIngreso);
+            reserva.setCheckOut(fechaEgreso);
+
+            Cliente cliente = gestordeclientes.getClienteLogueado();
+            reserva.setCliente(cliente);
+
             int selectedPosition = radioGroup.indexOfChild(findViewById(selectedRadioButtonId));
             Habitacion habitacionSeleccionada = habitaciones.get(selectedPosition);
             reserva.setHabitacion(habitacionSeleccionada);
-        } else {
-            // comentario de prueba
+
+            reserva.setAnulada(false);
+            reserva.setPagada(false);
+            reserva.setNotificadoAlCliente(false);
+
+            reservaDA.create(reserva);
+
+            Intent reservas = new Intent(this, Reservas.class);
+            startActivity(reservas);
         }
-
-        reserva.setAnulada(false);
-        reserva.setPagada(false);
-        reserva.setNotificadoAlCliente(false);
-
-        reservaDA.create(reserva);
-
-        Intent reservas = new Intent(this, Reservas.class);
-        startActivity(reservas);
     } //lleva a reservas
 
 }

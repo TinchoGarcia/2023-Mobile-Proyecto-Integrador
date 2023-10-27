@@ -79,4 +79,6 @@
     <string name="gracias">Esperamos que haya tenido una excelente estadía.</string>
     <string name="reserva_anulada">La reserva ha sido anulada por falta de pago. Genere otra reserva.</string>
     <string name="empty">\"\"</string>
+    <string name="mje_error_completar_fechas_reserva">* Debe completar la Fecha de Ingreso y Salida</string>
+    <string name="mje_error_select_hab_reserva">* Debe seleccionar una habitación para Reservar</string>
 </resources>

@@ -14,17 +14,18 @@
         android:layout_width="161dp"
         android:layout_height="50dp"
         android:layout_marginStart="125dp"
-        android:layout_marginTop="38dp"
         android:layout_marginEnd="125dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@color/naranja"
+        android:checkable="false"
         android:contentDescription="@string/btnR"
         android:gravity="center"
         android:onClick="reservar"
         android:text="@string/reservar"
         android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RadioGroup"
         tools:ignore="TextContrastCheck" />
 
     <EditText
@@ -126,7 +127,7 @@
     <RadioGroup
         android:id="@+id/RadioGroup"
         android:layout_width="291dp"
-        android:layout_height="193dp"
+        android:layout_height="150dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="60dp"
@@ -157,6 +158,20 @@
             android:text="@string/suite"
             android:textAlignment="center" />
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/textErrorReserva"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="50dp"
+        android:textColor="@color/rojo"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RadioGroup" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
