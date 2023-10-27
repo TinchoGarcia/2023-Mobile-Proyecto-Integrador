@@ -132,7 +132,7 @@ public class Reservas extends AppCompatActivity {
         String tipoHabitacion = reserva.getHabitacion().getHabTipo();
         textViewCheckin.setText(fechaCheckin);
         textViewCheckout.setText(fechaCheckout);
-        textViewTipoHabitacion.setText(tipoHabitacion);
+        textViewTipoHabitacion.setText("Habitacion " + tipoHabitacion);
         // TODO: Cambiar por valor que da la función de Fer
         textViewMontoTotal.setText(String.valueOf(reserva.getHabitacion().getHabPrecio()) + "FER");
 

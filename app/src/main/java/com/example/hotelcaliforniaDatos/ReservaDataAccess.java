@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.hotelcaliforniaModelo.Habitacion;
 import com.example.hotelcaliforniaModelo.Reserva;
 
 import java.text.ParseException;
@@ -20,6 +19,7 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
     SQLiteDatabase db;
     HabitacionDataAccess habitacionDA;
     ClienteDataAccess clienteDA;
+
     public ReservaDataAccess(Context context) {
         this.db = HotelSQLiteHelper.getInstance(context).getDatabase();
         habitacionDA = new HabitacionDataAccess(context);
@@ -29,56 +29,46 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
     @Override
     public Reserva getById(int id) {
         Reserva reserva = new Reserva();
-        if(db != null)
-        {
-            String[] campos = new String[] {
-                     "habitacionId", "clienteId", "chechIn", "checkOut", "notificadoAlCliente", "anulada","pagada" };
-            String[] args = new String[]{ String.valueOf(id) };
+        if (db != null) {
+            String[] campos = new String[]{
+                    "habitacionId", "clienteId", "chechIn", "checkOut", "notificadoAlCliente", "anulada", "pagada"};
+            String[] args = new String[]{String.valueOf(id)};
             Cursor c = db.query("Reserva", campos, "reservaId = ?", args, null, null, null);
 
             if (c.moveToFirst()) { // Verifica que exista al menos un registro.
 
+                int habitacionId = c.getInt(0);
+                reserva.setHabitacion(habitacionDA.getById(habitacionId));
 
-                    int habitacionId = c.getInt(0);
-                    // TODO: esto deberia verse asi
-                    // reserva.setHabitacion(habitacionDA.getById(habitacionId));
-                    // Lo harcodeamos por ahora:
-                    Habitacion hab = new Habitacion();
-                    hab.setHabTipo("Simple, hab id = " + String.valueOf(habitacionId));
-                    hab.setHabPrecio(id*1000);
-                    reserva.setHabitacion(hab);
+                int clienteId = c.getInt(1);
+                reserva.setCliente(clienteDA.getById(clienteId));
 
-                    int clienteId = c.getInt(1);
-                    reserva.setCliente(clienteDA.getById(clienteId));
+                String fechaCheckIn = c.getString(2);
+                String fechaCheckOut = c.getString(3);
+                Date checkin, chechout;
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                try {
+                    checkin = formatoFecha.parse(fechaCheckIn);
+                    chechout = formatoFecha.parse(fechaCheckOut);
+                } catch (ParseException ex) {
+                    Log.e("FECHA", ex.getMessage());
+                    checkin = new Date(1900, 1, 1);
+                    chechout = new Date(1900, 2, 2);
+                }
+                reserva.setCheckIn(checkin);
+                reserva.setCheckOut(chechout);
 
-                    String fechaCheckIn = c.getString(2);
-                    String fechaCheckOut = c.getString(3);
-                    Date checkin, chechout;
-                    SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-                    try {
-                        checkin = formatoFecha.parse(fechaCheckIn);
-                        chechout = formatoFecha.parse(fechaCheckOut);
-                    } catch (ParseException ex) {
-                        Log.e("FECHA", ex.getMessage());
-                        checkin = new Date(1900, 1, 1);
-                        chechout = new Date(1900, 2, 2);
-                    }
-                    reserva.setCheckIn(checkin);
-                    reserva.setCheckOut(chechout);
+                int notificadoAlCliente = c.getInt(4);
+                boolean notificado = notificadoAlCliente == 1;
+                reserva.setNotificadoAlCliente(notificado);
 
-                    int notificadoAlCliente = c.getInt(4);
-                    boolean notificado = notificadoAlCliente == 1;
-                    reserva.setNotificadoAlCliente(notificado);
+                int anulada = c.getInt(5);
+                boolean anu = anulada == 1;
+                reserva.setAnulada(anu);
 
-                    int anulada = c.getInt(5);
-                    boolean anu = anulada == 1;
-                    reserva.setAnulada(anu);
-
-                    int pagada = c.getInt(6);
-                    boolean pago = pagada == 1;
-                    reserva.setPagada(pago);
-
-
+                int pagada = c.getInt(6);
+                boolean pago = pagada == 1;
+                reserva.setPagada(pago);
             }
             c.close();
         }
@@ -93,11 +83,10 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
 
     public ArrayList<Reserva> getAll(int id) {
         ArrayList<Reserva> reservas = new ArrayList<>();
-        if(db != null)
-        {
-            String[] campos = new String[] {
-                    "reservaId", "habitacionId", "clienteId", "chechIn", "checkOut", "notificadoAlCliente", "anulada","pagada" };
-            String[] args = new String[]{ String.valueOf(id) };
+        if (db != null) {
+            String[] campos = new String[]{
+                    "reservaId", "habitacionId", "clienteId", "chechIn", "checkOut", "notificadoAlCliente", "anulada", "pagada"};
+            String[] args = new String[]{String.valueOf(id)};
             Cursor c = db.query("Reserva", campos, "clienteId = ?", args, null, null, null);
 
             if (c.moveToFirst()) { // Verifica que exista al menos un registro.
@@ -111,13 +100,7 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
                     reserva.setId(reservaId);
 
                     int habitacionId = c.getInt(1);
-                    // TODO: esto deberia verse asi
-                    // reserva.setHabitacion(habitacionDA.getById(habitacionId));
-                    // Lo harcodeamos por ahora:
-                    Habitacion hab = new Habitacion();
-                    hab.setHabTipo("Simple, hab id = " + String.valueOf(habitacionId));
-                    hab.setHabPrecio(reservaId*1000);
-                    reserva.setHabitacion(hab);
+                    reserva.setHabitacion(habitacionDA.getById(habitacionId));
 
                     int clienteId = c.getInt(2);
                     reserva.setCliente(clienteDA.getById(clienteId));
@@ -150,7 +133,7 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
                     reserva.setPagada(pago);
 
                     reservas.add(reserva);
-                } while(c.moveToNext());
+                } while (c.moveToNext());
             }
             c.close();
         }
@@ -171,7 +154,7 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
         nuevoRegistro.put("anulada", entidad.isAnulada());
         nuevoRegistro.put("pagada", entidad.isPagada());
 
-        if (db != null){
+        if (db != null) {
             //Insertamos el registro en la base de datos
             db.insert("Reserva", null, nuevoRegistro);
         }
@@ -192,7 +175,7 @@ public class ReservaDataAccess implements IWritableDataAccess<Reserva> {
 
         int reservaId = entidad.getId();
         //Modificamos el registro en la base de datos
-        String[] args = new String[]{ String.valueOf(reservaId)};
+        String[] args = new String[]{String.valueOf(reservaId)};
         db.update("Reserva", nuevoRegistro, "reservaId = ?", args);
 
         return getById(reservaId);

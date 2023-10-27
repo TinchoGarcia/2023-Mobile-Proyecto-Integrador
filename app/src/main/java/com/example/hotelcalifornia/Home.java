@@ -180,7 +180,7 @@ public class Home extends AppCompatActivity {
 
         reservaDA.create(reserva);
 
-        Intent reservas=new Intent(this, Reservas.class);
+        Intent reservas = new Intent(this, Reservas.class);
         startActivity(reservas);
     } //lleva a reservas
 
