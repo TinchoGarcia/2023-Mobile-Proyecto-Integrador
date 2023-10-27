@@ -68,6 +68,7 @@ public class Detalle extends AppCompatActivity {
 
     public void realizarPago(View view) {
         Intent intent = new Intent(this, Tarjeta.class);
+        intent.putExtra(Reservas.RESERVA, reservaActualId);
         startActivity(intent);
     }
 
