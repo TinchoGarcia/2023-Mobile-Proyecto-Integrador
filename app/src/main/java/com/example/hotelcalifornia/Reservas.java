@@ -23,6 +23,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -55,12 +56,12 @@ public class Reservas extends AppCompatActivity {
             // Mostramos la reserva actual o la última hecha por el cliente que no esté anulada.
             mostrarElementosVisuales(true);
             mostrarReserva(reservaActualIndex);
+            activarBotonesPrevAndNext();
         } else {
             mostrarElementosVisuales(false);
             textNoHayReservas.setText(R.string.usuario_sin_reservas);
         }
 
-        activarBotonesPrevAndNext();
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -149,8 +150,20 @@ public class Reservas extends AppCompatActivity {
             actualizarBotonPagar(R.string.pagar, true, R.color.naranja);
         }
 
-        Date fechaActual = new Date();
-        boolean reservaVencida = reserva.getCheckIn().before(fechaActual);
+        Calendar fechaActual = Calendar.getInstance();
+        fechaActual.set(Calendar.HOUR_OF_DAY, 0);
+        fechaActual.set(Calendar.MINUTE, 0);
+        fechaActual.set(Calendar.SECOND, 0);
+        fechaActual.set(Calendar.MILLISECOND, 0);
+
+        Calendar fechaCheckIn = Calendar.getInstance();
+        fechaCheckIn.setTime(reserva.getCheckIn());
+        fechaCheckIn.set(Calendar.HOUR_OF_DAY, 0);
+        fechaCheckIn.set(Calendar.MINUTE, 0);
+        fechaCheckIn.set(Calendar.SECOND, 0);
+        fechaCheckIn.set(Calendar.MILLISECOND, 0);
+
+        boolean reservaVencida = fechaCheckIn.before(fechaActual);
         if (reservaVencida && reserva.isPagada()) {
             ajustarVistaSegunReserva(R.string.gracias, View.INVISIBLE, View.VISIBLE);
         } else if (reservaVencida && !reserva.isPagada()) {
