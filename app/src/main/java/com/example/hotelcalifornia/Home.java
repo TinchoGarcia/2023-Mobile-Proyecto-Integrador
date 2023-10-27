@@ -36,7 +36,6 @@ public class Home extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     Button reservarButton;
     ReservaDataAccess reservaDA;
-
     RadioGroup radioGroup;
     ArrayList<Habitacion> habitaciones; // Declaración de la lista de habitaciones
 
@@ -47,39 +46,24 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         reservaDA = new ReservaDataAccess(this);
-        reservarButton = findViewById(R.id.reservarButton);
-        radioGroup = findViewById(R.id.RadioGroup);
+
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.menu);
 
         fechaIng = findViewById(R.id.fechaIng);
         fechaSal = findViewById(R.id.fechaSal);
+        radioGroup = findViewById(R.id.RadioGroup);
+        reservarButton = findViewById(R.id.reservarButton);
 
-        // Crear una instancia de HabitacionDataAccess
+        // Obtenemos todas las habitaciones para mostrarlas
         HabitacionDataAccess habitacionDataAccess = new HabitacionDataAccess(this);
-
-        // Obtener todas las habitaciones desde la base de datos y asignarlas a la variable miembro habitaciones
         habitaciones = habitacionDataAccess.getAll();
-        // Inicializa bottomNavigationView
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
-        // Configurar el texto de los RadioButtons con nombre y precio
         for (int i = 0; i < habitaciones.size(); i++) {
             RadioButton radioButton = (RadioButton) radioGroup.getChildAt(i);
             Habitacion habitacion = habitaciones.get(i);
             String textoRadioButton = habitacion.getHabTipo() + " - $ " + (int) habitacion.getHabPrecio();
             radioButton.setText(textoRadioButton);
         }
-        // Configura el OnItemSelectedListener solo si bottomNavigationView no es nulo
-        if (bottomNavigationView != null) {
-            bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    // Tu código para manejar la navegación
-                    return true;
-                }
-            });
-        }
-
-
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override  //barra de navegación
@@ -183,15 +167,10 @@ public class Home extends AppCompatActivity {
 
         // Obtiene el ID de la habitación seleccionada desde el RadioGroup
         int selectedRadioButtonId = radioGroup.getCheckedRadioButtonId();
-
-        // Verifica si se ha seleccionado un RadioButton válido
         if (selectedRadioButtonId != -1) {
-
             int selectedPosition = radioGroup.indexOfChild(findViewById(selectedRadioButtonId));
-
-                Habitacion habitacionSeleccionada = habitaciones.get(selectedPosition);
-                reserva.setHabitacion(habitacionSeleccionada);
-
+            Habitacion habitacionSeleccionada = habitaciones.get(selectedPosition);
+            reserva.setHabitacion(habitacionSeleccionada);
         } else {
             // comentario de prueba
         }
