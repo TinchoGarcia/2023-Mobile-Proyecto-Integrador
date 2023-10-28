@@ -16,7 +16,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        android:contentDescription="Volver atrás" />
 
     <TextView
         android:id="@+id/datosTarjetaText"
@@ -59,7 +60,8 @@
             android:layout_marginTop="-150sp"
             android:scaleX="0.5"
             android:scaleY="0.5"
-            android:src="@drawable/pexels_photo_271639" />
+            android:src="@drawable/pexels_photo_271639"
+            android:contentDescription="Imagen de la habitación a contratar" />
 
 
         <TextView

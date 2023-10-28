@@ -119,7 +119,6 @@
         android:hint="@string/fechaI"
         android:inputType="date"
         android:textColor="@color/black"
-        android:textColorHint="@color/gris"
         app:layout_constraintEnd_toStartOf="@+id/buttonIngreso"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reservasT" />

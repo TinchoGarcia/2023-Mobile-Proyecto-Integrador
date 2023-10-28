@@ -16,7 +16,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        android:contentDescription="Flecha para volver atrás" />
 
     <TextView
         android:id="@+id/datosTarjetaText"
@@ -38,7 +39,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datosTarjetaText"
-        app:srcCompat="@drawable/istockphoto_1300003353_612x612" />
+        app:srcCompat="@drawable/istockphoto_1300003353_612x612"
+        android:contentDescription="Mano agarrando tarjeta de crédito" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/contenedorDatosTarjeta"
@@ -78,7 +80,7 @@
                 android:layout_gravity="center"
                 android:background="@color/white"
                 android:ems="10"
-                android:hint=""
+                android:hint="Introduce número de tarjeta"
                 android:inputType="number"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris"
@@ -114,7 +116,7 @@
                 android:layout_gravity="center"
                 android:background="@color/white"
                 android:ems="10"
-                android:hint=""
+                android:hint="Vencimiento"
                 android:inputType="number"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris"
@@ -151,7 +153,7 @@
                 android:layout_gravity="center"
                 android:background="@color/white"
                 android:ems="10"
-                android:hint=""
+                android:hint="Código de Seg"
                 android:inputType="number"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris"
@@ -184,7 +186,7 @@
                 android:layout_gravity="center"
                 android:background="@color/white"
                 android:ems="10"
-                android:hint=""
+                android:hint="Ingresa tu nombre y apellido"
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gris"

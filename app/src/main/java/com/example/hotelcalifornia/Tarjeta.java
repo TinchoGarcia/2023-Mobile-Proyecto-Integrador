@@ -49,34 +49,11 @@ public class Tarjeta extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
 
-        EditText codSeguridadInput = findViewById(R.id.codSeguridadInput);
+        EditText nTarjetaInput = findViewById(R.id.nTarjetaInput);
 
-        // Establecer el tipo de entrada como número
-        codSeguridadInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-
-        // Aplicar un InputFilter para limitar a 3 dígitos numéricos
-        codSeguridadInput.setFilters(new InputFilter[] {
-                new InputFilter.LengthFilter(3), // Límite de longitud
-                new InputFilter() {
-                    @Override
-                    public CharSequence filter(CharSequence source, int start, int end,
-                                               Spanned dest, int dstart, int dend) {
-                        // Solo permite dígitos numéricos
-                        for (int i = start; i < end; i++) {
-                            if (!Character.isDigit(source.charAt(i))) {
-                                return "";
-                            }
-                        }
-                        return null;
-                    }
-                }
-        });
-
-
-        // Obtener referencia al EditText de Fecha de Vencimiento
-        EditText fechaVencInput = findViewById(R.id.fechaVencInput);
-
-        fechaVencInput.addTextChangedListener(new TextWatcher() {
+        // Aplicamos un InputFilter para limitar a 19 dígitos (16 + 3 caracteres vacíos)
+        nTarjetaInput.setFilters(new InputFilter[]{new InputFilter.LengthFilter(19)});
+        nTarjetaInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -89,16 +66,101 @@ public class Tarjeta extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String input = s.toString();
+                // Obtenemos el texto actual del EditText y eliminamos espacios en blanco
+                String input = s.toString().replaceAll("\\s", "");
 
-                // Aplicar lógica de formateo
-                if (input.length() == 2) {
-                    input += "/";
-                    fechaVencInput.setText(input);
-                    fechaVencInput.setSelection(input.length());
+                // Formateamos el número de tarjeta con guiones bajos
+                StringBuilder formatted = new StringBuilder();
+                for (int i = 0; i < input.length(); i++) {
+                    formatted.append(input.charAt(i));
+                    if ((i + 1) % 4 == 0 && i < input.length() - 1) {
+                        formatted.append(" "); // Agregamos un espacio después de cada grupo de 4 dígitos
+                    }
                 }
+
+                // Establece el nuevo texto formateado en el EditText
+                nTarjetaInput.removeTextChangedListener(this);
+                nTarjetaInput.setText(formatted.toString());
+                nTarjetaInput.setSelection(formatted.length());
+                nTarjetaInput.addTextChangedListener(this);
             }
         });
+
+
+
+
+        EditText codSeguridadInput = findViewById(R.id.codSeguridadInput);
+
+        // Establecemos el tipo de entrada como número
+        codSeguridadInput.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+        // Aplicamos un InputFilter para limitar a 3 dígitos numéricos
+        codSeguridadInput.setFilters(new InputFilter[] {
+                new InputFilter.LengthFilter(3), // Límite de longitud
+                new InputFilter() {
+                    @Override
+                    public CharSequence filter(CharSequence source, int start, int end,
+                                               Spanned dest, int dstart, int dend) {
+                        // Solo permitimos dígitos numéricos
+                        for (int i = start; i < end; i++) {
+                            if (!Character.isDigit(source.charAt(i))) {
+                                return "";
+                            }
+                        }
+                        return null;
+                    }
+                }
+        });
+
+
+        EditText fechaVencInput = findViewById(R.id.fechaVencInput);
+
+        fechaVencInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String input = s.toString();
+
+                // Elimina caracteres no permitidos
+                input = input.replaceAll("[^0-9/]", "");
+
+                // Limita la entrada a "MM/YY"
+                if (input.length() > 5) {
+                    input = input.substring(0, 5);
+                }
+
+                // Verifica que los dos primeros dígitos estén en el rango 01-12
+                if (input.length() >= 2) {
+                    int mes = Integer.parseInt(input.substring(0, 2));
+                    if (mes < 1) {
+                        input = "01" + input.substring(2);
+                    } else if (mes > 12) {
+                        input = "12" + input.substring(2);
+                    }
+                }
+
+                // Asegura que haya una barra ("/") entre MM y YY
+                if (input.length() >= 3 && input.charAt(2) != '/') {
+                    input = input.substring(0, 2) + "/" + input.substring(2);
+                }
+
+                fechaVencInput.removeTextChangedListener(this);
+                fechaVencInput.setText(input);
+                fechaVencInput.setSelection(input.length());
+                fechaVencInput.addTextChangedListener(this);
+            }
+        });
+
+
+
+
 
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
