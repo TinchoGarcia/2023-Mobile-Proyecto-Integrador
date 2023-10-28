@@ -32,7 +32,10 @@ public class Edition extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edicion);
 
+
         gestorDeClientes = new GestorDeClientes(this);
+
+
 
         // Seteamos el texto de cada editText con los datos del usuario logueado
         setearEditTextConDatosClienteLogueado();

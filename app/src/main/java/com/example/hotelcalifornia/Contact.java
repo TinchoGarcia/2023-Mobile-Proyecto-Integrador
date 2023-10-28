@@ -9,16 +9,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.net.Uri;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.hotelcaliforniaNegocio.GestorDeClientes;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class Contact extends AppCompatActivity {
     public void goToProfile(View view) {
         Intent intent = new Intent(this, Profile.class);
-        startActivity(intent);
+        finish();
 
     }
     public void goToHome(View view) {
@@ -62,6 +64,16 @@ public class Contact extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacto);
+
+        TextView textHolaUsuario = findViewById(R.id.holaUsuario);
+
+        GestorDeClientes gestorDeClientes = new GestorDeClientes(this);
+
+        String nombreCompleto = gestorDeClientes.getClienteLogueado().getUsuario();
+        String[] partes = nombreCompleto.split(" "); // Divide el nombre completo en palabras usando un espacio en blanco como separador
+        String nombre = partes[0]; // Obtiene la primera palabra, que es el nombre
+
+        textHolaUsuario.setText("Hola " + nombre + "!");
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);

@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.hotelcaliforniaModelo.Reserva;
+import com.example.hotelcaliforniaNegocio.GestorDeClientes;
 import com.example.hotelcaliforniaNegocio.GestorDeReservas;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -44,6 +45,17 @@ public class Reservas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservas);
+
+        // Saludo al usuario logueado
+        TextView textHolaUsuario = findViewById(R.id.holaUsuario);
+
+        GestorDeClientes gestorDeClientes = new GestorDeClientes(this);
+
+        String nombreCompleto = gestorDeClientes.getClienteLogueado().getUsuario();
+        String[] partes = nombreCompleto.split(" "); // Divide el nombre completo en palabras usando un espacio en blanco como separador
+        String nombre = partes[0]; // Obtiene la primera palabra, que es el nombre
+
+        textHolaUsuario.setText("Hola " + nombre + "!");
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);

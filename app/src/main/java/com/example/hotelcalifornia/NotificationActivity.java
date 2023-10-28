@@ -2,12 +2,15 @@ package com.example.hotelcalifornia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.hotelcaliforniaNegocio.GestorDeClientes;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -20,6 +23,14 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notificaciones);
+
+        //Saludo al usuario logueado
+        TextView textHolaUsuario = findViewById(R.id.holaUsuario);
+        GestorDeClientes gestorDeClientes = new GestorDeClientes(this);
+        String nombreCompleto = gestorDeClientes.getClienteLogueado().getUsuario();
+        String[] partes = nombreCompleto.split(" "); // Divide el nombre completo en palabras usando un espacio en blanco como separador
+        String nombre = partes[0]; // Obtiene la primera palabra, que es el nombre
+        textHolaUsuario.setText("Hola " + nombre + "!");
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);

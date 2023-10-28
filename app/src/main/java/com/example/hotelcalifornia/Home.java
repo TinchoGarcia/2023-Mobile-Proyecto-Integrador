@@ -47,6 +47,17 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        TextView textHolaUsuario = findViewById(R.id.holaUsuario);
+
+        GestorDeClientes gestorDeClientes = new GestorDeClientes(this);
+
+        String nombreCompleto = gestorDeClientes.getClienteLogueado().getUsuario();
+        String[] partes = nombreCompleto.split(" "); // Divide el nombre completo en palabras usando un espacio en blanco como separador
+        String nombre = partes[0]; // Obtiene la primera palabra, que es el nombre
+
+        textHolaUsuario.setText("Hola " + nombre + "!");
+
+
         reservaDA = new ReservaDataAccess(this);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);

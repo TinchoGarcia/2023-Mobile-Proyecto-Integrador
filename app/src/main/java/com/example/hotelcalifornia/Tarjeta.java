@@ -15,8 +15,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hotelcaliforniaModelo.Reserva;
+import com.example.hotelcaliforniaNegocio.GestorDeClientes;
 import com.example.hotelcaliforniaNegocio.GestorDeReservas;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -34,6 +36,14 @@ public class Tarjeta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tarjeta);
 
+        //Saludo al usuario logueado
+        TextView textHolaUsuario = findViewById(R.id.holaUsuario);
+        GestorDeClientes gestorDeClientes = new GestorDeClientes(this);
+        String nombreCompleto = gestorDeClientes.getClienteLogueado().getUsuario();
+        String[] partes = nombreCompleto.split(" "); // Divide el nombre completo en palabras usando un espacio en blanco como separador
+        String nombre = partes[0]; // Obtiene la primera palabra, que es el nombre
+        textHolaUsuario.setText("Hola " + nombre + "!");
+
         // Abrimos el intenet con el dato de la reserva id
         Intent intenet = getIntent();
         float precio = getIntent().getFloatExtra(Detalle.PRECIOTOTAL, 0);
@@ -42,7 +52,7 @@ public class Tarjeta extends AppCompatActivity {
         gestorReservas = new GestorDeReservas(this);
         re = gestorReservas.obtenerReserva(reservaActualId);
         textoPrecio = findViewById(R.id.totalAPagar);
-        textoPrecio.setText("total a pagar: $" + String.valueOf((int)precio));
+        textoPrecio.setText("total a pagar: $" + String.valueOf((int) precio));
 
         botonReservar = findViewById(R.id.confirmarPagoButton);
 
@@ -87,15 +97,13 @@ public class Tarjeta extends AppCompatActivity {
         });
 
 
-
-
         EditText codSeguridadInput = findViewById(R.id.codSeguridadInput);
 
         // Establecemos el tipo de entrada como número
         codSeguridadInput.setInputType(InputType.TYPE_CLASS_NUMBER);
 
         // Aplicamos un InputFilter para limitar a 3 dígitos numéricos
-        codSeguridadInput.setFilters(new InputFilter[] {
+        codSeguridadInput.setFilters(new InputFilter[]{
                 new InputFilter.LengthFilter(3), // Límite de longitud
                 new InputFilter() {
                     @Override
@@ -159,10 +167,6 @@ public class Tarjeta extends AppCompatActivity {
         });
 
 
-
-
-
-
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -190,18 +194,37 @@ public class Tarjeta extends AppCompatActivity {
         });
 
     }
-    public void volverADetalle (View view){
+
+    public void volverADetalle(View view) {
         Intent intent = new Intent(this, Detalle.class);
         finish();
     }
 
-    public void notificaciones (View view){
-        re.setPagada(true);
-        gestorReservas.modificarReserva(re);
-        String mensaje = "¡Reserva confirmada con éxito!";
-        Intent intent = new Intent(this, NotificationActivity.class);
-        intent.putExtra("mensaje", mensaje);
-        startActivity(intent);
-    }
+    public void notificaciones(View view) {
+        // Obtén los valores de los campos
+        EditText nTarjetaInput = findViewById(R.id.nTarjetaInput);
+        EditText codSeguridadInput = findViewById(R.id.codSeguridadInput);
+        EditText fechaVencInput = findViewById(R.id.fechaVencInput);
+        EditText nombreApellidoInput = findViewById(R.id.nombreyapellidoInput);
 
+        String numeroTarjeta = nTarjetaInput.getText().toString().replaceAll("\\s", ""); // Elimina espacios en blanco
+        String codSeguridad = codSeguridadInput.getText().toString();
+        String fechaVencimiento = fechaVencInput.getText().toString();
+        String nombreApellido = nombreApellidoInput.getText().toString().trim(); // Elimina espacios en blanco al inicio y al final
+
+        // Verifica si alguno de los campos está vacío o incompleto
+        if (numeroTarjeta.length() != 16 || codSeguridad.length() != 3 || !fechaVencimiento.matches("\\d{2}/\\d{2}") || nombreApellido.isEmpty()) {
+            // Muestra un mensaje Toast indicando que los datos son incorrectos
+            Toast.makeText(this, "Verifica todos los campos y complételos correctamente.", Toast.LENGTH_SHORT).show();
+        } else {
+            // Todos los campos tienen datos válidos, puedes continuar con la transacción
+            re.setPagada(true);
+            gestorReservas.modificarReserva(re);
+            String mensaje = "¡Reserva confirmada con éxito!";
+            Intent intent = new Intent(this, NotificationActivity.class);
+            intent.putExtra("mensaje", mensaje);
+            startActivity(intent);
+        }
+
+    }
 }

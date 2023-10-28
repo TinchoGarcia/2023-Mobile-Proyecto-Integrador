@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,10 +26,19 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
+
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.menu);
 
+        TextView textHolaUsuario = findViewById(R.id.holaUsuario);
+
         gestorDeClientes = new GestorDeClientes(this);
+
+        String nombreCompleto = gestorDeClientes.getClienteLogueado().getUsuario();
+        String[] partes = nombreCompleto.split(" "); // Divide el nombre completo en palabras usando un espacio en blanco como separador
+        String nombre = partes[0]; // Obtiene la primera palabra, que es el nombre
+
+        textHolaUsuario.setText("Hola " + nombre + "!");
 
         // Inicalizamos switch notificaciones y modificamos datos en la DB segun la selección
         recibeNotSwitch = findViewById(R.id.switchNotificaciones);
@@ -84,7 +94,7 @@ public class Profile extends AppCompatActivity {
     public void goToHome(View view) {
 
         Intent intent = new Intent(this, Home.class);
-        startActivity(intent);
+        finish();
     }
     public void goToEdition(View view) {
 

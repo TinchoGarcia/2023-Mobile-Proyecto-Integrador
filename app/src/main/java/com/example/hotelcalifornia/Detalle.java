@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.hotelcaliforniaModelo.Habitacion;
 import com.example.hotelcaliforniaModelo.Reserva;
+import com.example.hotelcaliforniaNegocio.GestorDeClientes;
 import com.example.hotelcaliforniaNegocio.GestorDeReservas;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -30,6 +31,8 @@ public class Detalle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
 
+        TextView textHolaUsuario = findViewById(R.id.holaUsuario);
+
 
         // Inicializamos elementos visuales:
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -45,6 +48,14 @@ public class Detalle extends AppCompatActivity {
         reserva = gestorDeReservas.obtenerReserva(reservaActualId);
 
         mostrarDatosReserva();
+
+        GestorDeClientes gestorDeClientes = new GestorDeClientes(this);
+
+        //Saludo al usuario logueado
+        String nombreCompleto = gestorDeClientes.getClienteLogueado().getUsuario();
+        String[] partes = nombreCompleto.split(" "); // Divide el nombre completo en palabras usando un espacio en blanco como separador
+        String nombre = partes[0]; // Obtiene la primera palabra, que es el nombre
+        textHolaUsuario.setText("Hola " + nombre + "!");
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
