@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">Hotel California</string>
-    <string name="bienvenido">Bienvenida/o a Hotel California</string>
+    <string name="bienvenido">Bienvenido</string>
     <string name="login">Login</string>
-    <string name="email">email@gmail.com</string>
-    <string name="contrasena">Password</string>
     <string name="ingresar">Ingresar</string>
     <string name="regitro">Registrate</string>
     <string name="hoteln">Hotel California</string>
@@ -18,13 +16,15 @@
     <string name="menu">Inicio</string>
     <string name="home">home</string>
     <string name="pagar">Pagar +</string>
-    <string name="precio1">$1893.44</string>
-    <string name="precio2">$2500</string>
-    <string name="precio3">$6589.99</string>
+    <string name="pagada">Pagada</string>
+    <string name="precio1">$75.500</string>
+    <string name="precio2">$98.000</string>
+    <string name="precio3">$34.500</string>
     <string name="reservas">Reservas</string>
     <string name="pesos">Pesos</string>
     <string name="pagado">Pagado</string>
-    <string name="repetir">Repetir +</string>
+    <string name="modificar">Modificar</string>
+    <string name="eliminar">Eliminar</string>
     <string name="cancelar">Cancelar</string>
     <string name="mi_perfil">Mi perfil</string>
     <string name="boton_atras">Ir hacia atrás</string>
@@ -34,6 +34,9 @@
     <string name="cont_ctanos">Contáctanos</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
     <string name="recibir_notificaciones">Recibir notificaciones</string>
+    <string name="HabitacionSD">Habitación Single</string>
+    <string name="fechaFicticia">18/01/2022</string>
+    <string name="fechaF2">25/02/2022</string>
 
     <string name="edicio_perfil">Editar mi perfil</string>
     <string name="nuevo_usuario">Nuevo usuario</string>
@@ -50,5 +53,32 @@
     <string name="texto_contacto">Detalla aquí tu consulta/sugerencia</string>
     <string name="tu_mensaje">tu mensaje!</string>
     <string name="enviar">Enviar</string>
+    <string name="contrasena">Contraseña</string>
 
+    <string name="singleRoom">Habitación Single/Doble</string>
+    <string name="triple">Habitación Triple</string>
+    <string name="suite">Suite Exclusiva</string>
+    <string name="suiteJunior">Suite Junior Doble</string>
+    <string name="ingreso">Ingreso</string>
+    <string name="salida">Salida</string>
+
+    <string name="btnR">botón para reservar habitación</string>
+    <string name="btnIngr">botón para ingresar fecha de Ingreso</string>
+    <string name="btnSali">botón para ingresar fecha de salida</string>
+    <string name="btnPag">botón para pagar la reserva</string>
+    <string name="btnMod">botón para modificar la reserva</string>
+    <string name="btnEli">botón para eliminar la reserva</string>
+    <string name="volverH">botón para volver a atrás</string>
+    <string name="boton_prev_reserva">Botón para visualizar una reserva más nueva</string>
+    <string name="boton_next_reserva">Botón para visualizar una reserva anterior</string>
+    <string name="ingres_tus_datos_o_logueate">Ingresá tus datos o logueate</string>
+    <string name="usuario_sin_reservas">El usuario no tiene reservas.</string>
+    <string name="imagen_de_notifiaciones_realizada">imagen de notifiaciones realizada</string>
+    <string name="reserva_realizada_con_xito">Reserva realizada con éxito!</string>
+    <string name="ingresa_tu_contrase_a">Ingresa tu nueva contraseña</string>
+    <string name="gracias">Esperamos que haya tenido una excelente estadía.</string>
+    <string name="reserva_anulada">La reserva ha sido anulada por falta de pago. Genere otra reserva.</string>
+    <string name="empty">\"\"</string>
+    <string name="mje_error_completar_fechas_reserva">* Debe completar la Fecha de Ingreso y Salida</string>
+    <string name="mje_error_select_hab_reserva">* Debe seleccionar una habitación para Reservar</string>
 </resources>

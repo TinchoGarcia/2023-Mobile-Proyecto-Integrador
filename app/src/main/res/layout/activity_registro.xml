@@ -5,6 +5,7 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Registro">
 
     <TextView
@@ -29,7 +30,7 @@
         android:layout_marginTop="28dp"
         android:minHeight="48dp"
         android:onClick="iraMainActivity"
-        android:text="Ingresá tus datos o logueate"
+        android:text="@string/ingres_tus_datos_o_logueate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datosTarjetaText" />
 
@@ -60,32 +61,32 @@
             android:textColorLink="@color/naranja" />
 
 
-        <EditText
-            android:id="@+id/IngresarUsuario"
-            android:layout_width="319dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="50sp"
-            android:backgroundTint="@color/white"
-            android:backgroundTintMode="add"
-            android:elevation="25dp"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Pepe Argento"
-            android:inputType="text"
-            android:minHeight="48dp"
-            android:textColor="@color/black" />
+
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/BgUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="51dp"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="50sp"
-            android:layout_marginEnd="10sp"
-            android:elevation="4dp"
+            android:layout_width="330dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-165sp"
+            android:backgroundTint="@color/white"
             app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="15sp" />
+            app:cardCornerRadius="18dp">
+
+            <EditText
+                android:id="@+id/IngresarUsuario"
+                android:layout_width="289dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:ems="10"
+                android:hint="Juan Pérez"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gris"
+                android:textColorLink="@color/clear"
+                tools:ignore="TextContrastCheck" />
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/fechanacimiento"
@@ -96,29 +97,30 @@
             android:text="Fecha de Nacimiento"
             android:textColor="@color/white" />
 
-        <EditText
-            android:id="@+id/editfechaNacimiento"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="170sp"
-            android:elevation="25dp"
-            android:ems="10"
-            android:hint="15/05/1986"
-            android:inputType="date"
-            android:minHeight="48dp" />
-
-
         <androidx.cardview.widget.CardView
-            android:id="@+id/BgFechaNacimiento"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="170sp"
-            android:layout_marginEnd="10sp"
-            android:elevation="4dp"
+            android:layout_width="330dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-45sp"
+            android:backgroundTint="@color/white"
             app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="15sp" />
+            app:cardCornerRadius="18dp">
+
+            <EditText
+                android:id="@+id/editfechaNacimiento"
+                android:layout_width="289dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:ems="10"
+                android:hint="15/05/1986"
+                android:inputType="date"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gris"
+                android:textColorLink="@color/clear"
+                tools:ignore="TextContrastCheck" />
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/email"
@@ -129,28 +131,32 @@
             android:text="Email"
             android:textColor="@color/white" />
 
-        <EditText
-            android:id="@+id/introducirEmail"
-            android:layout_width="319dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="290sp"
-            android:elevation="25dp"
-            android:ems="10"
-            android:hint="pepito@hotel.com"
-            android:inputType="text"
-            android:minHeight="48dp" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/BgEmail"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="290sp"
-            android:layout_marginEnd="10sp"
-            android:elevation="4dp"
+            android:layout_width="330dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="74sp"
+            android:backgroundTint="@color/white"
             app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="15sp" />
+            app:cardCornerRadius="18dp">
+
+            <EditText
+                android:id="@+id/introducirEmail"
+                android:layout_width="289dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:ems="10"
+                android:hint="pepito@hotel.com"
+                android:inputType="text|textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gris"
+                android:textColorLink="@color/clear"
+                tools:ignore="TextContrastCheck" />
+        </androidx.cardview.widget.CardView>
+
+
 
         <TextView
             android:id="@+id/pass"
@@ -161,28 +167,33 @@
             android:text="@string/contrasena"
             android:textColor="@color/white" />
 
-        <EditText
-            android:id="@+id/introducirPass"
-            android:layout_width="319dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="400sp"
-            android:elevation="25dp"
-            android:ems="10"
-            android:hint="**********"
-            android:inputType="text|textPassword"
-            android:minHeight="48dp" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/BgPass"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="400sp"
-            android:layout_marginEnd="10sp"
-            android:elevation="4dp"
+            android:layout_width="330dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="180sp"
+            android:backgroundTint="@color/white"
             app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="15sp" />
+            app:cardCornerRadius="18dp">
+
+            <EditText
+                android:id="@+id/introducirPass"
+                android:layout_width="289dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:ems="10"
+                android:hint="**********"
+                android:inputType="text|textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gris"
+                android:textColorLink="@color/clear"
+                tools:ignore="TextContrastCheck" />
+        </androidx.cardview.widget.CardView>
+
+
+
 
     </androidx.cardview.widget.CardView>
 
@@ -207,10 +218,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="36dp"
-        android:onClick="iraMainActivity"
+        android:onClick="volverAMainActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        android:contentDescription="volver" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

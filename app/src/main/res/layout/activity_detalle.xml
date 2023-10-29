@@ -12,11 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="36dp"
-        android:onClick="iraReservas"
+        android:onClick="volverAReservas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        android:contentDescription="Volver atrás" />
 
     <TextView
         android:id="@+id/datosTarjetaText"
@@ -56,19 +57,21 @@
             android:id="@+id/imageRoom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-50sp"
+            android:layout_marginTop="-150sp"
             android:scaleX="0.5"
             android:scaleY="0.5"
-            android:src="@drawable/pexels_photo_271639" />
+            android:src="@drawable/pexels_photo_271639"
+            android:contentDescription="Imagen de la habitación a contratar" />
 
 
         <TextView
             android:id="@+id/PromocionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100sp"
-            android:layout_marginTop="240sp"
-            android:text="Exclusivo - Fin de Semana" />
+            android:layout_marginStart="70sp"
+            android:layout_marginTop="200sp"
+            android:layout_marginEnd="70sp"
+            android:textAlignment="center" />
 
         <TextView
             android:id="@+id/precioText"
@@ -76,9 +79,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="140sp"
             android:layout_marginTop="280sp"
-            android:text="$52.000"
             android:textSize="24sp"
             android:textStyle="bold" />
+
     </androidx.cardview.widget.CardView>
 
     <Button
@@ -104,6 +107,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu='@menu/bottom_nav_menu' />
+
+    <TextView
+        android:id="@+id/holaUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
