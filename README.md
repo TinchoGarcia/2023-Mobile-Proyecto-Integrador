@@ -38,6 +38,8 @@ Componentes claves de la aplicación:
 
 Video de muestra de proyecto SPRINT 1: https://www.youtube.com/watch?v=jXo5IYPl2wI
 
+Video Demo de muestra de proyecto Sprint 2: https://youtu.be/wD3GouIwb6U
+
 
 Referencias a los repositoris previos:
 https://github.com/FedeGonzalez2016/2022-Fullstack-Proyecto-Integrador
