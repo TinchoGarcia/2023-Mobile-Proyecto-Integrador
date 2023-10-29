@@ -38,7 +38,7 @@ Componentes claves de la aplicación:
 
 Video de muestra de proyecto SPRINT 1: https://www.youtube.com/watch?v=jXo5IYPl2wI
 
-Video Demo de muestra de proyecto Sprint 2: https://youtu.be/wD3GouIwb6U
+Video Demo de muestra de proyecto SPRINT 2: https://youtu.be/wD3GouIwb6U
 
 
 Referencias a los repositoris previos:
